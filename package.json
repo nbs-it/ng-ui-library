@@ -1,18 +1,18 @@
 {
-  "name": "utilities",
+  "name": "ng-ui-library",
   "version": "1.0.0",
-  "description": "NBS UI Utilities",
+  "description": "NBS UI library for angular ng6",
   "main": "common.js",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/nbs-it/Utilities.git"
+    "url": "git+https://gitlab.com/nbs-it/ng-ui-library.git"
   },
   "author": "nbs-it",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/nbs-it/Utilities/issues"
+    "url": "https://gitlab.com/nbs-it/ng-ui-library/issues"
   },
-  "homepage": "https://gitlab.com/nbs-it/Utilities#README",
+  "homepage": "https://gitlab.com/nbs-it/ng-ui-library#README",
   "dependencies": {
     "angular": "^1.6.6"
   },
