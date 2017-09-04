@@ -22,14 +22,16 @@
     <button>Open modal-box</button>
     <modal-box-header>כותרת</modal-box-header>
     <modal-box-content>
-      <p>תוכן</p>
+        <p style="padding:25px;text-align:center">תוכן</p>
+        <button ng-click="$root.$broadcast('modalBoxClose')">Emit סגירת מודל</button>
     </modal-box-content>
   </span>
-  <textarea disabled rows="8"><span modal-box>
+  <textarea disabled rows="9"><span modal-box>
   <button>Open modal-box</button>
   <modal-box-header>כותרת</modal-box-header>
   <modal-box-content>
-    <p>תוכן</p>
+    <p style="padding:25px;text-align:center">תוכן</p>
+    <button ng-click="$root.$broadcast('modalBoxClose')">Emit סגירת מודל</button>
   </modal-box-content>
 </span></textarea>
 </section>
