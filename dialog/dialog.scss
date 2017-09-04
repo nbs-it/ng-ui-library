@@ -90,9 +90,11 @@
 [dialog].no-arrow .dialog,
 [dialog].no-arrow.bottom .dialog {
   top: calc(100% + 4px);
+  bottom: auto;
 }
 [dialog].no-arrow.top .dialog {
   bottom: calc(100% + 4px);
+  top: auto;
 }
 /*text align*/
 [dialog] .dialog,
