@@ -1,9 +1,7 @@
 <section>
   <h1>Checkbox</h1>
   <checkbox bind-model="vm.checkboxChecked" bind-id="checkbox" label="מסומן"></checkbox>
-  <textarea disabled style="width:100%" dir="ltr" align="left">
-    <checkbox bind-model="vm.checkboxChecked" bind-id="checkbox" label="מסומן"></checkbox>
-  </textarea>
+  <textarea disabled><checkbox bind-model="vm.checkboxChecked" bind-id="checkbox" label="מסומן"></checkbox></textarea>
 </section>
 <section>
   <h1>numberSpinner</h1>
@@ -15,4 +13,6 @@
   <number-spinner value="vm.numberSpinnerValue" total-value="50" label="ערכים" disabled="vm.numberSpinnerDisabled"></number-spinner>
   <h3>compact mode</h3>
   <number-spinner value="vm.numberSpinnerValue" total-value="50" currency-icon="$" label="ערכים" compact="true" disabled="vm.numberSpinnerDisabled"></number-spinner>
+  <textarea disabled><number-spinner value="vm.numberSpinnerValue" total-value="50" label="ערכים" disabled="vm.numberSpinnerDisabled"></number-spinner></textarea>
+  <textarea disabled><number-spinner value="vm.numberSpinnerValue" total-value="50" currency-icon="$" label="ערכים" compact="true" disabled="vm.numberSpinnerDisabled"></number-spinner></textarea>
 </section>
