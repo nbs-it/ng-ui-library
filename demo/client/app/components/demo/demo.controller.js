@@ -5,6 +5,7 @@ class DemoController {
     vm = this;
     vm.checkboxChecked = true;
     vm.numberSpinnerValue = 1;
+    vm.modalBoxIsShown = false;
   }
 }
 
