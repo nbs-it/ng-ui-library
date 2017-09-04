@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 export default function ($window, $timeout) {
   return function (scope, element, attr, ctrl) {
     var vm = ctrl;
@@ -14,7 +16,7 @@ export default function ($window, $timeout) {
         }
       });
       angular.element($window).on('click', function (event) {
-        if (event.target !== element) { // click outside of the dialog.
+        if (event.target !== element && vm.closeByClickOutside !== false) { // click outside of the dialog.
           vm.hide();
         }
       });
@@ -35,7 +37,7 @@ export default function ($window, $timeout) {
       vm.isShown === true ? vm.hide() : vm.show();
     };
     vm.clickOnElement = function () {
-      if (scope.closeByClick !== false) {
+      if (vm.closeByClick !== false) {
         vm.toggle();
       }
     };

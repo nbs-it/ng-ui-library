@@ -143,3 +143,10 @@
 [dialog].menu .dialog div.dialog-wrap ul li:hover {
   color: #18be8c;
 }
+[dialog] .ion-ios-close-empty{
+  position: absolute;
+  display: inline-block;
+  right: 0;
+  top: 0;
+  width: 25px;
+}

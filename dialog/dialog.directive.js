@@ -15,7 +15,9 @@ function dialogDirective ($window, $timeout) {
     },
     scope: {
       text: '@',
-      closeByClick: '<'
+      closeByClick: '<',
+      closeByClickOutside: '<',
+      closeIcon: '<'
     },
     template,
     controller: function () { },
