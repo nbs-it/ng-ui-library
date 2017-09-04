@@ -12,9 +12,9 @@ function modalBoxDirective ($window, $timeout) {
   return {
     restrict: 'A',
     transclude: {
-      'modalBoxHeader': '?modalBoxHeader',
-      'modalBoxContent': '?modalBoxContent',
-      'modalBoxFooter': '?modalBoxFooter'
+      'modalBoxHeader': '?',
+      'modalBoxContent': '?',
+      'modalBoxFooter': '?'
     },
     scope: {
       closeOption: '@',
