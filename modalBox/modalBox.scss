@@ -1,0 +1,66 @@
+.modal-box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  z-index: 10;
+  user-select: none;
+}
+.modal-box:before {
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 100vh;
+  vertical-align: middle;
+}
+.modal-box-container {
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  width: 550px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0px 3px 18px 1px #888;
+  user-select: text;
+}
+.modal-box-close {
+  display: inline-block;
+  font-size: 30px;
+  color: #d9d9d9;
+  line-height: 35px;
+  width: 35px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin: 10px 0 0 10px;
+  cursor: pointer;
+}
+.modal-box-header {
+  color: #7f7f7f;
+  font-size: 28px;
+  text-align: right;
+  padding: 15px 20px;
+}
+.modal-box-content {
+  text-align: right;
+  line-height: normal;
+}
+.modal-box-content .perfect-scrollbar {
+  overflow-y: hidden;
+  min-height: calc(50vh - 66px);
+  max-height: 70vh;
+  display: block;
+  position: relative;
+  direction: ltr;
+  padding: 30px 65px;
+}
+.modal-box-content .perfect-scrollbar modal-box-content {
+  display: block;
+  direction: rtl;
+}
+.modal-box-content .ps-container>.ps-scrollbar-y-rail {
+  opacity: .6;
+}
+
