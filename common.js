@@ -1,12 +1,10 @@
 import angular from 'angular';
 import checkbox from './checkbox/checkbox';
 import numberSpinner from './numberSpinner/numberSpinner';
-import dialog from './dialog/dialog.directive';
 import modalBox from './modalBox/modalBox.directive';
-let commonModule = angular.module('app.common', [
+let commonModule = angular.module('app.common.general', [
   checkbox,
   numberSpinner,
-  dialog,
   modalBox
 ])
 .name;
