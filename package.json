@@ -1,0 +1,22 @@
+{
+  "name": "utilities",
+  "version": "1.0.0",
+  "description": "NBS UI Utilities",
+  "main": "common.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/nbs-it/Utilities.git"
+  },
+  "author": "nbs-it",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/nbs-it/Utilities/issues"
+  },
+  "homepage": "https://gitlab.com/nbs-it/Utilities#README",
+  "dependencies": {
+    "angular": "^1.6.6"
+  }
+}
