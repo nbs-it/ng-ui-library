@@ -1,5 +1,5 @@
 import angular from 'angular';
-import Common from '../../../../common';
+import Common from '../../../../src/common';
 import Demo from './demo/demo';
 
 let componentModule = angular.module('app.components', [
