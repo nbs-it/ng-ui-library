@@ -5,21 +5,16 @@
   "main": "common.js",
   "repository": {
     "type": "git",
-    "url": "git+https://gitlab.com/nbs-it/Utilities.git"
+    "url": "git+https://gitlab.com/nbs-it/ng-ui-library.git"
   },
   "author": "nbs-it",
   "license": "ISC",
   "bugs": {
-    "url": "https://gitlab.com/nbs-it/Utilities/issues"
+    "url": "https://gitlab.com/nbs-it/ng-ui-library/issues"
   },
-  "homepage": "https://gitlab.com/nbs-it/Utilities#README",
+  "homepage": "https://gitlab.com/nbs-it/ng-ui-library#README",
   "dependencies": {
-    "angular": "^1.6.5",
-    "angular-animate": "^1.6.5",
-    "angular-aria": "^1.6.5",
-    "angular-ui-router": "^1.0.0-beta.1",
-    "jquery": "3.2.1",
-    "normalize.css": "^3.0.3"
+    "angular": "^1.6.6"
   },
   "devDependencies": {
     "angular-mocks": "^1.5.0",
@@ -77,17 +72,6 @@
     "watch": "gulp serve",
     "webpack": "gulp webpack"
   },
-  "keywords": [
-    "angular",
-    "webpack",
-    "es6"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/angularclass/NG6-starter.git"
-  },
-  "author": "AngularClass",
-  "license": "Apache-2.0",
   "babel": {
     "plugins": [
       "transform-runtime"
