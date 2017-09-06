@@ -6,6 +6,7 @@ class DemoController {
     vm.checkboxChecked = true;
     vm.numberSpinnerValue = 1;
     vm.modalBoxIsShown = false;
+    vm.inputCurrencyModel = '0.00';
   }
 }
 

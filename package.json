@@ -14,9 +14,11 @@
   },
   "homepage": "https://gitlab.com/nbs-it/ng-ui-library#README",
   "dependencies": {
-    "angular": "^1.6.6"
   },
   "devDependencies": {
+    "angular": "^1.6.6",
+    "babel-transform-dir": "^1.0.5",
+    "ncp": "^2.0.0",
     "angular-mocks": "^1.5.0",
     "babel-core": "^6.7.7",
     "babel-loader": "^6.2.4",

@@ -1,8 +1,8 @@
 import angular from 'angular';
-import template from './modalBox.html';
-import controller from './modalBox.controller';
-import link from './modalBox.link';
-import './modalBox.scss';
+import template from './modal-box.html';
+import controller from './modal-box.controller';
+import link from './modal-box.link';
+import './modal-box.scss';
 
 let modalBoxModule = angular.module('modalBox', [])
 

@@ -1,7 +1,7 @@
-import NumberSpinnerModule from './numberSpinner';
-import NumberSpinnerController from './numberSpinner.controller';
-import NumberSpinnerComponent from './numberSpinner.component';
-import NumberSpinnerTemplate from './numberSpinner.html';
+import NumberSpinnerModule from './number-spinner';
+import NumberSpinnerController from './number-spinner.controller';
+import NumberSpinnerComponent from './number-spinner.component';
+import NumberSpinnerTemplate from './number-spinner.html';
 
 describe('NumberSpinner', () => {
   let $rootScope, makeController;

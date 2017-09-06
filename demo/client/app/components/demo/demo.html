@@ -3,6 +3,7 @@
   <checkbox bind-model="vm.checkboxChecked" bind-id="checkbox" label="מסומן"></checkbox>
   <textarea disabled><checkbox bind-model="vm.checkboxChecked" bind-id="checkbox" label="מסומן"></checkbox></textarea>
 </section>
+
 <section>
   <h1>numberSpinner</h1>
   <div>
@@ -16,6 +17,7 @@
   <textarea disabled><number-spinner value="vm.numberSpinnerValue" total-value="50" label="ערכים" disabled="vm.numberSpinnerDisabled"></number-spinner></textarea>
   <textarea disabled><number-spinner value="vm.numberSpinnerValue" total-value="50" currency-icon="$" label="ערכים" compact="true" disabled="vm.numberSpinnerDisabled"></number-spinner></textarea>
 </section>
+
 <section>
   <h1>dialog</h1>
   <span dialog class="left">
@@ -32,8 +34,7 @@
   <textarea disabled rows="4"><span dialog class="left">
   <button>שמאל למטה</button>
   <dialog-content>תוכן ההודעה</dialog-content>
-</span>
-</textarea>
+</span></textarea>
   <textarea disabled rows="4">
 <button dialog class="left top">
   שמאל למעלה
@@ -43,6 +44,7 @@
   <textarea disabled rows="1"><button dialog class="top">אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
   <textarea disabled rows="1"><button dialog class="no-arrow left">שמאל ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
 </section>
+
 <section>
   <h1>modalBox</h1>
   <input type="checkbox" name="modalBoxIsShown" id="modalBoxIsShown" ng-model="vm.modalBoxIsShown">
@@ -66,15 +68,11 @@
 </span></textarea>
 </section>
 
-<div style="text-align:center">
-
-  <span dialog class="top left">
-    <button style="width:500px">שמאל למעלה</button>
-    <dialog-content>תוכן ההודעה</dialog-content>
-  </span>
-
-  <span dialog class="top left">
-    <button>שמאל למעלה</button>
-    <dialog-content><p style="width:500px">תוכן ההודעה<p></dialog-content>
-  </span>
-</div>
+<section>
+  <h1>inputCurrency</h1>
+  סכום: {{vm.inputCurrencyModel}} ₪
+  <br>
+  <br>
+  <input ng-model="vm.inputCurrencyModel" input-currency />
+  <textarea disabled rows="1"><input ng-model="vm.inputCurrencyModel" input-currency /></textarea>
+</section>

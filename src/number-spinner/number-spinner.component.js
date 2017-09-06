@@ -1,7 +1,7 @@
-import template from './numberSpinner.html';
-import controller from './numberSpinner.controller';
+import template from './number-spinner.html';
+import controller from './number-spinner.controller';
 
-import './numberSpinner.scss';
+import './number-spinner.scss';
 
 let numberSpinnerComponent = {
   bindings: {
