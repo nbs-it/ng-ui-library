@@ -26,6 +26,11 @@
   display: block;
   margin: 0 5px 5px 0;
   color: rgb(127, 127, 127);
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
 }
 .custom-input .icon {
   position: absolute;

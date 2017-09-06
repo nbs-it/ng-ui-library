@@ -80,10 +80,16 @@
 <section>
   <h1>customInput</h1>
   ng-model:
+  <br> {{vm.customInputModel}}
   <br>
-  {{vm.customInputModel}}
   <br>
+  <custom-input type="text" bind-id="custom-input-id" bind-name="" label="תווית" model="vm.customInputModel" icon="₪" icon-class="" description="טקסט עזר לתיאור השדה" placeholder="placeholder"></custom-input>
   <br>
-  <custom-input type="text" label="תווית" model="vm.customInputModel" icon="₪" icon-class="" description="טקסט עזר לתיאור השדה" placeholder="placeholder"></custom-input>
-  <textarea disabled rows="1"><custom-input type="text" label="תווית" model="vm.customInputModel" icon="₪" icon-class="" description="טקסט עזר לתיאור השדה" placeholder="placeholder"></custom-input></textarea>
+  <custom-input type="text" bind-id="custom-input-id" label="תווית" icon="$" icon-class="" description="טקסט עזר לתיאור השדה">
+    <input type="" style="color:blue;background:aqua;" ng-model="vm.customInputModel" />
+  </custom-input>
+  <textarea disabled rows="2"><custom-input type="text" bind-id="custom-input-id" bind-name="" label="תווית" model="vm.customInputModel" icon="₪" icon-class="" description="טקסט עזר לתיאור השדה" placeholder="placeholder"></custom-input></textarea>
+  <textarea disabled rows="4"><custom-input type="text" bind-id="custom-input-id" label="תווית" icon="$" icon-class="" description="טקסט עזר לתיאור השדה">
+  <input type="" style="color:blue;background:aqua;" ng-model="vm.customInputModel" />
+</custom-input></textarea>
 </section>

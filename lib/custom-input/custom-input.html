@@ -1,7 +1,8 @@
 <div class="custom-input">
-  <label ng-if="vm.label" for="{{vm.id}}">{{vm.label}}</label>
+  <label ng-if="vm.label" for="{{vm.bindId}}">{{vm.label}}</label>
   <div class="input-container">
-    <input type="{{vm.type}}" name="{{vm.id}}" id="{{vm.id}}" ng-model="vm.model" placeholder="{{vm.placeholder}}"/>
+    <input ng-if="!vm.$transclude.isSlotFilled('input')" type="{{vm.type}}" name="{{vm.bindName || vm.bindId}}" id="{{vm.bindId}}" ng-model="vm.model" placeholder="{{vm.placeholder}}"/>
+    <span ng-transclude="input"></span>
     <span class="icon" ng-if="vm.icon" ng-class="vm.iconClass"><span ng-bind="vm.icon"></span></span>
   </div>
   <span ng-if="vm.description" class="description">{{vm.description}}</span>

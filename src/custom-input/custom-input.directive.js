@@ -8,10 +8,13 @@ let customInputModule = angular.module('customInput', [])
 
 function customInputDirective () {
   return {
-    transclude: true,
+    transclude: {
+      input: '?input'
+    },
     scope: {
       type: '@',
-      name: '@',
+      bindName: '@',
+      bindId: '@',
       label: '@',
       model: '=',
       placeholder: '@',
@@ -20,12 +23,16 @@ function customInputDirective () {
       description: '@'
     },
     template,
-    controller: function () { },
+    controller: ['$transclude', function ($transclude) {
+      let vm = this;
+      vm.$transclude = $transclude;
+      console.log($transclude);
+    }],
     controllerAs: 'vm',
     bindToController: true
   };
 }
 
-// customInputDirective.$inject = ['$window', '$timeout'];
+// customInputDirective.$inject = ['$transclude'];
 
 export default customInputModule;
