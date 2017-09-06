@@ -26,7 +26,6 @@ function customInputDirective () {
     controller: ['$transclude', function ($transclude) {
       let vm = this;
       vm.$transclude = $transclude;
-      console.log($transclude);
     }],
     controllerAs: 'vm',
     bindToController: true
