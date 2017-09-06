@@ -1,0 +1,47 @@
+.custom-input .input-container {
+  position: relative;
+  display: inline-block;
+}
+@supports (width: fit-content) {
+  .custom-input .input-container {
+    display: block;
+    width: fit-content;
+  }
+}
+
+.custom-input input {
+  display: block;
+  border: solid 1px rgb(217, 217, 217);
+  border-radius: 5px;
+  padding: 8px 15px;
+  color: #000000;
+  outline: none;
+  transition: box-shadow .2s;
+}
+.custom-input input:focus {
+  box-shadow: 1px 0 7px rgba(0, 0, 0, 0.1);
+}
+.custom-input label {
+  font-size: 12px;
+  display: block;
+  margin: 0 5px 5px 0;
+  color: rgb(127, 127, 127);
+}
+.custom-input .icon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  display: inline-block;
+  margin-right: 5px;
+  text-align: right;
+  font-size: 17px;
+  line-height: 32px;
+}
+.custom-input .description {
+  color: rgb(191, 191, 191);
+  font-weight: 400;
+  font-size: 10px;
+  margin-right: 5px;
+}

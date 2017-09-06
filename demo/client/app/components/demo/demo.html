@@ -76,3 +76,14 @@
   <input ng-model="vm.inputCurrencyModel" input-currency />
   <textarea disabled rows="1"><input ng-model="vm.inputCurrencyModel" input-currency /></textarea>
 </section>
+
+<section>
+  <h1>customInput</h1>
+  ng-model:
+  <br>
+  {{vm.customInputModel}}
+  <br>
+  <br>
+  <custom-input type="text" label="תווית" model="vm.customInputModel" icon="₪" icon-class="" description="טקסט עזר לתיאור השדה" placeholder="placeholder"></custom-input>
+  <textarea disabled rows="1"><custom-input type="text" label="תווית" model="vm.customInputModel" icon="₪" description="טקסט עזר לתיאור השדה" placeholder="placeholder"></custom-input></textarea>
+</section>

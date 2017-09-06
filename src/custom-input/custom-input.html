@@ -1,0 +1,8 @@
+<div class="custom-input">
+  <label ng-if="vm.label" for="{{vm.id}}">{{vm.label}}</label>
+  <div class="input-container">
+    <input type="{{vm.type}}" name="{{vm.id}}" id="{{vm.id}}" ng-model="vm.model" placeholder="{{vm.placeholder}}"/>
+    <span class="icon" ng-if="vm.icon" ng-class="vm.iconClass"><span ng-bind="vm.icon"></span></span>
+  </div>
+  <span ng-if="vm.description" class="description">{{vm.description}}</span>
+</div>
