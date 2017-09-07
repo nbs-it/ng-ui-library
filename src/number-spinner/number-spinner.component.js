@@ -5,7 +5,7 @@ import './number-spinner.scss';
 
 let numberSpinnerComponent = {
   bindings: {
-    value: '=value',
+    value: '=?model',
     label: '@',
     currencyIcon: '@',
     compact: '<',

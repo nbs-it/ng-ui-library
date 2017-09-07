@@ -2,7 +2,7 @@ class CheckboxController {
   constructor () {
     let vm = this;
     vm.$onInit = () => {
-      vm.bindId = vm.bindId || vm.bindModel;
+      vm.bindId = vm.bindId || vm.model;
     };
   }
 }

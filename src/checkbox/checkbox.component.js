@@ -4,7 +4,7 @@ import './checkbox.scss';
 
 let checkboxComponent = {
   bindings: {
-    bindModel: '=',
+    model: '=?',
     bindId: '@',
     label: '@'
   },
