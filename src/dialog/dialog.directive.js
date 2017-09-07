@@ -17,10 +17,17 @@ function dialogDirective ($window, $timeout) {
       text: '@',
       closeByClick: '<',
       closeByClickOutside: '<',
-      closeIcon: '<'
+      closeIcon: '<',
+      close: '='
     },
     template,
-    controller: function () { },
+    controller: function () {
+      if (this.close) {
+        this.$onInit = () => {
+          this.close = this.hide;
+        };
+      }
+    },
     controllerAs: 'vm',
     bindToController: true,
     link: link($window, $timeout)
