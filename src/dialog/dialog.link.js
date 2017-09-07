@@ -33,6 +33,7 @@ export default function ($window, $timeout) {
       angular.element($window).off('click');
       vm.off();
     };
+    vm.close = vm.hide;
     vm.toggle = function () {
       vm.isShown === true ? vm.hide() : vm.show();
     };

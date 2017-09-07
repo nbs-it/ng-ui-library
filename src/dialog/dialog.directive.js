@@ -21,13 +21,7 @@ function dialogDirective ($window, $timeout) {
       close: '='
     },
     template,
-    controller: function () {
-      if (this.close) {
-        this.$onInit = () => {
-          this.close = this.hide;
-        };
-      }
-    },
+    controller: function () { },
     controllerAs: 'vm',
     bindToController: true,
     link: link($window, $timeout)

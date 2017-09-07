@@ -24,9 +24,9 @@
     <button>שמאל למטה</button>
     <dialog-content>תוכן ההודעה</dialog-content>
   </span>
-  <button dialog class="left top">
+  <button dialog class="left top" close-by-click="false" close="vm.closeDialog">
     שמאל למעלה
-    <dialog-content>תוכן ההודעה</dialog-content>
+    <dialog-content>תוכן ההודעה <a ng-click="vm.closeDialog()">X</a></dialog-content>
   </button>
   <button dialog class="">ברירת מחדל<dialog-content>תוכן ההודעה</dialog-content></button>
   <button dialog class="top">אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button>
@@ -36,9 +36,9 @@
   <dialog-content>תוכן ההודעה</dialog-content>
 </span></textarea>
   <textarea disabled rows="4">
-<button dialog class="left top">
+  <button dialog class="left top" close-by-click="false" close="vm.closeDialog">
   שמאל למעלה
-  <dialog-content>תוכן ההודעה</dialog-content>
+  <dialog-content>תוכן ההודעה <a ng-click="vm.closeDialog()">X</a></dialog-content>
 </button></textarea>
   <textarea disabled rows="1"><button dialog class="">ברירת מחדל<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
   <textarea disabled rows="1"><button dialog class="top">אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
