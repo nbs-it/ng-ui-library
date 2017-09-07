@@ -20,7 +20,7 @@ export default function ($window, $timeout) {
           vm.hide();
         }
       });
-      vm.off = scope.$root.$on('hideMenu', function () {
+      vm.off = scope.$on('closeDialog', function () {
         vm.hide();
       });
     };
