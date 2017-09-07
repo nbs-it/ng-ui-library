@@ -3,7 +3,7 @@
   <div class="input-container">
     <input ng-if="!vm.$transclude.isSlotFilled('input')" type="{{vm.type}}" name="{{vm.bindName || vm.bindId}}" id="{{vm.bindId}}" ng-model="vm.model" placeholder="{{vm.placeholder}}"/>
     <span ng-transclude="input"></span>
-    <span class="icon" ng-if="vm.icon" ng-class="vm.iconClass"><span ng-bind="vm.icon"></span></span>
+    <span class="icon" ng-if="vm.icon || vm.iconClass" ng-class="vm.iconClass"><span ng-bind="vm.icon"></span></span>
   </div>
   <span ng-if="vm.description" class="description">{{vm.description}}</span>
 </div>
