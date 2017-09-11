@@ -20,29 +20,39 @@
 
 <section>
   <h1>dialog</h1>
-  <span dialog class="left">
+  <input type="checkbox" name="openDialog" id="openDialog" ng-model="vm.openDialog">
+  <label for="openDialog">Dialog is open</label>
+  <br>
+  <br>
+  <span dialog class="left" is-open="vm.openDialog" close-by-click-outside="false">
     <button>שמאל למטה</button>
     <dialog-content>תוכן ההודעה</dialog-content>
   </span>
   <button dialog class="left top" close-by-click="false" close="vm.closeDialog">
     שמאל למעלה
-    <dialog-content>תוכן ההודעה <a ng-click="vm.closeDialog()">X</a></dialog-content>
+    <dialog-content>תוכן ההודעה <a style="-webkit-appearance:button;-moz-appearance:button;-ms-appearance:button;" ng-click="vm.closeDialog()">X</a></dialog-content>
   </button>
   <button dialog class="">ברירת מחדל<dialog-content>תוכן ההודעה</dialog-content></button>
-  <button dialog class="top">אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button>
-  <button dialog class="no-arrow left">שמאל ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button>
-  <textarea disabled rows="4"><span dialog class="left">
-  <button>שמאל למטה</button>
-  <dialog-content>תוכן ההודעה</dialog-content>
-</span></textarea>
+  <button dialog class="top" >אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button>
+  <button dialog class="no-arrow right" >ימין ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button>
+
+  <textarea disabled rows="4"><span dialog class="left" is-open="vm.openDialog" close-by-click-outside="false">
+    <button>שמאל למטה</button>
+    <dialog-content>תוכן ההודעה</dialog-content>
+  </span></textarea>
   <textarea disabled rows="4">
   <button dialog class="left top" close-by-click="false" close="vm.closeDialog">
-  שמאל למעלה
-  <dialog-content>תוכן ההודעה <a ng-click="vm.closeDialog()">X</a></dialog-content>
-</button></textarea>
-  <textarea disabled rows="1"><button dialog class="">ברירת מחדל<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
-  <textarea disabled rows="1"><button dialog class="top">אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
-  <textarea disabled rows="1"><button dialog class="no-arrow left">שמאל ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
+    שמאל למעלה
+    <dialog-content>תוכן ההודעה <a style="-webkit-appearance:button;-moz-appearance:button;-ms-appearance:button;" ng-click="vm.closeDialog()">X</a></dialog-content>
+  </button></textarea>
+  <textarea disabled rows="1">
+  <button dialog class="">ברירת מחדל<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
+  <textarea disabled rows="1">
+  <button dialog class="top" >אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
+  <textarea disabled rows="1">
+  <button dialog class="no-arrow right" >ימין ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button>
+  </textarea>
+
 </section>
 
 <section>

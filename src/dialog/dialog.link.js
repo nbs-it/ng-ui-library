@@ -5,7 +5,11 @@ export default function ($window, $timeout) {
     var vm = ctrl;
     vm.isShown = false;
     vm.show = function () {
-      vm.isShown = true;
+      if ('isOpen' in attr.$attr) {
+        vm.isShown = vm.isOpen = true;
+      } else {
+        vm.isShown = true;
+      }
       $timeout(function () {
         scope.$apply(function () { });
       });
@@ -15,23 +19,29 @@ export default function ($window, $timeout) {
           event.stopPropagation();
         }
       });
-      angular.element($window).on('click', function (event) {
-        if (event.target !== element && vm.closeByClickOutside !== false) { // click outside of the dialog.
-          vm.hide();
-        }
+      $timeout(function () {
+        angular.element($window).on('click', function (event) {
+          if (event.target !== element && vm.closeByClickOutside !== false) { // click outside of the dialog.
+            vm.hide();
+          }
+        });
       });
       vm.off = scope.$on('closeDialog', function () {
         vm.hide();
       });
     };
     vm.hide = function () {
-      vm.isShown = false;
+      if ('isOpen' in attr.$attr) {
+        vm.isShown = vm.isOpen = false;
+      } else {
+        vm.isShown = false;
+      }
       $timeout(function () {
         scope.$apply(function () { });
       });
       angular.element($window).off('keydown keypress');
       angular.element($window).off('click');
-      vm.off();
+      if (vm.off) vm.off();
     };
     if (close in attr) {
       vm.close = vm.hide;
@@ -44,5 +54,16 @@ export default function ($window, $timeout) {
         vm.toggle();
       }
     };
+    /* init and watch */
+    var checkIfIsOpen = function () {
+      vm.isOpen ? vm.show() : vm.hide();
+    };
+    checkIfIsOpen();
+
+    scope.$watch('vm.isOpen', function (newValue, oldValue) {
+      if (newValue !== oldValue && newValue !== vm.isShown) {
+        checkIfIsOpen();
+      }
+    });
   };
 }

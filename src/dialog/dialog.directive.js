@@ -18,6 +18,7 @@ function dialogDirective ($window, $timeout) {
       closeByClick: '<',
       closeByClickOutside: '<',
       closeIcon: '<',
+      isOpen: '=',
       close: '='
     },
     template,
