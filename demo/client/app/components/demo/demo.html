@@ -33,8 +33,8 @@
     <dialog-content>תוכן ההודעה <a style="-webkit-appearance:button;-moz-appearance:button;-ms-appearance:button;" ng-click="vm.closeDialog()">X</a></dialog-content>
   </button>
   <button dialog class="">ברירת מחדל<dialog-content>תוכן ההודעה</dialog-content></button>
-  <button dialog class="top" >אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button>
-  <button dialog class="no-arrow right" >ימין ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button>
+  <button dialog class="top">אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button>
+  <button dialog class="no-arrow right">ימין ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button>
 
   <textarea disabled rows="4"><span dialog class="left" is-open="vm.openDialog" close-by-click-outside="false">
     <button>שמאל למטה</button>
@@ -102,4 +102,16 @@
   <textarea disabled rows="4"><custom-input type="text" bind-id="custom-input-id" label="תווית" icon="$" icon-class="" description="טקסט עזר לתיאור השדה">
   <input type="" style="color:blue;background:aqua;" ng-model="vm.customInputModel" />
 </custom-input></textarea>
+</section>
+
+<section>
+  <h1>expInput</h1>
+  <div style="width:180px;margin-right:150px;margin-bottom:50px;">
+    <exp-input month-model="vm.expInput.month" year-model="vm.expInput.year"></exp-input>
+  </div>
+  <div style="width:180px;margin-right:150px;margin-bottom:50px;">
+    <exp-input month-model="vm.expInput.month" year-model="vm.expInput.year" datepicker="false"></exp-input>
+  </div>
+  <textarea disabled rows="2"><exp-input month-model="vm.expInput.month" year-model="vm.expInput.year"></exp-input></textarea>
+  <textarea disabled rows="2"> <exp-input month-model="vm.expInput.month" year-model="vm.expInput.year" datepicker="false"></exp-input></textarea>
 </section>

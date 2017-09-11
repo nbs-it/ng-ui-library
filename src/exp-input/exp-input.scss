@@ -1,0 +1,54 @@
+.exp-input {
+  display: inline-block;
+}
+.exp-input label {
+  font-size: 12px;
+  display: block;
+  margin: 0 5px 5px 0;
+  color: #7f7f7f;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+}
+.exp-input .exp-input-container {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  border: solid 1px #d9d9d9;
+  border-radius: 5px;
+  transition: box-shadow .2s;
+}
+.exp-input .exp-input-container.focus {
+  box-shadow: 1px 0 7px rgba(0, 0, 0, 0.1);
+}
+.exp-input .expMonth {
+  flex: 1;
+  margin-right: 10px;
+}
+.exp-input .expYear {
+  flex: 1;
+  margin-left: 10px;
+}
+.exp-input input {
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  text-align: center;
+  color: #000000;
+  outline: none;
+}
+.exp-input .slash {
+  font-size: 20px;
+  color: #cccccc;
+}
+.exp-input .icon {
+  width: 35px;
+  color: #aaaaaa;
+  text-align: center;
+  font-size: 22px;
+  cursor: pointer;
+}
