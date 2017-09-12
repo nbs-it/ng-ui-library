@@ -5,11 +5,7 @@ export default function ($window, $timeout) {
     var vm = ctrl;
     vm.isShown = false;
     vm.show = function () {
-      if ('isOpen' in attr.$attr) {
-        vm.isShown = vm.isOpen = true;
-      } else {
-        vm.isShown = true;
-      }
+      vm.isShown = vm.isOpen = true;
       $timeout(function () {
         scope.$apply(function () { });
       });
@@ -31,11 +27,7 @@ export default function ($window, $timeout) {
       });
     };
     vm.hide = function () {
-      if ('isOpen' in attr.$attr) {
-        vm.isShown = vm.isOpen = false;
-      } else {
-        vm.isShown = false;
-      }
+      vm.isShown = vm.isOpen = false;
       $timeout(function () {
         scope.$apply(function () { });
       });
@@ -43,9 +35,7 @@ export default function ($window, $timeout) {
       angular.element($window).off('click');
       if (vm.off) vm.off();
     };
-    if (close in attr) {
-      vm.close = vm.hide;
-    }
+    vm.close = vm.hide;
     vm.toggle = function () {
       vm.isShown === true ? vm.hide() : vm.show();
     };

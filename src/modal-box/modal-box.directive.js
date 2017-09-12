@@ -20,7 +20,7 @@ function modalBoxDirective ($window, $timeout) {
     scope: {
       closeOption: '@',
       close: '=?',
-      open: '=',
+      isOpen: '=?',
       perfectScrollbar: '@'
     },
     template,
