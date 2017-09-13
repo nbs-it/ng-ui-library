@@ -12,6 +12,7 @@ class DemoController {
     vm.modalBoxIsShown = false;
     vm.inputCurrencyModel = '0.00';
     vm.customInputModel = 'some value';
+    vm.autoCompleteModel = 'משה';
     vm.autoCompleteHtml = '<span class="test" ng-style="padding:40px;">{{item}}<span>';
   }
 }

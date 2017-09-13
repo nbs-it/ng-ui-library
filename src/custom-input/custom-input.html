@@ -2,35 +2,28 @@
   <label ng-if="vm.label" for="{{vm.bindId}}">{{vm.label}}</label>
   <div class="input-container" ng-click="vm.modalAutocompleteOpen=true">
     <input ng-if="!vm.$transclude.isSlotFilled('input')"
-           type="{{vm.type}}"
-           name="{{vm.bindName || vm.bindId}}"
-           id="{{vm.bindId}}"
-           ng-model="vm.model"
-           placeholder="{{vm.placeholder}}"
-          />
-    <span ng-transclude="input"></span>
+      type="{{vm.type}}"
+      name="{{vm.bindName || vm.bindId}}"
+      id="{{vm.bindId}}"
+      ng-model="vm.model"
+      placeholder="{{vm.placeholder}}"
+    />
+    <span ng-transclude="input" ng-if="vm.$transclude.isSlotFilled('input')"></span>
     <span class="icon" ng-if="vm.icon || vm.iconClass" ng-class="vm.iconClass"><span ng-bind="vm.icon"></span></span>
-    <div  ng-if="vm.typeInput == 'autoComplete'"
-    dialog
-    class="no-arrow left"
-    is-open="vm.dialogOpen"
-    >
-<dialog-content >
-  <div ng-repeat="item in vm.itemsFiltered track by $index"
-       class="row-autocomplete"
-       ng-click="vm.model = item" num="$index + 100000000" model="vm.model" compile-template>
-    <span ng-if="vm.autoCompleteRow" ng-bind-html='vm.autoCompleteRow'
-    compile-template >
-
-    </span>
-    <span ng-if="!vm.autoCompleteRow">
-      {{item}}
-    </span>
-
-  </div>
-</dialog-content>
-</div>
+    <div ng-if="vm.type == 'autoComplete'" dialog class="no-arrow left autocomplete" is-open="vm.dialogOpen">
+      <dialog-content>
+        <div ng-repeat="item in vm.itemsFiltered track by $index"
+          class="row-autocomplete"
+          ng-click="vm.model = item" num="$index + 100000000" model="vm.model" compile-template>
+          <span ng-if="vm.autoCompleteRow" ng-bind-html='vm.autoCompleteRow' compile-template >
+          </span>
+          <span ng-if="!vm.autoCompleteRow">
+            {{item}}
+          </span>
+        </div>
+        <div ng-show="!vm.itemsFiltered.length" class="row-autocomplete empty">אין תוצאות</div>
+      </dialog-content>
+    </div>
   </div>
   <span ng-if="vm.description" class="description">{{vm.description}}</span>
-
 </div>

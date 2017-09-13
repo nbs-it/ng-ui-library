@@ -50,44 +50,42 @@
   font-size: 10px;
   margin-right: 5px;
 }
-
-.custom-input .autocomplete-modal{
-  border: solid 1px #ccc;
-  border-radius: 4px;
-  background: #fff;
-  position: absolute;
-  box-shadow: 1px 1px 5px #ccc;
-  min-width: 190px;
-  min-height: 130px;
-  margin-bottom: 15px;
-  margin-top: -22px;
-}
-
-.custom-input .display{
+.custom-input .display {
   display: block;
 }
 
-.custom-input [dialog].left .dialog{
-  width: 187px;
+/** autocomplete **/
+.custom-input [dialog].autocomplete {
   position: absolute;
-  top: 0;
+  top: 100%;
+  right: 0;
+  width: 187px;
+  min-width: 100%;
 }
-
-.custom-input .dialog .row-autocomplete{
+.custom-input [dialog].autocomplete .dialog-trigger {
+  display: none;
+}
+.custom-input [dialog].autocomplete .dialog {
+  position: static;
+}
+.custom-input [dialog].autocomplete .dialog div.dialog-wrap {
+  padding: 5px 0;
+}
+.custom-input .autocomplete .row-autocomplete {
   font-weight: 500;
   font-size: 15px;
   color: black;
-  font-family: "Open Sans", sans-serif !important;
   text-align: right;
-  display: flex;
-  padding: 1px;
+  padding: 5px 10px;
   cursor: pointer;
+  transition: background 0.2s;
 }
-
-.custom-input .dialog .row-autocomplete:hover{
-  background-color: #d9d9d9;
+.custom-input .autocomplete .row-autocomplete:hover {
+  background: #eeeeee;
 }
-
-.custom-input .dialog .highlight{
-  color:yellow;
+.custom-input .autocomplete .row-autocomplete.empty {
+  color: #888888;
+}
+.custom-input .autocomplete .highlight {
+  color: mediumblue;
 }
