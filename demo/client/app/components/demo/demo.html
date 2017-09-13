@@ -103,6 +103,13 @@
   <input type="" style="color:blue;background:aqua;" ng-model="vm.customInputModel" />
 </custom-input></textarea>
 </section>
+
+<section>
+  <h1>customInput autocomplete</h1>
+  ng-model:
+  <br> {{vm.customInputModel}}
+  <br>
+  <br>
   <custom-input type="text"
     bind-id="custom-input-id"
     label="אוטו קומפליט"
@@ -113,9 +120,21 @@
     array-items="['שטרן אברהם' ,'עזרא הסופר', 'אריאל שרון']"
     auto-complete-row="vm.autoCompleteHtml"
      filter="true" >
-    <autocomplete-content>
-    </autocomplete-content>
   </custom-input>
+  <textarea disabled rows="4">
+      <custom-input type="text"
+      bind-id="custom-input-id"
+      label="אוטו קומפליט"
+      icon-class=""
+      model="vm.autoCompleteModel"
+      description="טקסט עזר לתיאור השדה"
+      type-input="'autoComplete'"
+      array-items="['שטרן אברהם' ,'עזרא הסופר', 'אריאל שרון']"
+      auto-complete-row="vm.autoCompleteHtml"
+       filter="true" >
+    </custom-input>
+  </textarea>
+</section>
   <section>
   <h1>expInput</h1>
   <div style="width:180px;margin-right:150px;margin-bottom:50px;">

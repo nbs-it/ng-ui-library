@@ -2,13 +2,15 @@ import angular from 'angular';
 import template from './custom-input.html';
 import './custom-input.scss';
 import sanitize from 'angular-sanitize';
+import jQuery from './extend-highlight';
 
 let customInputModule = angular.module('customInput', [sanitize])
   .directive('customInput', customInputDirective)
   .directive('compileTemplate', compileTemplate)
+
   .name;
 
-function customInputDirective ($interpolate) {
+function customInputDirective ($interpolate, $window, $compile) {
   return {
     transclude: {
       input: '?input',
@@ -31,25 +33,31 @@ function customInputDirective ($interpolate) {
       autoCompleteRow: '<'
     },
     template,
-    controller: ['$transclude', '$window', '$timeout', '$scope', '$compile', '$interpolate',
-      function ($transclude, $window, $timeout, $scope, $compile, $interpolate) {
+    controller: ['$transclude', '$window', '$timeout', '$scope', '$interpolate',
+      function ($transclude, $window, $timeout, $scope, $interpolate) {
         let vm = this;
         vm.$window = $window;
         vm.$timeout = $timeout;
         vm.$transclude = $transclude;
         vm.dialogOpen = false;
+
+        vm.$window.jQuery = jQuery;
         $timeout(() => {
-          // vm.autoCompleteRow = $interpolate(vm.autoCompleteRow)();
           if (vm.typeInput === 'autoComplete') {
             $scope.$watch('vm.model', (old, newValue) => {
-              console.log(vm.autoCompleteRow);
+              vm.itemsFiltered = [];
+              if (!vm.model) {
+                vm.dialogOpen = false;
+                vm.$window.jQuery('.row-autocomplete').unhighlight();
+                return;
+              }
               vm.dialogOpen = true;
+
               if (!vm.model || vm.model === '') {
                 vm.dialogOpen = false;
               }
               if (vm.filter === true) {
                 vm.itemsFiltered = vm.arrayItems.filter((item) => {
-                  console.log(item);
                   if (item.toString().indexOf(vm.model) !== -1) {
                     return item;
                   }
@@ -57,6 +65,11 @@ function customInputDirective ($interpolate) {
               } else {
                 vm.itemsFiltered = vm.arrayItems ? vm.arrayItems : [];
               }
+
+              $timeout(() => {
+                vm.$window.jQuery('.row-autocomplete').unhighlight();
+                vm.$window.jQuery('.row-autocomplete').highlight([vm.model]);
+              });
             });
           }
         });
@@ -66,24 +79,24 @@ function customInputDirective ($interpolate) {
   };
 }
 
-// customInputDirective.$inject = ['$transclude'];
+customInputDirective.$inject = ['$interpolate', '$window', '$compile'];
 
-customInputDirective.$inject = ['$interpolate'];
-
-function compileTemplate ($compile, $parse) {
+function compileTemplate ($compile, $parse, $timeout) {
   return {
+
     link: function (scope, element, attr) {
-      var parsed = $parse(attr.ngBindHtml);
-      function getStringValue () {
-        return (parsed(scope) || '').toString();
-      }
+      var num = $parse(attr.num);
+      var model = $parse(attr.model);
+
           // Recompile if the template changes
-      scope.$watch(getStringValue, function () {
-        $compile(element, null, -9999)(scope);  // The -9999 makes it skip directives so that we do not recompile ourselves
+      scope.$watch(model, function () {
+        $compile(element, 20, -(num(scope) || '').toString())(scope);
+        // The -9999 makes it skip directives so that we do not recompile ourselves
       });
     }
   };
 }
-compileTemplate.$inject = ['$compile', '$parse'];
+
+compileTemplate.$inject = ['$compile', '$parse', '$timeout'];
 
 export default customInputModule;

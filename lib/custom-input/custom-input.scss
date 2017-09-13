@@ -66,3 +66,28 @@
 .custom-input .display{
   display: block;
 }
+
+.custom-input [dialog].left .dialog{
+  width: 187px;
+  position: absolute;
+  top: 0;
+}
+
+.custom-input .dialog .row-autocomplete{
+  font-weight: 500;
+  font-size: 15px;
+  color: black;
+  font-family: "Open Sans", sans-serif !important;
+  text-align: right;
+  display: flex;
+  padding: 1px;
+  cursor: pointer;
+}
+
+.custom-input .dialog .row-autocomplete:hover{
+  background-color: #d9d9d9;
+}
+
+.custom-input .dialog .highlight{
+  color:yellow;
+}

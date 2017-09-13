@@ -16,8 +16,11 @@
     is-open="vm.dialogOpen"
     >
 <dialog-content >
-  <div ng-repeat="item in vm.itemsFiltered">
-    <span ng-if="vm.autoCompleteRow" ng-bind-html='vm.autoCompleteRow' compile-template>
+  <div ng-repeat="item in vm.itemsFiltered track by $index"
+       class="row-autocomplete"
+       ng-click="vm.model = item" num="$index + 100000000" model="vm.model" compile-template>
+    <span ng-if="vm.autoCompleteRow" ng-bind-html='vm.autoCompleteRow'
+    compile-template >
 
     </span>
     <span ng-if="!vm.autoCompleteRow">
