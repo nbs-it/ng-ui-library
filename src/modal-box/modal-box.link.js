@@ -11,7 +11,7 @@ export default function ($window, $timeout) {
       vm.closeOption = true;
     }
     vm.show = function () {
-      vm.isShown = vm.open = true;
+      vm.isShown = vm.isOpen = true;
       $timeout(function () {
         scope.$apply(function () { });
         angular.element(element[0].getElementsByClassName('modal-box')).on('click', function (event) {
@@ -30,7 +30,7 @@ export default function ($window, $timeout) {
 
     /* hide */
     vm.hide = function () {
-      vm.isShown = vm.open = false;
+      vm.isShown = vm.isOpen = false;
       $timeout(function () {
         scope.$apply(function () { });
       });
@@ -48,11 +48,11 @@ export default function ($window, $timeout) {
 
     /* init and watch */
     var checkIfIsOpen = function () {
-      vm.open ? vm.show() : vm.hide();
+      vm.isOpen ? vm.show() : vm.hide();
     };
     checkIfIsOpen();
 
-    scope.$watch('vm.open', function (newValue, oldValue) {
+    scope.$watch('vm.isOpen', function (newValue, oldValue) {
       if (newValue !== oldValue && newValue !== vm.isShown) {
         checkIfIsOpen();
       }
