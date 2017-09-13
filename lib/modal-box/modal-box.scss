@@ -16,8 +16,10 @@
   vertical-align: middle;
 }
 .modal-box-container {
+  max-height: 95vh;
+  display: inline-flex;
+  flex-direction: column;
   position: relative;
-  display: inline-block;
   vertical-align: middle;
   width: 550px;
   background-color: #ffffff;
@@ -42,25 +44,19 @@
   font-size: 28px;
   text-align: right;
   padding: 15px 20px;
+  flex: 68px;
 }
 .modal-box-content {
+  flex: 1;
+  overflow: auto;
   text-align: right;
   line-height: normal;
-}
-.modal-box-content .perfect-scrollbar {
-  overflow-y: hidden;
-  min-height: calc(50vh - 66px);
-  max-height: 70vh;
-  display: block;
-  position: relative;
-  direction: ltr;
-  padding: 30px 65px;
-}
-.modal-box-content .perfect-scrollbar modal-box-content {
-  display: block;
-  direction: rtl;
+  padding: 15px 20px;
 }
 .modal-box-content .ps-container>.ps-scrollbar-y-rail {
   opacity: .6;
+}
+.modal-box-footer {
+  flex: 60px;
 }
 

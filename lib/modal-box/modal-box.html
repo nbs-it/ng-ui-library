@@ -4,8 +4,7 @@
     <a class="modal-box-close" ng-if="vm.closeOption !== 'false'" ng-click="vm.hide()"><i class="ion ion-ios-close-empty"></i></a>
     <div class="modal-box-header" ng-if="vm.$transclude.isSlotFilled('modalBoxHeader')" ng-transclude="modalBoxHeader"></div>
     <div class="modal-box-content">
-      <perfect-scrollbar ng-if="vm.perfectScrollbar === 'true'" ng-transclude="modalBoxContent"></perfect-scrollbar>
-      <div ng-if="vm.perfectScrollbar !== 'true'" ng-transclude="modalBoxContent"></div>
+      <div ng-transclude="modalBoxContent"></div>
     </div>
     <div class="modal-box-footer" ng-if="vm.$transclude.isSlotFilled('modalBoxFooter')" ng-transclude="modalBoxFooter"></div>
   </div>

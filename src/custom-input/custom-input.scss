@@ -89,3 +89,9 @@
 .custom-input .autocomplete .highlight {
   color: mediumblue;
 }
+
+.custom-input  [dialog] .dialog div.dialog-wrap {
+
+       max-height: 176px;
+       overflow-x: scroll;
+  }
