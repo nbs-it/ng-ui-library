@@ -47,30 +47,41 @@ function customInputDirective ($interpolate, $window, $compile) {
           }
           if (vm.type === 'autoComplete') {
             $scope.$watch('vm.model', (old, newValue) => {
-              vm.itemsFiltered = [];
-              if (!vm.model) {
-                vm.dialogOpen = false;
-                $window.jQuery('.row-autocomplete').unhighlight();
-                return;
-              }
-              vm.dialogOpen = true;
+              let configList = (arrayItems) => {
+                vm.arrayItems = arrayItems;
+                vm.itemsFiltered = [];
+                if (!vm.model) {
+                  vm.dialogOpen = false;
+                  $window.jQuery('.row-autocomplete').unhighlight();
+                  return;
+                }
+                vm.dialogOpen = true;
 
-              if (!vm.model || vm.model === '') {
-                vm.dialogOpen = false;
-              }
-              if (vm.filter === true) {
-                vm.itemsFiltered = vm.arrayItems.filter((item) => {
-                  if (item.toString().indexOf(vm.model) !== -1) {
-                    return item;
-                  }
+                if (!vm.model || vm.model === '') {
+                  vm.dialogOpen = false;
+                }
+                if (vm.filter === true) {
+                  vm.itemsFiltered = vm.arrayItems.filter((item) => {
+                    if (item.toString().indexOf(vm.model) !== -1) {
+                      return item;
+                    }
+                  });
+                } else {
+                  vm.itemsFiltered = vm.arrayItems ? vm.arrayItems : [];
+                }
+
+                $timeout(() => {
+                  $window.jQuery('.row-autocomplete').unhighlight().highlight([vm.model]);
+                });
+              };
+              if (angular.isFunction(vm.arrayItems)) {
+                let holdFunction = vm.arrayItems;
+                return vm.arrayItems().then(configList).then(() => {
+                  vm.arrayItems = holdFunction;
                 });
               } else {
-                vm.itemsFiltered = vm.arrayItems ? vm.arrayItems : [];
+                configList(vm.arrayItems);
               }
-
-              $timeout(() => {
-                $window.jQuery('.row-autocomplete').unhighlight().highlight([vm.model]);
-              });
             });
           }
         };
