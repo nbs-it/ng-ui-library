@@ -11,6 +11,7 @@ class DemoController {
       $scope.$broadcast('closeDialog');
     };
     vm.modalBoxIsShown = false;
+    vm.modalBoxWidth = '550px';
     vm.inputCurrencyModel = '0.00';
     vm.customInputModel = 'some value';
     vm.autoCompleteModel = 'משה';
