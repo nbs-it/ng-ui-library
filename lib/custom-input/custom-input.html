@@ -1,7 +1,7 @@
 <div class="custom-input">
   <label ng-if="vm.label" for="{{vm.bindId}}">{{vm.label}}</label>
   <div class="input-container" ng-click="vm.modalAutocompleteOpen=true">
-    <div ng-if="vm.type != 'datepicker'">
+    <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type != 'datepicker'">
         <input
         type="{{vm.type}}"
         name="{{vm.bindName || vm.bindId}}"
