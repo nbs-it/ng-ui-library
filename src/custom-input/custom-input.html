@@ -1,7 +1,7 @@
 <div class="custom-input">
   <label ng-if="vm.label" for="{{vm.bindId}}">{{vm.label}}</label>
   <div class="input-container" ng-click="vm.modalAutocompleteOpen=true">
-    <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type != 'datepicker'">
+    <div ng-if="vm.type != 'datepicker'">
         <input
         type="{{vm.type}}"
         name="{{vm.bindName || vm.bindId}}"
@@ -10,15 +10,15 @@
         placeholder="{{vm.placeholder}}"
       />
     </div>
-    <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type == 'datepicker'">
+    <div ng-if="vm.type == 'datepicker'">
       <datepicker ng-init="vm.getCurrentDate()" date="vm.model"  >
-          <input  class='datepicker-input'
+          <input  ng-if="!vm.$transclude.isSlotFilled('input') "
+                  class='datepicker-input'
                   ng-click="$event.stopPropagation();"
                   ng-model="vm.model" input-date>
           <i class="fa fa-calendar-o fa-fw" ></i>
       </datepicker>
     </div>
-
     <span ng-transclude="input" ng-if="vm.$transclude.isSlotFilled('input')"></span>
     <span class="icon" ng-if="vm.icon || vm.iconClass" ng-class="vm.iconClass"><span ng-bind="vm.icon"></span></span>
 
