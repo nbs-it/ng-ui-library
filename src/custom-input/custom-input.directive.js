@@ -3,8 +3,9 @@ import template from './custom-input.html';
 import './custom-input.scss';
 import sanitize from 'angular-sanitize';
 import jQuery from './extend-highlight';
+import inputDate from '../input-date/input-date.directive';
 
-let customInputModule = angular.module('customInput', [sanitize])
+let customInputModule = angular.module('customInput', [sanitize, inputDate])
   .directive('customInput', customInputDirective)
   .directive('compileTemplate', compileTemplate)
   .name;
@@ -39,7 +40,9 @@ function customInputDirective ($interpolate, $window, $compile) {
         vm.$transclude = $transclude;
         vm.dialogOpen = false;
         $window.jQuery = jQuery;
-
+        vm.getCurrentDate = function () {
+          vm.model = new Date();
+        };
         // for autoComplete
         vm.$onInit = () => {
           if (vm.type === 'autocomplete' || vm.type === 'auto-complete') {

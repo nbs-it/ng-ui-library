@@ -135,6 +135,36 @@
     </custom-input>
   </textarea>
 </section>
+
+
+<section ng-init="vm.datepickerModel = ''">
+    <h1>customInput autocomplete</h1>
+    ng-model:
+    <br> {{vm.datepickerModel}}
+    <br>
+    <br>
+    <custom-input
+      bind-id="datepicker-id"
+      label="דייט פיקר"
+      icon-class=""
+      model="vm.datepickerModel"
+      description="טקסט עזר לתיאור השדה"
+      type="datepicker" >
+    </custom-input>
+    <textarea disabled rows="4">
+      <custom-input
+        bind-id="datepicker-id"
+        label="דייט פיקר"
+        icon-class=""
+        model="vm.datepickerModel"
+        description="טקסט עזר לתיאור השדה"
+        type="datepicker"
+         >
+      </custom-input>
+    </textarea>
+  </section>
+
+
   <section>
   <h1>expInput</h1>
   <div style="width:180px;margin-right:150px;margin-bottom:50px;">
