@@ -27,10 +27,11 @@
         <div ng-repeat="item in vm.itemsFiltered track by $index"
           class="row-autocomplete"
           ng-click="vm.model = item"  model="vm.model">
-          <span ng-if="vm.autoCompleteRow" directive='{{vm.autoCompleteRow}}' compile-template >
+
+          <span ng-if="vm.autoCompleteRow"  directive='{{item}}' compile-template >
           </span>
-          <span ng-if="!vm.autoCompleteRow" model="vm.model">
-            {{item}}
+          <span ng-if="!vm.autoCompleteRow"  directive='<span>{{item}}</span>' compile-template model="vm.model" >
+
           </span>
         </div>
         <div ng-show="!vm.itemsFiltered.length" class="row-autocomplete empty">אין תוצאות</div>
