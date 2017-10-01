@@ -27,9 +27,9 @@
         <div ng-repeat="item in vm.itemsFiltered track by $index"
           class="row-autocomplete"
           ng-click="vm.model = item"  model="vm.model">
-          <span ng-if="vm.autoCompleteRow" ng-bind-html='vm.autoCompleteRow' compile-template >
+          <span ng-if="vm.autoCompleteRow" directive='{{vm.autoCompleteRow}}' compile-template >
           </span>
-          <span ng-if="!vm.autoCompleteRow" num="$index + 100000"  model="vm.model" compile-template>
+          <span ng-if="!vm.autoCompleteRow" model="vm.model">
             {{item}}
           </span>
         </div>

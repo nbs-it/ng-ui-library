@@ -96,13 +96,17 @@ customInputDirective.$inject = ['$interpolate', '$window', '$compile'];
 
 function compileTemplate ($compile, $parse, $timeout) {
   return {
+    restrict: 'A',
+    replace: true,
     link: function (scope, element, attr) {
-      var num = $parse(attr.num);
-      var model = $parse(attr.model);
-      // Recompile if the template changes
-      scope.$watch(model, function () {
-        $compile(element, 20, -(num(scope) || '').toString())(scope);
-        // The -9999 makes it skip directives so that we do not recompile ourselves
+      scope.$watch(function () {
+        return attr.directive;
+      }, function (val) {
+        if (val) {
+          console.log(angular.element(val));
+          var directive = $compile(angular.element(val))(scope);
+          element.append(directive);
+        }
       });
     }
   };
