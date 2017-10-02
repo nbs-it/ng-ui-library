@@ -49,7 +49,8 @@ function customInputDirective ($interpolate, $window, $compile) {
       description: '@',
       arrayItems: '<?',
       filter: '<?',
-      autoCompleteRow: '<?'
+      autoCompleteRow: '<?',
+      propItemSelected: '<?'
     },
     template: _customInput2.default,
     controllerAs: 'vm',
@@ -108,6 +109,12 @@ function customInputDirective ($interpolate, $window, $compile) {
           });
         }
       };
+      vm.selectObject = function (item) {
+        vm.model = item;
+        if (vm.propItemSelected) {
+          vm.model = item['vm.propItemSelected'];
+        }
+      };
     }]
   };
 }
@@ -128,7 +135,7 @@ function compileTemplate ($compile, $parse, $timeout) {
           element.append(directive);
         }
       });
-      element.bind('keyup', function (event) {
+      element.addEventListener('keyup', function (event) {
         if (event.keyCode === 13) {
           event.preventDefault();
           return false;
