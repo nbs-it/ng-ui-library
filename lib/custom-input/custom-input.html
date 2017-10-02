@@ -26,7 +26,7 @@
       <dialog-content>
         <div ng-repeat="item in vm.itemsFiltered track by $index"
           class="row-autocomplete"
-          ng-click="vm.model = item"  model="vm.model">
+          ng-click="vm.selectObject(item)"  model="vm.model">
 
           <span ng-if="vm.autoCompleteRow"   directive='{{vm.autoCompleteRow}}' compile-template >
           </span>

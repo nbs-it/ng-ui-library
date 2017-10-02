@@ -112,7 +112,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.selectObject = function (item) {
         vm.model = item;
         if (vm.propItemSelected) {
-          vm.model = item['vm.propItemSelected'];
+          vm.model = item[vm.propItemSelected];
         }
       };
     }]
@@ -133,12 +133,6 @@ function compileTemplate ($compile, $parse, $timeout) {
           element.empty();
           var directive = $compile(_angular2.default.element(val))(scope);
           element.append(directive);
-        }
-      });
-      element.addEventListener('keyup', function (event) {
-        if (event.keyCode === 13) {
-          event.preventDefault();
-          return false;
         }
       });
     }
