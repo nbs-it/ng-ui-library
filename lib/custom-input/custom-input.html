@@ -28,7 +28,7 @@
           class="row-autocomplete"
           ng-click="vm.model = item"  model="vm.model">
 
-          <span ng-if="vm.autoCompleteRow"  directive='{{item}}' compile-template >
+          <span ng-if="vm.autoCompleteRow"   directive='{{vm.autoCompleteRow}}' compile-template >
           </span>
           <span ng-if="!vm.autoCompleteRow"  directive='<span>{{item}}</span>' compile-template model="vm.model" >
 

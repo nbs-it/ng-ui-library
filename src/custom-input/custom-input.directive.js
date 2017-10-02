@@ -70,7 +70,7 @@ function customInputDirective ($interpolate, $window, $compile) {
         }
 
         if (vm.type === 'autoComplete') {
-          // $scope.$watch('vm.model', function (old, newValue) {
+          $scope.$watch('vm.model', function (old, newValue) {
             var configList = function configList (arrayItems) {
               vm.arrayItems = arrayItems;
               vm.itemsFiltered = [];
