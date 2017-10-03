@@ -60,6 +60,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.$transclude = $transclude;
       vm.dialogOpen = false;
       $window.jQuery = _extendHighlight2.default;
+      vm.queries = 0;
       vm.getCurrentDate = function () {
         vm.model = new Date();
       };
@@ -85,7 +86,7 @@ function customInputDirective ($interpolate, $window, $compile) {
               if (!vm.model || vm.model === '') {
                 vm.dialogOpen = false;
               }
-              if (vm.filter === true && (typeof holdFunction === 'function')) {
+              if (vm.filter === true && typeof holdFunction === 'function') {
                 vm.itemsFiltered = vm.arrayItems.filter(function (item) {
                   if (item.toString().indexOf(vm.model) !== -1) {
                     return item;
@@ -94,15 +95,33 @@ function customInputDirective ($interpolate, $window, $compile) {
               } else {
                 vm.itemsFiltered = vm.arrayItems ? vm.arrayItems : [];
               }
-              $timeout(() => {
+              $timeout(function () {
                 // $window.jQuery('.row-autocomplete').unhighlight().highlight([vm.model]);
               });
             };
             if (_angular2.default.isFunction(vm.arrayItems)) {
               holdFunction = vm.arrayItems;
-              return vm.arrayItems().then(configList).then(function () {
-                vm.arrayItems = holdFunction;
-              });
+              vm.queries += 1;
+              if (vm.existQuery) {
+                vm.newQuery = true;
+              }
+              vm.existQuery = true;
+              $timeout(() => {
+                vm.queries -= 1;
+                console.log(vm.queries);
+                if (vm.queries > 0) {
+                  console.log('stop query');
+                  return;
+                }
+                vm.existQuery = false;
+                console.log('start query');
+                return vm.arrayItems().then(configList).then(function () {
+                  if (vm.autoCompleteRow) {
+                    vm.rowsHtmlData = vm.getRowsHtmlData();
+                  }
+                  vm.arrayItems = holdFunction;
+                });
+              }, 400);
             } else {
               configList(vm.arrayItems);
             }
@@ -114,6 +133,33 @@ function customInputDirective ($interpolate, $window, $compile) {
         if (vm.propItemSelected) {
           vm.model = item[vm.propItemSelected];
         }
+      };
+      vm.getRowsHtmlData = function () {
+        function getHtmlBinding (item, rowHtml) {
+          function getValue (object, path) {
+            return path.split('.').reduce((res, prop) => res[prop], object);
+          }
+          while (rowHtml.match(/\{\{(.*)\}\}/i)) {
+            let matchBind = rowHtml.match(/\{\{(.*)\}\}/i)[0];
+            let objectPath = matchBind.replace(/\}\}|\{\{/g, '').split('.');
+            let path = objectPath.splice(1, objectPath.length).join('.');
+            rowHtml = rowHtml.replace(/\{\{(.*)\}\}/i, getValue(item, path));
+          }
+          return rowHtml;
+        }
+        let html = ``;
+        if (vm.itemsFiltered && vm.itemsFiltered[0]) {
+          vm.itemsFiltered.forEach((item) => {
+            html += `<div
+              class="row-autocomplete"
+              ng-click="vm.selectObject(item)">`;
+            let rowHtml = _angular.copy(vm.autoCompleteRow);
+            rowHtml = getHtmlBinding(item, rowHtml);
+            html += rowHtml + '</div>';
+          });
+        }
+        console.log('finith');
+        return html;
       };
     }]
   };

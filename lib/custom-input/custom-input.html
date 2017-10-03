@@ -24,13 +24,16 @@
 
     <div ng-if="vm.type == 'autoComplete'" dialog class="no-arrow left autocomplete" is-open="vm.dialogOpen">
       <dialog-content>
-        <div ng-repeat="item in vm.itemsFiltered track by $index"
-          class="row-autocomplete"
-          ng-click="vm.selectObject(item)"  model="vm.model">
+        <div ng-if="vm.autoCompleteRow"   directive="{{vm.rowsHtmlData}}" compile-template>
 
-          <span ng-if="vm.autoCompleteRow"   directive='{{vm.autoCompleteRow}}' compile-template >
-          </span>
-          <span ng-if="!vm.autoCompleteRow"  directive='<span>{{item}}</span>' compile-template model="vm.model" >
+        </div>
+        <div ng-if="!vm.autoCompleteRow"  ng-repeat="item in vm.itemsFiltered track by $index"
+             class="row-autocomplete"
+          ng-click="vm.selectObject(item)" >
+
+          <!-- <span ng-if="vm.autoCompleteRow"   directive='{{vm.autoCompleteRow}}' compile-template >
+          </span> -->
+          <span  directive='<span>{{item}}</span>' compile-template >
 
           </span>
         </div>
