@@ -58,6 +58,7 @@ function customInputDirective ($interpolate, $window, $compile) {
     bindToController: true,
     controller: ['$transclude', '$window', '$timeout', '$scope', '$interpolate', function ($transclude, $window, $timeout, $scope, $interpolate) {
       var vm = this;
+      vm.$scope = $scope;
       vm.$transclude = $transclude;
       vm.dialogOpen = false;
       $window.jQuery = _extendHighlight2.default;
@@ -67,6 +68,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       };
       // for autoComplete
       vm.$onInit = function () {
+        vm.indexArrow = 0;
         var holdFunction;
         if (vm.type === 'autocomplete' || vm.type === 'auto-complete') {
           vm.type = 'autoComplete';
@@ -150,9 +152,10 @@ function customInputDirective ($interpolate, $window, $compile) {
         }
         let html = ``;
         if (vm.itemsFiltered && vm.itemsFiltered[0]) {
-          vm.itemsFiltered.forEach((item) => {
+          vm.itemsFiltered.forEach((item, index) => {
             html += `<div
               class="row-autocomplete"
+              ng-class="{selected-arrow: vm.indexArrow == ` + index + `}"
               ng-click="vm.selectObject(item)">`;
             let rowHtml = _angular.copy(vm.autoCompleteRow);
             rowHtml = getHtmlBinding(item, rowHtml);
@@ -162,7 +165,35 @@ function customInputDirective ($interpolate, $window, $compile) {
         console.log('finith');
         return html;
       };
-    }]
+    }],
+    link: function link (scope, element, attr, ctrl) {
+      let vm = ctrl;
+      element.bind('keydown keypress', function (event) {
+        console.log(event);
+
+        if (event.which === 13) {
+          vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
+          vm.modalClosed();
+        }
+        if (event.which === 40) {
+          vm.$scope.$apply(function () {
+            if (vm.indexArrow < vm.itemsFiltered.length - 1) {
+              vm.indexArrow += 1;
+            }
+            vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
+          });
+        }
+        if (event.which === 38) {
+          vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
+          vm.$scope.$apply(function () {
+            if (vm.indexArrow > 0) {
+              vm.indexArrow -= 1;
+            }
+            vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
+          });
+        }
+      });
+    }
   };
 }
 
