@@ -44,6 +44,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       label: '@',
       model: '=',
       placeholder: '@',
+      tabIndex: '@',
       icon: '@',
       iconClass: '@',
       description: '@',
