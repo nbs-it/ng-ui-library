@@ -81,7 +81,9 @@
   transition: background 0.2s;
 }
 
-.selected-arrow,
+.selected-arrow{
+  background: #eeeeee;
+}
 .custom-input .autocomplete .row-autocomplete:hover {
   background: #eeeeee;
 }

@@ -29,7 +29,7 @@
         </div>
         <div ng-if="!vm.autoCompleteRow"  ng-repeat="item in vm.itemsFiltered track by $index"
              class="row-autocomplete"
-             ng-class="{'selected-arrow': vm.indexArrow == $index}"
+             ng-class="{' selected-arrow': vm.indexArrow == $index}"
           ng-click="vm.selectObject(item)" >
 
           <!-- <span ng-if="vm.autoCompleteRow"   directive='{{vm.autoCompleteRow}}' compile-template >

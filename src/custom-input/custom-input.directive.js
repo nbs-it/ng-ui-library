@@ -63,6 +63,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.dialogOpen = false;
       $window.jQuery = _extendHighlight2.default;
       vm.jQuery = $window.jQuery;
+      vm.$timeout = $timeout;
       vm.queries = 0;
       vm.getCurrentDate = function () {
         vm.model = new Date();
@@ -77,6 +78,10 @@ function customInputDirective ($interpolate, $window, $compile) {
 
         if (vm.type === 'autoComplete') {
           $scope.$watch('vm.model', function (old, newValue) {
+            if (vm.autoCompleteNoQuery === true) {
+              vm.autoCompleteNoQuery = false;
+              return;
+            }
             var configList = function configList (arrayItems) {
               vm.arrayItems = arrayItems;
               vm.itemsFiltered = [];
@@ -129,11 +134,12 @@ function customInputDirective ($interpolate, $window, $compile) {
           });
         }
       };
-      vm.selectObject = function (item) {
+      vm.selectObject = function (item, more) {
         vm.model = item;
         if (vm.propItemSelected) {
           vm.model = item[vm.propItemSelected];
         }
+        vm.autoCompleteNoQuery = true;
       };
       vm.getRowsHtmlData = function () {
         function getHtmlBinding (item, rowHtml) {
@@ -153,7 +159,7 @@ function customInputDirective ($interpolate, $window, $compile) {
           vm.itemsFiltered.forEach((item, index) => {
             html += `<div
               class="row-autocomplete"
-              ng-class="{selected-arrow: vm.indexArrow == ` + index + `}"
+              ng-class="{'selected-arrow': vm.indexArrow == ` + index + `}"
               ng-click="vm.selectObject(item)">`;
             let rowHtml = _angular.copy(vm.autoCompleteRow);
             rowHtml = getHtmlBinding(item, rowHtml);
@@ -177,25 +183,28 @@ function customInputDirective ($interpolate, $window, $compile) {
             if (vm.indexArrow < vm.itemsFiltered.length - 1) {
               vm.indexArrow += 1;
               autocompleteModal.css('max-height').replace(/^\D+/g, '');
-
-              if (((rowAutocomplete.outerHeight(true) * vm.indexArrow) + 30) > autocompleteModal.height()) {
-                autocompleteModal.scrollTop(rowAutocomplete.outerHeight(true) + autocompleteModal.scrollTop());
-              }
+              vm.$timeout(() => {
+                if (((rowAutocomplete.outerHeight(true) * vm.indexArrow) + 30) > autocompleteModal.height()) {
+                  autocompleteModal.scrollTop(rowAutocomplete.outerHeight(true) + autocompleteModal.scrollTop());
+                }
+              }, 50);
             }
             vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
           });
         }
         if (event.which === 38) {
-          vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
-          vm.$scope.$apply(function () {
-            if (vm.indexArrow > 0) {
+          if (vm.indexArrow > 0) {
+            vm.$scope.$apply(function () {
               vm.indexArrow -= 1;
-              if (((vm.itemsFiltered.length * rowAutocomplete.outerHeight(true)) - (vm.indexArrow * rowAutocomplete.outerHeight(true))) > autocompleteModal.height()) {
-                autocompleteModal.scrollTop(autocompleteModal.scrollTop() - rowAutocomplete.outerHeight(true));
-              }
-            }
-            vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
-          });
+
+              vm.$timeout(() => {
+                if (((vm.itemsFiltered.length * rowAutocomplete.outerHeight(true)) - (vm.indexArrow * rowAutocomplete.outerHeight(true))) > autocompleteModal.height()) {
+                  autocompleteModal.scrollTop(autocompleteModal.scrollTop() - rowAutocomplete.outerHeight(true));
+                }
+              }, 50);
+              vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
+            });
+          }
         }
       });
     }
