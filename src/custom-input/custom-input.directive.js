@@ -65,6 +65,11 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.jQuery = $window.jQuery;
       vm.$timeout = $timeout;
       vm.queries = 0;
+      $scope.$watch('vm.dialogOpen', (newV, oldV) => {
+        if (newV === false) {
+          vm.indexArrow = 0;
+        }
+      });
       vm.getCurrentDate = function () {
         vm.model = new Date();
       };
