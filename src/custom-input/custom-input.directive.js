@@ -62,6 +62,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.$transclude = $transclude;
       vm.dialogOpen = false;
       $window.jQuery = _extendHighlight2.default;
+      vm.jQuery = $window.jQuery;
       vm.queries = 0;
       vm.getCurrentDate = function () {
         vm.model = new Date();
@@ -111,13 +112,10 @@ function customInputDirective ($interpolate, $window, $compile) {
               vm.existQuery = true;
               $timeout(() => {
                 vm.queries -= 1;
-                console.log(vm.queries);
                 if (vm.queries > 0) {
-                  console.log('stop query');
                   return;
                 }
                 vm.existQuery = false;
-                console.log('start query');
                 return vm.arrayItems().then(configList).then(function () {
                   if (vm.autoCompleteRow) {
                     vm.rowsHtmlData = vm.getRowsHtmlData();
@@ -162,15 +160,14 @@ function customInputDirective ($interpolate, $window, $compile) {
             html += rowHtml + '</div>';
           });
         }
-        console.log('finith');
         return html;
       };
     }],
     link: function link (scope, element, attr, ctrl) {
       let vm = ctrl;
       element.bind('keydown keypress', function (event) {
-        console.log(event);
-
+        let autocompleteModal = vm.jQuery('.autocomplete .dialog-wrap');
+        let rowAutocomplete = vm.jQuery('.row-autocomplete').first();
         if (event.which === 13) {
           vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
           vm.modalClosed();
@@ -179,6 +176,11 @@ function customInputDirective ($interpolate, $window, $compile) {
           vm.$scope.$apply(function () {
             if (vm.indexArrow < vm.itemsFiltered.length - 1) {
               vm.indexArrow += 1;
+              autocompleteModal.css('max-height').replace(/^\D+/g, '');
+
+              if (((rowAutocomplete.outerHeight(true) * vm.indexArrow) + 30) > autocompleteModal.height()) {
+                autocompleteModal.scrollTop(rowAutocomplete.outerHeight(true) + autocompleteModal.scrollTop());
+              }
             }
             vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
           });
@@ -188,6 +190,9 @@ function customInputDirective ($interpolate, $window, $compile) {
           vm.$scope.$apply(function () {
             if (vm.indexArrow > 0) {
               vm.indexArrow -= 1;
+              if (((vm.itemsFiltered.length * rowAutocomplete.outerHeight(true)) - (vm.indexArrow * rowAutocomplete.outerHeight(true))) > autocompleteModal.height()) {
+                autocompleteModal.scrollTop(autocompleteModal.scrollTop() - rowAutocomplete.outerHeight(true));
+              }
             }
             vm.selectObject(vm.itemsFiltered[vm.indexArrow]);
           });

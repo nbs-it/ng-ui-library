@@ -1,6 +1,6 @@
 <div class="custom-input">
   <label ng-if="vm.label" for="{{vm.bindId}}">{{vm.label}}</label>
-  <div class="input-container" ng-click="vm.modalAutocompleteOpen=true" tabindex="{{vm.tabIndex || -1}}">
+  <div class="input-container" ng-click="vm.dialogOpen=true" tabindex="{{vm.tabIndex || -1}}">
     <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type != 'datepicker'">
         <input
         type="{{vm.type}}"
@@ -22,13 +22,14 @@
     <span ng-transclude="input" ng-if="vm.$transclude.isSlotFilled('input')"></span>
     <span class="icon" ng-if="vm.icon || vm.iconClass" ng-class="vm.iconClass"><span ng-bind="vm.icon"></span></span>
 
-    <div ng-if="vm.type == 'autoComplete'" dialog class="no-arrow left autocomplete" is-open="vm.dialogOpen">
+    <div ng-if="vm.type == 'autoComplete'" dialog class="no-arrow left autocomplete" close="vm.modalClosed" is-open="vm.dialogOpen">
       <dialog-content>
         <div ng-if="vm.autoCompleteRow"   directive="{{vm.rowsHtmlData}}" compile-template>
 
         </div>
         <div ng-if="!vm.autoCompleteRow"  ng-repeat="item in vm.itemsFiltered track by $index"
              class="row-autocomplete"
+             ng-class="{'selected-arrow': vm.indexArrow == $index}"
           ng-click="vm.selectObject(item)" >
 
           <!-- <span ng-if="vm.autoCompleteRow"   directive='{{vm.autoCompleteRow}}' compile-template >
