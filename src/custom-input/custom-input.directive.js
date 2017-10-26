@@ -128,11 +128,11 @@ function customInputDirective ($interpolate, $window, $compile) {
               vm.existQuery = true;
               $timeout(() => {
                 vm.queries -= 1;
-                if (vm.queries > 0 || !_angular2.default.isFunction(vm.arrayItems)) {
+                if (vm.queries > 0 || typeof vm.arrayItems !== 'function') {
                   return;
                 }
                 vm.existQuery = false;
-                return vm.arrayItems().then(configList).then(function () {
+                vm.arrayItems().then(configList).then(function () {
                   if (vm.autoCompleteRow) {
                     vm.rowsHtmlData = vm.getRowsHtmlData();
                   }
