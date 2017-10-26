@@ -146,7 +146,9 @@ function customInputDirective ($interpolate, $window, $compile) {
         }
       };
       vm.selectObject = function (item, more) {
-        item = vm.itemsFiltered[vm.indexArrow];
+        if (!item) {
+          item = vm.itemsFiltered[vm.indexArrow];
+        }
         vm.model = item;
         if (vm.propItemSelected) {
           vm.model = item[vm.propItemSelected];
