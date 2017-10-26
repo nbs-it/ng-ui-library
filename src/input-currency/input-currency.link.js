@@ -6,10 +6,15 @@ export default function ($filter) {
     if (!vm) {
       return;
     }
+
+    vm.max = Number(vm.max) || Infinity;
+    vm.min = Number(vm.min) || 0;
+
     vm.onChange = function () {
       if (vm.$modelValue) {
-        var maxSum = vm.$modelValue.toString().split('.')[0].length < 6;
-        var minSum = (vm.$modelValue !== 0);
+        let value = vm.$modelValue;
+        var maxSum = value.toString().split('.')[0].length < 6 && value <= vm.max;
+        var minSum = vm.$modelValue !== 0 && value >= vm.min;
         vm.$setValidity('maxSum', maxSum);
         vm.$setValidity('minSum', minSum);
       }
