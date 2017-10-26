@@ -128,7 +128,7 @@ function customInputDirective ($interpolate, $window, $compile) {
               vm.existQuery = true;
               $timeout(() => {
                 vm.queries -= 1;
-                if (vm.queries > 0) {
+                if (vm.queries > 0 || !_angular2.default.isFunction(vm.arrayItems)) {
                   return;
                 }
                 vm.existQuery = false;
