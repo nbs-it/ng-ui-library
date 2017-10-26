@@ -9,7 +9,7 @@ function inputCurrencyDirective ($filter) {
   return {
     scope: {
       min: '@?',
-      mam: '@?'
+      max: '@?'
     },
     restrict: 'A',
     require: 'ngModel',

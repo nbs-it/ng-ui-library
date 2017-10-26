@@ -7,8 +7,8 @@ export default function ($filter) {
       return;
     }
 
-    vm.max = Number(vm.max) || Infinity;
-    vm.min = Number(vm.min) || 0;
+    vm.min = Number(scope.min) || 0;
+    vm.max = Number(scope.max) || Infinity;
 
     vm.onChange = function () {
       if (vm.$modelValue) {
