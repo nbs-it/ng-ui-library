@@ -15,7 +15,7 @@ class DemoController {
     vm.inputCurrencyModel = '0.00';
     vm.customInputModel = 'some value';
     vm.autoCompleteModel = 'משה';
-    vm.autoCompleteHtml = '<span class="test" ng-style="padding:40px;">{{item}}<span>';
+    vm.autoCompleteHtml = '<span class="test" >{{item}}</span>';
   }
   autocompleteTest () {
     return vm.$q.resolve([1, 2, 3]);

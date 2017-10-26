@@ -117,8 +117,14 @@
     model="vm.autoCompleteModel"
     description="טקסט עזר לתיאור השדה"
     type="autoComplete"
-    array-items="['שטרן אברהם' ,'עזרא הסופר', 'אריאל שרון','שטרן אברהם' ,'עזרא הסופר', 'אריאל שרון', 'משה כהן', 'משה לוי']"
-    filter="true" >
+    array-items="[{name:'שטרן אברהם'
+  },
+  {  name:
+    'עזרא הסופר'
+    } ]"
+   filter="true"
+   prop-item-selected="'name'"
+   auto-complete-row="vm.autoCompleteHtml">
   </custom-input>
   <!--     <!-- auto-complete-row="vm.autoCompleteHtml" -->
 
@@ -130,7 +136,7 @@
       model="vm.autoCompleteModel"
       description="טקסט עזר לתיאור השדה"
       type="autoComplete"
-      array-items="['שטרן אברהם' ,'עזרא הסופר', 'אריאל שרון']"
+      array-items="[{name:'שטרן אברהם' },{'עזרא הסופר' name: } ]"
       auto-complete-row="vm.autoCompleteHtml"
       filter="true" >
     </custom-input>
