@@ -7,18 +7,29 @@ export default function ($filter) {
       return;
     }
 
-    vm.min = Number(scope.min) || 0;
-    vm.max = Number(scope.max) || Infinity;
+    scope.$watch('min', function (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        vm.onChange();
+      }
+    });
+    scope.$watch('max', function (newVal, oldVal) {
+      if (newVal !== oldVal) {
+        vm.onChange();
+      }
+    });
 
     vm.onChange = function () {
       if (vm.$modelValue) {
-        let value = vm.$modelValue;
-        var maxSum = value.toString().split('.')[0].length < 6 && value <= vm.max;
-        var minSum = vm.$modelValue !== 0 && value >= vm.min;
+        vm.min = Number(scope.min) || 0;
+        vm.max = Number(scope.max) || Infinity;
+        var value = vm.$modelValue;
+        var maxSum = value.toString().split('.')[0].length < 6 && Number(value) <= vm.max;
+        var minSum = value !== 0 && Number(value) >= vm.min;
         vm.$setValidity('maxSum', maxSum);
         vm.$setValidity('minSum', minSum);
       }
     };
+
     vm.$formatters.unshift(function (a) {
       vm.onChange();
       return $filter('number')(vm.$modelValue, 2);
