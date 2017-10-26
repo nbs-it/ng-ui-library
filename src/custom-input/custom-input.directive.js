@@ -82,13 +82,15 @@ function customInputDirective ($interpolate, $window, $compile) {
         }
 
         if (vm.type === 'autoComplete') {
-          $scope.$watch('vm.model', function (old, newValue) {
-            if (vm.autoCompleteNoQuery === true) {
+          $scope.$watch('vm.model', function (newValue, old) {
+            if ((vm.autoCompleteNoQuery === true && _angular2.default.isFunction(vm.arrayItems)) ||
+                  !vm.model || vm.model === '') {
               vm.autoCompleteNoQuery = false;
               return;
             }
             var configList = function configList (arrayItems) {
               vm.arrayItems = arrayItems;
+
               vm.itemsFiltered = [];
               if (!vm.model) {
                 vm.dialogOpen = false;
@@ -108,11 +110,15 @@ function customInputDirective ($interpolate, $window, $compile) {
                 });
               } else {
                 vm.itemsFiltered = vm.arrayItems ? vm.arrayItems : [];
+                if (vm.autoCompleteRow) {
+                  vm.rowsHtmlData = vm.getRowsHtmlData();
+                }
               }
               $timeout(function () {
                 // $window.jQuery('.row-autocomplete').unhighlight().highlight([vm.model]);
               });
             };
+
             if (_angular2.default.isFunction(vm.arrayItems)) {
               holdFunction = vm.arrayItems;
               vm.queries += 1;
@@ -140,12 +146,14 @@ function customInputDirective ($interpolate, $window, $compile) {
         }
       };
       vm.selectObject = function (item, more) {
+        item = vm.itemsFiltered[vm.indexArrow];
         vm.model = item;
         if (vm.propItemSelected) {
           vm.model = item[vm.propItemSelected];
         }
         vm.autoCompleteNoQuery = true;
       };
+
       vm.getRowsHtmlData = function () {
         function getHtmlBinding (item, rowHtml) {
           function getValue (object, path) {
@@ -155,8 +163,11 @@ function customInputDirective ($interpolate, $window, $compile) {
             let matchBind = rowHtml.match(/\{\{(.*)\}\}/i)[0];
             let objectPath = matchBind.replace(/\}\}|\{\{/g, '').split('.');
             let path = objectPath.splice(1, objectPath.length).join('.');
+            console.log(path);
+
             rowHtml = rowHtml.replace(/\{\{(.*)\}\}/i, getValue(item, path));
           }
+
           return rowHtml;
         }
         let html = ``;
@@ -165,12 +176,13 @@ function customInputDirective ($interpolate, $window, $compile) {
             html += `<div
               class="row-autocomplete"
               ng-class="{'selected-arrow': vm.indexArrow == ` + index + `}"
-              ng-click="vm.selectObject(item)">`;
+              ng-click="vm.indexArrow = ` + index + `; vm.selectObject()">`;
             let rowHtml = _angular.copy(vm.autoCompleteRow);
             rowHtml = getHtmlBinding(item, rowHtml);
             html += rowHtml + '</div>';
           });
         }
+
         return html;
       };
     }],
