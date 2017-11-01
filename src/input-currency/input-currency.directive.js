@@ -7,6 +7,10 @@ let inputCurrencyModule = angular.module('inputCurrency', [])
 
 function inputCurrencyDirective ($filter) {
   return {
+    scope: {
+      min: '=?',
+      max: '=?'
+    },
     restrict: 'A',
     require: 'ngModel',
     link: link($filter)

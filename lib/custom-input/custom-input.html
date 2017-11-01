@@ -2,7 +2,7 @@
   <label ng-if="vm.label" for="{{vm.bindId}}">{{vm.label}}</label>
   <div class="input-container" ng-click="vm.dialogOpen=true" tabindex="{{vm.tabIndex || -1}}">
     <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type != 'datepicker'">
-        <input
+      <input
         type="{{vm.type}}"
         name="{{vm.bindName || vm.bindId}}"
         id="{{vm.bindId}}"
@@ -11,12 +11,13 @@
       />
     </div>
     <div ng-if="vm.type == 'datepicker'">
-      <datepicker ng-init="vm.getCurrentDate()" date="vm.model"  >
-          <input  ng-if="!vm.$transclude.isSlotFilled('input') "
-                  class='datepicker-input'
-                  ng-click="$event.stopPropagation();"
-                  ng-model="vm.model" input-date>
-          <i class="fa fa-calendar-o fa-fw" ></i>
+      <datepicker ng-init="vm.getCurrentDate()" date="vm.model">
+        <input ng-if="!vm.$transclude.isSlotFilled('input') "
+          class='datepicker-input'
+          ng-click="$event.stopPropagation();"
+          ng-model="vm.model" input-date
+        />
+        <i class="fa fa-calendar-o fa-fw" ></i>
       </datepicker>
     </div>
     <span ng-transclude="input" ng-if="vm.$transclude.isSlotFilled('input')"></span>
@@ -24,17 +25,17 @@
 
     <div ng-if="vm.type == 'autoComplete'" dialog class="no-arrow left autocomplete" close="vm.modalClosed" is-open="vm.dialogOpens">
       <dialog-content>
-        <div ng-if="vm.autoCompleteRow"   directive="{{vm.rowsHtmlData}}" compile-template>
+        <div ng-if="vm.autoCompleteRow" directive="{{vm.rowsHtmlData}}" compile-template>
 
         </div>
-        <div ng-if="!vm.autoCompleteRow"  ng-repeat="item in vm.itemsFiltered track by $index"
-             class="row-autocomplete"
-             ng-class="{' selected-arrow': vm.indexArrow == $index}"
-          ng-click="vm.selectObject(item)" >
+        <div ng-if="!vm.autoCompleteRow" ng-repeat="item in vm.itemsFiltered track by $index"
+          class="row-autocomplete"
+          ng-class="{' selected-arrow': vm.indexArrow == $index}"
+          ng-click="vm.selectObject(item)">
 
-          <!-- <span ng-if="vm.autoCompleteRow"   directive='{{vm.autoCompleteRow}}' compile-template >
+          <!-- <span ng-if="vm.autoCompleteRow" directive='{{vm.autoCompleteRow}}' compile-template >
           </span> -->
-          <span  directive='<span>{{item}}</span>' compile-template >
+          <span directive='<span>{{item}}</span>' compile-template >
 
           </span>
         </div>
