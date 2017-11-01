@@ -86,7 +86,7 @@ function customInputDirective ($interpolate, $window, $compile) {
             if (vm.autoCompleteNoQuery === true &&
             (_angular.isFunction(vm.arrayItems) || !vm.model || vm.model === '')) {
               vm.autoCompleteNoQuery = false;
-              vm.indexArrow = 0;
+              // vm.indexArrow = 0;
               return;
             }
             var configList = function configList (arrayItems) {
@@ -213,6 +213,8 @@ function customInputDirective ($interpolate, $window, $compile) {
               vm.indexArrow += 1;
               if (!autocompleteModal.css('max-height')) {
                 vm.dialogOpens = true;
+                vm.indexArrow = 0;
+                return;
               }
               autocompleteModal.css('max-height').replace(/^\D+/g, '');
               vm.$timeout(function () {
