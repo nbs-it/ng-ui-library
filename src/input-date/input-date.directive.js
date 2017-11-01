@@ -13,7 +13,6 @@ function inputDateDirective ($window) {
       if (!vm) {
         return;
       }
-      console.log(vm.$parsers);
 
       vm.$formatters.unshift(function (a) {
         if (vm.$modelValue) {
