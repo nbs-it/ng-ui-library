@@ -7,13 +7,21 @@ class ModalBoxController {
   }
 
   $onInit () {
-    let width = vm.width
+    let width = vm.width;
     if (!width) {
       width = '';
-    } else if (width.search('px') < 0) {
+    } else if (!isNaN(width)) {
       width += 'px';
     }
     vm.modalBoxWidth = width;
+
+    let height = vm.height;
+    if (!height) {
+      height = '';
+    } else if (!isNaN(height)) {
+      height += 'px';
+    }
+    vm.modalBoxHeight = height;
   }
 }
 

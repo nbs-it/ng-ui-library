@@ -22,6 +22,7 @@ function modalBoxDirective ($window, $timeout) {
       close: '=?',
       isOpen: '=?',
       width: '@?',
+      height: '@?'
     },
     template,
     controller,
