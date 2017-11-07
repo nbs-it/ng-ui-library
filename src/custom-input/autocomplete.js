@@ -1,4 +1,4 @@
-export default (vm, $scope, $window, $timeout) => {
+let autocompleteCtrl = (vm, $scope, $window, $timeout) => {
   $scope.$watch('vm.dialogOpens', function (newV, oldV) {
     if (newV === false) {
       vm.indexArrow = 0;
@@ -128,7 +128,7 @@ export default (vm, $scope, $window, $timeout) => {
   };
 };
 
-exports.link = (scope, element, attr, ctrl) => {
+let autocompleteLink = (scope, element, attr, ctrl) => {
   var vm = ctrl;
   element.bind('keydown keypress', function (event) {
     var autocompleteModal = vm.jQuery('.autocomplete .dialog-wrap');
@@ -171,4 +171,11 @@ exports.link = (scope, element, attr, ctrl) => {
       }
     }
   });
+};
+
+export default autocompleteCtrl;
+
+export {
+  autocompleteCtrl,
+  autocompleteLink
 };

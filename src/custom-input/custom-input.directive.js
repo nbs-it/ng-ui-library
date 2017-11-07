@@ -4,7 +4,7 @@ import './custom-input.scss';
 import './autocomplete.scss';
 import sanitize from 'angular-sanitize';
 import jQuery from './extend-highlight';
-import autocomplete from './autocomplete';
+import { autocompleteCtrl, autocompleteLink } from './autocomplete';
 import validation from './validation';
 import compileTemplate from './compile-template';
 import inputDate from '../input-date/input-date.directive';
@@ -54,12 +54,12 @@ function customInputDirective ($interpolate, $window, $compile) {
       };
 
       vm.$onInit = function () {
-        autocomplete(vm, $scope, $window, $timeout);
+        autocompleteCtrl(vm, $scope, $window, $timeout);
         validation(vm);
       };
     }],
     link: function (scope, element, attr, ctrl) {
-      autocomplete.link(scope, element, attr, ctrl);
+      autocompleteLink(scope, element, attr, ctrl);
     }
   };
 }
