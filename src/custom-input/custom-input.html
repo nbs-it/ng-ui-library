@@ -7,6 +7,7 @@
         name="{{vm.bindName || vm.bindId}}"
         id="{{vm.bindId}}"
         ng-model="vm.model"
+        required="required"
         placeholder="{{vm.placeholder}}"
       />
     </div>
@@ -44,4 +45,15 @@
     </div>
   </div>
   <span ng-if="vm.description" class="description">{{vm.description}}</span>
+
+  <span
+    ng-show="vm.formField.$dirty && vm.formField.$invalid"
+    class="validation"
+    ng-class="{{true ? 'valid' : 'invalid'}}">
+    <a tooltip class="tooltip-light tooltip-right ion-ios-close-outline">
+      <span ng-repeat="(error, value) in vm.formField.$error" ng-message="error">
+        {{vm.formField.$errorMsg[error] || vm.defaultErrorMsg[error] || 'שגיאה'}}<br>
+      </span>
+    </a>
+  </span>
 </div>

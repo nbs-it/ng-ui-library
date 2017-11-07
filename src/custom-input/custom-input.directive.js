@@ -26,11 +26,13 @@ function customInputDirective ($interpolate, $window, $compile) {
       bindName: '@',
       bindId: '@',
       label: '@',
-      model: '=',
+      required: '<?',
+      model: '=?',
       placeholder: '@',
       tabIndex: '@',
       icon: '@',
       iconClass: '@',
+      formField: '<?',
       description: '@',
       arrayItems: '<?',
       filter: '<?',
@@ -49,8 +51,22 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.$timeout = $timeout;
       vm.queries = 0;
 
+      $window.setErrorMessage = function (formField, filedName, message) {
+        if (!angular.isObject(formField.$errorMsg)) {
+          formField.$errorMsg = {};
+        }
+        formField.$errorMsg[filedName] = message;
+      };
+
       vm.getCurrentDate = function () {
         vm.model = new Date();
+      };
+
+      vm.defaultErrorMsg = {
+        required: 'שדה חובה',
+        minlength: 'תוכן קצר מידי',
+        maxlength: 'תוכן ארוך מידי',
+        pattern: 'תוכן לא תקין'
       };
 
       vm.$onInit = function () {

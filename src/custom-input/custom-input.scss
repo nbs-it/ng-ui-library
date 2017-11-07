@@ -1,3 +1,7 @@
+.custom-input {
+  position: relative;
+  display: inline-block;
+}
 .custom-input .input-container {
   position: relative;
   display: inline-block;
@@ -24,7 +28,8 @@
 .custom-input label {
   font-size: 12px;
   display: block;
-  margin: 0 5px 5px 0;
+  margin-right:5px;
+  line-height: 25px;
   color: rgb(127, 127, 127);
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -52,5 +57,11 @@
 }
 .custom-input .display {
   display: block;
+}
+.custom-input .validation {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  line-height: 25px;
 }
 
