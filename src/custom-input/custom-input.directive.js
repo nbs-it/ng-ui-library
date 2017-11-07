@@ -55,7 +55,13 @@ function customInputDirective ($interpolate, $window, $compile) {
         if (!angular.isObject(formField.$errorMsg)) {
           formField.$errorMsg = {};
         }
-        formField.$errorMsg[errorName] = errorMessage;
+        if (angular.isObject(errorName)) {
+          Object.keys(errorName).forEach(function (key) {
+            formField.$errorMsg[key] = errorName[key];
+          });
+        } else {
+          formField.$errorMsg[errorName] = errorMessage;
+        }
       };
 
       vm.getCurrentDate = function () {
