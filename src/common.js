@@ -9,6 +9,7 @@ import expInput from './exp-input/exp-input.directive';
 import expDatepicker from './exp-datepicker/exp-datepicker.directive';
 import datepicker from './datepicker/datepicker.directive';
 import inputDate from './input-date/input-date.directive';
+import tooltip from './tooltip/tooltip.directive';
 
 let commonModule = angular.module('ng-ui-library', [
   checkbox,
@@ -20,7 +21,8 @@ let commonModule = angular.module('ng-ui-library', [
   expInput,
   expDatepicker,
   datepicker,
-  inputDate
+  inputDate,
+  tooltip
 ])
   .name;
 
