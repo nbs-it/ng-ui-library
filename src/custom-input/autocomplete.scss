@@ -1,0 +1,46 @@
+/** autocomplete **/
+.custom-input {
+  [dialog].autocomplete {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 187px;
+    min-width: 100%;
+  }
+  [dialog].autocomplete .dialog-trigger {
+    display: none;
+  }
+  [dialog].autocomplete .dialog {
+    position: static;
+  }
+  [dialog].autocomplete .dialog div.dialog-wrap {
+    padding: 5px 0;
+  }
+  .autocomplete .row-autocomplete {
+    font-weight: 500;
+    font-size: 15px;
+    color: black;
+    text-align: right;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .selected-arrow {
+    background: #eeeeee;
+  }
+  .autocomplete .row-autocomplete:hover {
+    background: #eeeeee;
+  }
+  .autocomplete .row-autocomplete.empty {
+    color: #888888;
+  }
+  .autocomplete .highlight {
+    color: mediumblue;
+  }
+
+   [dialog] .dialog div.dialog-wrap {
+    max-height: 176px;
+    overflow-x: scroll;
+  }
+}
