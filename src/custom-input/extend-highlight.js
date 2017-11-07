@@ -15,8 +15,8 @@ jQuery.extend({
         return 1; // skip added node in parent
       }
     } else if ((node.nodeType === 1 && node.childNodes) && // only element nodes that have children
-              !/(script|style)/i.test(node.tagName) && // ignore script and style nodes
-              !(node.tagName === nodeName.toUpperCase() && node.className === className)) { // skip if already highlighted
+      !/(script|style)/i.test(node.tagName) && // ignore script and style nodes
+      !(node.tagName === nodeName.toUpperCase() && node.className === className)) { // skip if already highlighted
       for (var i = 0; i < node.childNodes.length; i++) {
         i += jQuery.highlight(node.childNodes[i], re, nodeName, className);
       }

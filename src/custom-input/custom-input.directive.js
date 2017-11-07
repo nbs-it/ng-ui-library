@@ -1,34 +1,14 @@
-'use strict';
+import angular from 'angular';
+import template from './custom-input.html';
+import './custom-input.scss';
+import sanitize from 'angular-sanitize';
+import jQuery from './extend-highlight';
+import inputDate from '../input-date/input-date.directive';
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-});
-
-var _angular = require('angular');
-
-var _angular2 = _interopRequireDefault(_angular);
-
-var _customInput = require('./custom-input.html');
-
-var _customInput2 = _interopRequireDefault(_customInput);
-
-require('./custom-input.scss');
-
-var _angularSanitize = require('angular-sanitize');
-
-var _angularSanitize2 = _interopRequireDefault(_angularSanitize);
-
-var _extendHighlight = require('./extend-highlight');
-
-var _extendHighlight2 = _interopRequireDefault(_extendHighlight);
-
-var _inputDate = require('../input-date/input-date.directive');
-
-var _inputDate2 = _interopRequireDefault(_inputDate);
-
-function _interopRequireDefault (obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var customInputModule = _angular2.default.module('customInput', [_angularSanitize2.default, _inputDate2.default]).directive('customInput', customInputDirective).directive('compileTemplate', compileTemplate).name;
+let customInputModule = angular.module('customInput', [sanitize, inputDate])
+  .directive('customInput', customInputDirective)
+  .directive('compileTemplate', compileTemplate)
+  .name;
 
 function customInputDirective ($interpolate, $window, $compile) {
   return {
@@ -53,7 +33,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       autoCompleteRow: '<?',
       propItemSelected: '<?'
     },
-    template: _customInput2.default,
+    template,
     controllerAs: 'vm',
     bindToController: true,
     controller: ['$transclude', '$window', '$timeout', '$scope', '$interpolate', function ($transclude, $window, $timeout, $scope, $interpolate) {
@@ -61,8 +41,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.$scope = $scope;
       vm.$transclude = $transclude;
       vm.dialogOpens = false;
-      $window.jQuery = _extendHighlight2.default;
-      vm.jQuery = $window.jQuery;
+      $window.jQuery = vm.jQuery = jQuery;
       vm.$timeout = $timeout;
       vm.queries = 0;
       $scope.$watch('vm.dialogOpens', function (newV, oldV) {
@@ -83,8 +62,7 @@ function customInputDirective ($interpolate, $window, $compile) {
 
         if (vm.type === 'autoComplete') {
           $scope.$watch('vm.model', function (newValue, old) {
-            if (vm.autoCompleteNoQuery === true &&
-            (_angular.isFunction(vm.arrayItems) || !vm.model || vm.model === '')) {
+            if (vm.autoCompleteNoQuery === true && (angular.isFunction(vm.arrayItems) || !vm.model || vm.model === '')) {
               vm.autoCompleteNoQuery = false;
               // vm.indexArrow = 0;
               return;
@@ -120,7 +98,7 @@ function customInputDirective ($interpolate, $window, $compile) {
               });
             };
 
-            if (_angular.isFunction(vm.arrayItems)) {
+            if (angular.isFunction(vm.arrayItems)) {
               vm.queries += 1;
               if (vm.existQuery) {
                 vm.newQuery = true;
@@ -128,16 +106,16 @@ function customInputDirective ($interpolate, $window, $compile) {
               vm.existQuery = true;
               $timeout(function () {
                 vm.queries -= 1;
-                if (vm.queries > 0 || !_angular.isFunction(vm.arrayItems)) {
+                if (vm.queries > 0 || !angular.isFunction(vm.arrayItems)) {
                   return;
                 }
                 holdFunction = vm.arrayItems;
                 vm.existQuery = false;
-                let arrayItemsPromise = vm.arrayItems();
+                var arrayItemsPromise = vm.arrayItems();
                 if (!arrayItemsPromise.then) {
                   return;
                 }
-                arrayItemsPromise.then((res) => {
+                arrayItemsPromise.then(function (res) {
                   configList(res);
                 }).then(function () {
                   if (vm.autoCompleteRow) {
@@ -189,7 +167,7 @@ function customInputDirective ($interpolate, $window, $compile) {
         if (vm.itemsFiltered && vm.itemsFiltered[0]) {
           vm.itemsFiltered.forEach(function (item, index) {
             html += '<div\n              class="row-autocomplete"\n              ng-class="{\'selected-arrow\': vm.indexArrow == ' + index + '}"\n              ng-click="vm.indexArrow = ' + index + '; vm.selectObject()">';
-            var rowHtml = _angular.copy(vm.autoCompleteRow);
+            var rowHtml = angular.copy(vm.autoCompleteRow);
             rowHtml = getHtmlBinding(item, rowHtml);
             html += rowHtml + '</div>';
           });
@@ -251,13 +229,13 @@ function compileTemplate ($compile, $parse, $timeout) {
   return {
     restrict: 'A',
     replace: true,
-    link: function link (scope, element, attr) {
+    link: function (scope, element, attr) {
       scope.$watch(function () {
         return attr.directive;
       }, function (val) {
         if (val) {
           element.empty();
-          var directive = $compile(_angular2.default.element(val))(scope);
+          var directive = $compile(angular.element(val))(scope);
           element.append(directive);
         }
       });
@@ -267,4 +245,4 @@ function compileTemplate ($compile, $parse, $timeout) {
 
 compileTemplate.$inject = ['$compile', '$parse', '$timeout'];
 
-exports.default = customInputModule;
+export default customInputModule;
