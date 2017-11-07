@@ -51,11 +51,11 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.$timeout = $timeout;
       vm.queries = 0;
 
-      $window.setErrorMessage = function (formField, filedName, message) {
+      $window.setErrorMessage = function (formField, errorName, errorMessage) {
         if (!angular.isObject(formField.$errorMsg)) {
           formField.$errorMsg = {};
         }
-        formField.$errorMsg[filedName] = message;
+        formField.$errorMsg[errorName] = errorMessage;
       };
 
       vm.getCurrentDate = function () {
