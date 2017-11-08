@@ -152,3 +152,28 @@
   top: 0;
   width: 25px;
 }
+
+/* ng-animate */
+[dialog] .dialog {
+  transition: opacity .18s;
+  opacity: 1;
+  // ng-if
+  &.ng-enter,
+  &.ng-leave.ng-leave-active {
+    opacity:0;
+  }
+
+  &.ng-leave,
+  &.ng-enter.ng-enter-active {
+    opacity:1;
+  }
+
+  // ng-hide
+  &.is-hide {
+    opacity: 0;
+    transition: opacity .18s 0s, visibility 0s .18s;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+
