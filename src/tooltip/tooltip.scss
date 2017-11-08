@@ -13,6 +13,9 @@
     margin-right: -75px;
     border-radius: 4px;
     width: 150px;
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
     box-sizing: border-box;
     font-family: 'Open Sans Hebrew', arial, sans-serif;
     font-size: 14px;
