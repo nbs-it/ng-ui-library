@@ -3,12 +3,12 @@ import controller from './demo.controller';
 import './demo.scss';
 
 let demoComponent = {
-  bindings: { },
+  bindings: {},
   template,
   controller,
   controllerAs: 'vm'
 };
 
-controller.$inject = ['$scope', '$window', '$timeout', '$q'];
+controller.$inject = ['$scope', '$q'];
 
 export default demoComponent;

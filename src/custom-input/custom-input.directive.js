@@ -33,6 +33,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       icon: '@',
       iconClass: '@',
       formField: '<?',
+      errorMessage: '<?',
       description: '@',
       arrayItems: '<?',
       filter: '<?',
@@ -50,19 +51,6 @@ function customInputDirective ($interpolate, $window, $compile) {
       $window.jQuery = vm.jQuery = jQuery;
       vm.$timeout = $timeout;
       vm.queries = 0;
-
-      $window.setErrorMessage = function (formField, errorName, errorMessage) {
-        if (!angular.isObject(formField.$errorMsg)) {
-          formField.$errorMsg = {};
-        }
-        if (angular.isObject(errorName)) {
-          Object.keys(errorName).forEach(function (key) {
-            formField.$errorMsg[key] = errorName[key];
-          });
-        } else {
-          formField.$errorMsg[errorName] = errorMessage;
-        }
-      };
 
       vm.getCurrentDate = function () {
         vm.model = new Date();

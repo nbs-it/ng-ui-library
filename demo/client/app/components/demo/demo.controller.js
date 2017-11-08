@@ -1,12 +1,8 @@
 let vm;
-let $window;
-let $timeout;
 
 class DemoController {
-  constructor ($scope, _$window, _$timeout, $q) {
+  constructor ($scope, $q) {
     vm = this;
-    $window = _$window;
-    $timeout = _$timeout;
     vm.$q = $q;
     vm.checkboxChecked = true;
     vm.numberSpinnerValue = 1;
@@ -20,12 +16,8 @@ class DemoController {
     vm.customInputModel = 'some value';
     vm.autoCompleteModel = 'משה';
     vm.autoCompleteHtml = '<span class="test" >{{item}}</span>';
-  }
 
-  $onInit () {
-    $timeout(function () {
-      $window.setErrorMessage(vm.demoForm.customInputField, 'required', 'שדה לא יכול להיות ריק');
-    });
+    vm.customInputErrorMessage = { required: 'שדה לא יכול להיות ריק' };
   }
 
   autocompleteTest () {
