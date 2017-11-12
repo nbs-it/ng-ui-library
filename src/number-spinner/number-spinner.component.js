@@ -10,7 +10,7 @@ let numberSpinnerComponent = {
     currencyIcon: '@',
     compact: '<',
     totalValue: '<',
-    disabled: '='
+    disabled: '=?'
   },
   template,
   controller,
