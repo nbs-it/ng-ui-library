@@ -57,10 +57,16 @@
 
   <section>
     <h1>modalBox</h1>
-    <input type="checkbox" name="modalBoxIsShown" id="modalBoxIsShown" ng-model="vm.modalBoxIsShown">
-    <label for="modalBoxIsShown">Modal-box is open</label>
+    <div>
+      <input type="checkbox" name="modalBoxIsShown" id="modalBoxIsShown" ng-model="vm.modalBoxIsShown">
+      <label for="modalBoxIsShown">Modal-box is open</label>
+    </div>
+    <div>
+      <input type="checkbox" name="modalBoxDarkScreen" id="modalBoxDarkScreen" ng-model="vm.modalBoxDarkScreen">
+      <label for="modalBoxDarkScreen">dark screen</label>
+    </div>
     <br><br>
-    <span modal-box is-open="vm.modalBoxIsShown" width="{{vm.modalBoxWidth}}">
+    <span modal-box is-open="vm.modalBoxIsShown" dark-screen="vm.modalBoxDarkScreen" width="{{vm.modalBoxWidth}}">
       <button>Open modal-box</button>
       <modal-box-header>כותרת</modal-box-header>
       <modal-box-content>

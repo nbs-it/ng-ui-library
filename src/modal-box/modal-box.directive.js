@@ -21,6 +21,7 @@ function modalBoxDirective ($window, $timeout) {
       closeOption: '@',
       close: '=?',
       isOpen: '=?',
+      darkScreen: '<?',
       width: '@?',
       height: '@?'
     },
