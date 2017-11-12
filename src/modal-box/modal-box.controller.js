@@ -1,27 +1,24 @@
-let vm;
-
 class ModalBoxController {
   constructor ($transclude) {
-    vm = this;
-    vm.$transclude = $transclude;
+    this.$transclude = $transclude;
   }
 
   $onInit () {
-    let width = vm.width;
+    let width = this.width;
     if (!width) {
       width = '';
     } else if (!isNaN(width)) {
       width += 'px';
     }
-    vm.modalBoxWidth = width;
+    this.modalBoxWidth = width;
 
-    let height = vm.height;
+    let height = this.height;
     if (!height) {
       height = '';
     } else if (!isNaN(height)) {
       height += 'px';
     }
-    vm.modalBoxHeight = height;
+    this.modalBoxHeight = height;
   }
 }
 

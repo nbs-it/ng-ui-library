@@ -28,7 +28,6 @@ function datepicker ($window, $timeout, $location) {
         vm.Hebcal = Hebcal;
         vm.Number = $window.Number;
 
-
         vm.$onInit = function () {
           vm.changeMode();
         };
@@ -81,7 +80,7 @@ function datepicker ($window, $timeout, $location) {
           vm.selectDate(vm.moment(vm.selectedDate).subtract(number, unit));
         };
 
-            /* day preview translation */
+        /* day preview translation */
         vm.dayTranslationToHebrew = function (day) {
           var translationDay = vm.moment(vm.selectedDate).set({ date: day });
           var translation = new vm.Hebcal.HDate(new Date(translationDay)).toString('h');
@@ -105,7 +104,7 @@ function datepicker ($window, $timeout, $location) {
           return 'יום ' + translation;
         };
 
-            /* hebrew date functions */
+        /* hebrew date functions */
         vm.changeHebrewDate = function (unit, value) {
           var hDate;
           if (unit === 'day') {
@@ -154,20 +153,20 @@ function datepicker ($window, $timeout, $location) {
           vm.selectDate(gregDate);
         };
 
-            /* lists */
+        /* lists */
         vm.daysList = [
-              ['01', '02', '03', '04', '05', '06', '07'],
-              ['08', '09', '10', '11', '12', '13', '14'],
-              ['15', '16', '17', '18', '19', '20', '21'],
-              ['22', '23', '24', '25', '26', '27', '28'],
-              ['29', '30', '31']
+          ['01', '02', '03', '04', '05', '06', '07'],
+          ['08', '09', '10', '11', '12', '13', '14'],
+          ['15', '16', '17', '18', '19', '20', '21'],
+          ['22', '23', '24', '25', '26', '27', '28'],
+          ['29', '30', '31']
         ];
         vm.hebrewDaysList = [
-              { 1: 'א', 2: 'ב', 3: 'ג', 4: 'ד', 5: 'ה', 6: 'ו', 7: 'ז' },
-              { 8: 'ח', 9: 'ט', 10: 'י', 11: 'יא', 12: 'יב', 13: 'יג', 14: 'יד' },
-              { 15: 'טו', 16: 'טז', 17: 'יז', 18: 'יח', 19: 'יט', 20: 'כ', 21: 'כא' },
-              { 22: 'כב', 23: 'כג', 24: 'כד', 25: 'כה', 26: 'כו', 27: 'כז', 28: 'כח' },
-              { 29: 'כט', 30: 'ל' }
+          { 1: 'א', 2: 'ב', 3: 'ג', 4: 'ד', 5: 'ה', 6: 'ו', 7: 'ז' },
+          { 8: 'ח', 9: 'ט', 10: 'י', 11: 'יא', 12: 'יב', 13: 'יג', 14: 'יד' },
+          { 15: 'טו', 16: 'טז', 17: 'יז', 18: 'יח', 19: 'יט', 20: 'כ', 21: 'כא' },
+          { 22: 'כב', 23: 'כג', 24: 'כד', 25: 'כה', 26: 'כו', 27: 'כז', 28: 'כח' },
+          { 29: 'כט', 30: 'ל' }
         ];
 
         vm.yearList = function () {
@@ -305,7 +304,7 @@ function datepicker ($window, $timeout, $location) {
       vm.show = function () {
         vm.isShown = true;
         $timeout(function () {
-          scope.$apply(function () {});
+          scope.$apply(function () { });
           angular.element(element[0].getElementsByClassName('modal-box')).on('click', function (event) {
             if (event.target === event.currentTarget) { // click outside of the modal.
               vm.hide();
@@ -325,7 +324,7 @@ function datepicker ($window, $timeout, $location) {
           vm.open = false;
         }
         $timeout(function () {
-          scope.$apply(function () {});
+          scope.$apply(function () { });
         });
         angular.element($window).off('keydown keypress');
         angular.element(element[0].getElementsByClassName('modal-box')).off('click');

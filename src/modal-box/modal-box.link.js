@@ -1,6 +1,6 @@
 export default function ($window, $timeout) {
   return function (scope, element, attr, ctrl) {
-    var vm = ctrl;
+    let vm = ctrl;
 
     vm.close = function () {
       vm.hide();
