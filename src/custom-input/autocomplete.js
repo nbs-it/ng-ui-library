@@ -74,9 +74,6 @@ let autocompleteCtrl = (vm, $scope, $window, $timeout) => {
             }
             configList(res);
           }).then(function (res) {
-            if (!res) {
-              return null;
-            }
             if (vm.autoCompleteRow) {
               vm.rowsHtmlData = vm.getRowsHtmlData();
             }
