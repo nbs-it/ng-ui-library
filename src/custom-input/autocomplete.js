@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 let autocompleteCtrl = (vm, $scope, $window, $timeout) => {
   $scope.$watch('vm.dialogOpens', function (newV, oldV) {
     if (newV === false) {
@@ -67,6 +69,9 @@ let autocompleteCtrl = (vm, $scope, $window, $timeout) => {
             return;
           }
           arrayItemsPromise.then(function (res) {
+            if (!res) {
+              return Promise.reject(new Error());
+            }
             configList(res);
           }).then(function () {
             if (vm.autoCompleteRow) {

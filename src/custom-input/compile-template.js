@@ -1,3 +1,5 @@
+import angular from 'angular';
+
 function compileTemplate ($compile, $parse, $timeout) {
   return {
     restrict: 'A',
