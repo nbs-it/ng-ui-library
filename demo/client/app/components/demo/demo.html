@@ -2,7 +2,7 @@
   <section>
     <h1>Checkbox</h1>
     <checkbox model="vm.checkboxChecked" bind-id="checkbox" label="מסומן"></checkbox>
-    <textarea disabled><checkbox model="vm.checkboxChecked" bind-id="checkbox" label="מסומן"></checkbox></textarea>
+    <textarea disabled class="code"><checkbox model="vm.checkboxChecked" bind-id="checkbox" label="מסומן"></checkbox></textarea>
   </section>
 
   <section>
@@ -15,8 +15,8 @@
     <number-spinner model="vm.numberSpinnerValue" total-value="50" label="ערכים" disabled="vm.numberSpinnerDisabled"></number-spinner>
     <h3>compact mode</h3>
     <number-spinner model="vm.numberSpinnerValue" total-value="50" currency-icon="$" label="ערכים" compact="true" disabled="vm.numberSpinnerDisabled"></number-spinner>
-    <textarea disabled><number-spinner model="vm.numberSpinnerValue" total-value="50" label="ערכים" disabled="vm.numberSpinnerDisabled"></number-spinner></textarea>
-    <textarea disabled><number-spinner model="vm.numberSpinnerValue" total-value="50" currency-icon="$" label="ערכים" compact="true" disabled="vm.numberSpinnerDisabled"></number-spinner></textarea>
+    <textarea disabled class="code"><number-spinner model="vm.numberSpinnerValue" total-value="50" label="ערכים" disabled="vm.numberSpinnerDisabled"></number-spinner></textarea>
+    <textarea disabled class="code"><number-spinner model="vm.numberSpinnerValue" total-value="50" currency-icon="$" label="ערכים" compact="true" disabled="vm.numberSpinnerDisabled"></number-spinner></textarea>
   </section>
 
   <section>
@@ -37,20 +37,20 @@
     <button dialog class="top">אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button>
     <button dialog class="no-arrow right">ימין ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button>
 
-    <textarea disabled rows="4"><span dialog class="left" is-open="vm.openDialog" close-by-click-outside="false">
+    <textarea disabled class="code" rows="4"><span dialog class="left" is-open="vm.openDialog" close-by-click-outside="false">
       <button>שמאל למטה</button>
       <dialog-content>תוכן ההודעה</dialog-content>
     </span></textarea>
-    <textarea disabled rows="4">
+    <textarea disabled class="code" rows="4">
     <button dialog class="left top" close-by-click="false" close="vm.closeDialog">
       שמאל למעלה
       <dialog-content>תוכן ההודעה <a style="-webkit-appearance:button;-moz-appearance:button;-ms-appearance:button;" ng-click="vm.closeDialog()">X</a></dialog-content>
     </button></textarea>
-    <textarea disabled rows="1">
+    <textarea disabled class="code" rows="1">
     <button dialog class="">ברירת מחדל<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
-    <textarea disabled rows="1">
+    <textarea disabled class="code" rows="1">
     <button dialog class="top" >אמצע למעלה<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
-    <textarea disabled rows="1">
+    <textarea disabled class="code" rows="1">
     <button dialog class="no-arrow right" >ימין ללא חץ<dialog-content>תוכן ההודעה</dialog-content></button>
     </textarea>
   </section>
@@ -74,7 +74,7 @@
         <button ng-click="$root.$broadcast('modalBoxClose')">Emit סגירת מודל</button>
       </modal-box-content>
     </span>
-    <textarea disabled rows="9"><span modal-box>
+    <textarea disabled class="code" rows="9"><span modal-box>
     <button>Open modal-box</button>
     <modal-box-header>כותרת</modal-box-header>
     <modal-box-content>
@@ -90,7 +90,7 @@
     <br>
     <br>
     <input ng-model="vm.inputCurrencyModel" max="500" input-currency />
-    <textarea disabled rows="1"><input ng-model="vm.inputCurrencyModel" input-currency /></textarea>
+    <textarea disabled class="code" rows="1"><input ng-model="vm.inputCurrencyModel" input-currency /></textarea>
   </section>
 
   <section>
@@ -104,8 +104,11 @@
     <custom-input type="text" bind-id="custom-input-id" label="תווית" icon="$" icon-class="" description="טקסט עזר לתיאור השדה">
       <input type="" style="color:blue;background:aqua;" ng-model="vm.customInputModel" />
     </custom-input>
-    <textarea disabled rows="2"><custom-input type="text" bind-id="custom-input-id" bind-name="" label="תווית" model="vm.customInputModel" icon="₪" icon-class="" description="טקסט עזר לתיאור השדה" placeholder="placeholder"></custom-input></textarea>
-    <textarea disabled rows="4"><custom-input type="text" bind-id="custom-input-id" label="תווית" icon="$" icon-class="" description="טקסט עזר לתיאור השדה">
+    <br>
+    <custom-input type="textarea" required="true" bind-id="custom-input-id" bind-name="customInputField" form-field="vm.demoForm.customInputField" error-message="vm.customInputErrorMessage" label="תווית" model="vm.customInputModel" description="טקסט עזר לתיאור השדה" placeholder="placeholder" tab-index="2"></custom-input>
+    <br>
+    <textarea disabled class="code" rows="2"><custom-input type="text" bind-id="custom-input-id" bind-name="" label="תווית" model="vm.customInputModel" icon="₪" icon-class="" description="טקסט עזר לתיאור השדה" placeholder="placeholder"></custom-input></textarea>
+    <textarea disabled class="code" rows="4"><custom-input type="text" bind-id="custom-input-id" label="תווית" icon="$" icon-class="" description="טקסט עזר לתיאור השדה">
     <input type="" style="color:blue;background:aqua;" ng-model="vm.customInputModel" />
   </custom-input></textarea>
   </section>
@@ -130,7 +133,7 @@
     </custom-input>
     <!--     <!-- auto-complete-row="vm.autoCompleteHtml" -->
 
-    <textarea disabled rows="4">
+    <textarea disabled class="code" rows="4">
       <custom-input
         bind-id="custom-input-id"
         label="אוטו קומפליט"
@@ -161,7 +164,7 @@
         <input
         ng-model="vm.datepickerModel" input-date>
       </custom-input>
-      <textarea disabled rows="4">
+      <textarea disabled class="code" rows="4">
         <custom-input
           bind-id="datepicker-id"
           label="דייט פיקר"
@@ -181,7 +184,7 @@
     <div style="width:180px;margin-right:150px;margin-bottom:50px;">
       <exp-input month-model="vm.expInput.month" year-model="vm.expInput.year" datepicker="false"></exp-input>
     </div>
-    <textarea disabled rows="2"><exp-input month-model="vm.expInput.month" year-model="vm.expInput.year"></exp-input></textarea>
-    <textarea disabled rows="2"> <exp-input month-model="vm.expInput.month" year-model="vm.expInput.year" datepicker="false"></exp-input></textarea>
+    <textarea disabled class="code" rows="2"><exp-input month-model="vm.expInput.month" year-model="vm.expInput.year"></exp-input></textarea>
+    <textarea disabled class="code" rows="2"> <exp-input month-model="vm.expInput.month" year-model="vm.expInput.year" datepicker="false"></exp-input></textarea>
   </section>
 </form>

@@ -7,14 +7,13 @@
 
 .custom-input {
   position: relative;
-  display: inline-block;
+  display: block;
 
   .input-container {
     position: relative;
-    display: inline-block;
   }
 
-  input {
+  input, textarea {
     display: block;
     border: solid 1px rgb(217, 217, 217);
     border-radius: 5px;
@@ -23,8 +22,11 @@
     outline: none;
     transition: box-shadow .2s;
   }
-  input:focus {
+  input:focus, textarea:focus {
     box-shadow: 1px 0 7px rgba(0, 0, 0, 0.1);
+  }
+  textarea {
+    font-family: Arial, sans-serif;
   }
   label {
     font-size: 12px;
