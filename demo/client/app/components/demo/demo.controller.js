@@ -1,7 +1,7 @@
 let vm;
 
 class DemoController {
-  constructor ($scope, $q) {
+  constructor($scope, $q) {
     vm = this;
     vm.$q = $q;
     vm.checkboxChecked = true;
