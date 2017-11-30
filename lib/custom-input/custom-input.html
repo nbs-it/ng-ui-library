@@ -1,66 +1,82 @@
 <div class="custom-input">
-  <label ng-if="vm.label" for="{{vm.bindId}}">{{vm.label}}</label>
-  <div class="input-container" ng-click="vm.dialogOpen=true" tabindex="{{vm.tabIndex || -1}}">
+  <label ng-if="vm.label"
+    for="{{vm.bindId}}">{{vm.label}}</label>
+  <div class="input-container"
+    ng-click="vm.dialogOpen=true"
+    tabindex="{{vm.tabIndex || -1}}">
     <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type != 'datepicker' && vm.type != 'textarea'">
-      <input
-        type="{{vm.type}}"
+      <input type="{{vm.type}}"
         name="{{vm.bindName || vm.bindId}}"
         id="{{vm.bindId}}"
         ng-model="vm.model"
         required="required"
-        placeholder="{{vm.placeholder}}"
-      />
+        placeholder="{{vm.placeholder}}" />
     </div>
     <div ng-if="vm.type == 'textarea'">
-      <textarea
-        name="{{vm.bindName || vm.bindId}}"
+      <textarea name="{{vm.bindName || vm.bindId}}"
         id="{{vm.bindId}}"
         ng-model="vm.model"
-        required="required"
-        >{{vm.placeholder}}</textarea>
+        required="required">{{vm.placeholder}}</textarea>
     </div>
     <div ng-if="vm.type == 'datepicker'">
-      <datepicker ng-init="vm.getCurrentDate()" date="vm.model">
+      <datepicker ng-init="vm.getCurrentDate()"
+        date="vm.model">
         <input ng-if="!vm.$transclude.isSlotFilled('input') "
           class='datepicker-input'
           ng-click="$event.stopPropagation();"
-          ng-model="vm.model" input-date
-        />
-        <i class="fa fa-calendar-o fa-fw" ></i>
+          ng-model="vm.model"
+          input-date />
+        <i class="fa fa-calendar-o fa-fw"></i>
       </datepicker>
     </div>
-    <span ng-transclude="input" ng-if="vm.$transclude.isSlotFilled('input')"></span>
-    <span class="icon" ng-if="(vm.icon || vm.iconClass) && !vm.type == 'textarea'" ng-class="vm.iconClass"><span ng-bind="vm.icon"></span></span>
+    <span ng-transclude="input"
+      ng-if="vm.$transclude.isSlotFilled('input')"></span>
+    <span class="icon"
+      ng-if="(vm.icon || vm.iconClass) && !vm.type == 'textarea'"
+      ng-class="vm.iconClass">
+      <span ng-bind="vm.icon"></span>
+    </span>
 
-    <div ng-if="vm.type == 'autoComplete'" dialog class="no-arrow left autocomplete" close="vm.modalClosed" is-open="vm.dialogOpens">
+    <div ng-if="vm.type == 'autoComplete'"
+      dialog
+      class="no-arrow left autocomplete"
+      close="vm.modalClosed"
+      is-open="vm.dialogOpens">
       <dialog-content>
-        <div ng-if="vm.autoCompleteRow" directive="{{vm.rowsHtmlData}}" compile-template>
+        <div ng-if="vm.autoCompleteRow"
+          directive="{{vm.rowsHtmlData}}"
+          compile-template>
 
         </div>
-        <div ng-if="!vm.autoCompleteRow" ng-repeat="item in vm.itemsFiltered track by $index"
+        <div ng-if="!vm.autoCompleteRow"
+          ng-repeat="item in vm.itemsFiltered track by $index"
           class="row-autocomplete"
           ng-class="{' selected-arrow': vm.indexArrow == $index}"
           ng-click="vm.selectObject(item)">
 
           <!-- <span ng-if="vm.autoCompleteRow" directive='{{vm.autoCompleteRow}}' compile-template >
           </span> -->
-          <span directive='<span>{{item}}</span>' compile-template >
+          <span directive='<span>{{item}}</span>'
+            compile-template>
 
           </span>
         </div>
-        <div ng-show="!vm.itemsFiltered.length" class="row-autocomplete empty">אין תוצאות</div>
+        <div ng-show="!vm.itemsFiltered.length"
+          class="row-autocomplete empty">אין תוצאות</div>
       </dialog-content>
     </div>
   </div>
-  <span ng-if="vm.description" class="description">{{vm.description}}</span>
+  <span ng-if="vm.description"
+    class="description">{{vm.description}}</span>
 
-  <span
-    ng-show="vm.formField.$dirty && vm.formField.$invalid"
+  <span ng-show="vm.formField.$dirty && vm.formField.$invalid"
     class="validation"
     ng-class="{{true ? 'valid' : 'invalid'}}">
     <a class="tooltip tooltip-light tooltip-right {{ vm.formField.$error.pending ? 'fa fa-fw fa-spin ion-load-c pending' : 'ion-ios-close-outline'}}">
-      <span ng-repeat="(error, value) in vm.formField.$error" ng-message="error">
-        {{vm.errorMessage[error] || vm.defaultErrorMsg[error] || 'שגיאה'}}<br>
+      <span ng-repeat="(error, value) in vm.formField.$error"
+        ng-message="error">
+        {{vm.errorMessage[error] || vm.defaultErrorMsg[error] || 'שגיאה'}}
+        <br>
       </span>
     </a>
   </span>

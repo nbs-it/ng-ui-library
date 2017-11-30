@@ -13,25 +13,30 @@
     position: relative;
   }
 
-  input, textarea {
+  input,
+  textarea {
     display: block;
     border: solid 1px rgb(217, 217, 217);
     border-radius: 5px;
     padding: 8px 15px;
-    color: #000000;
+    color: #000;
     outline: none;
-    transition: box-shadow .2s;
+    transition: box-shadow 0.2s;
   }
-  input:focus, textarea:focus {
-    box-shadow: 1px 0 7px rgba(0, 0, 0, 0.1);
-  }
+
   textarea {
     font-family: Arial, sans-serif;
   }
+
+  input:focus,
+  textarea:focus {
+    box-shadow: 1px 0 7px rgba(0, 0, 0, 0.1);
+  }
+
   label {
     font-size: 12px;
     display: block;
-    margin-right:5px;
+    margin-right: 5px;
     line-height: 25px;
     color: rgb(127, 127, 127);
     -webkit-user-select: none;
@@ -40,6 +45,7 @@
     user-select: none;
     cursor: pointer;
   }
+
   .icon {
     position: absolute;
     left: 0;
@@ -52,20 +58,27 @@
     font-size: 17px;
     line-height: 32px;
   }
+
   .description {
     color: rgb(191, 191, 191);
     font-weight: 400;
     font-size: 10px;
     margin-right: 5px;
   }
+
   .display {
     display: block;
   }
+
   .validation {
     position: absolute;
     left: 10px;
     top: 0;
     line-height: 25px;
+
+    .tooltip.ion-ios-close-outline::before {
+      color: #ff7378;
+    }
 
     .tooltip.pending,
     .tooltip:hover.pending {
