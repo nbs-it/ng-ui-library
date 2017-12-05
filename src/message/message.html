@@ -20,12 +20,13 @@
     </div>
     <div ng-if="messageService.properties.buttons"
       class="message-buttons">
-      <a ng-if="messageService.properties.buttonCancel"
+      <a ng-if="messageService.properties.buttons === true"
         ng-click="messageService.hide()"
-        class="message-button message-cancel">ביטול</a>
-      <a ng-if="messageService.properties.buttonConfirm"
-        ng-click="messageService.hide();messageService.properties.buttonConfirmFunction()"
         class="message-button message-confirm">אישור</a>
+      <a ng-if="vm.isArray(messageService.properties.buttons)"
+        ng-repeat="button in messageService.properties.buttons"
+        ng-click="button.action()"
+        class="message-button">{{button.label}}</a>
     </div>
   </div>
 </div>

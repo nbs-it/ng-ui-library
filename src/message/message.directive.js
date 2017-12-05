@@ -14,6 +14,7 @@ function messageDirective ($sce, $compile, messageService) {
     template,
     controller: function () {
       var vm = this;
+      vm.isArray = angular.isArray;
       vm.trustAsHtml = function (string) {
         return $sce.trustAsHtml(string);
       };

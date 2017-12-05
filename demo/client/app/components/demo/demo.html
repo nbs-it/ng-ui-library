@@ -295,16 +295,12 @@
   </section>
 
   <section>
-    <label>messageIcon:</label>
-    <input ng-model="vm.messageProperties.icon" />
-    <br>
     <label>close:</label>
     <input type="checkbox"
       ng-model="vm.messageProperties.close" />
     <br>
-    <label>buttons:</label>
-    <input type="checkbox"
-      ng-model="vm.messageProperties.buttons" />
+    <label>icon:</label>
+    <input ng-model="vm.messageProperties.icon" />
     <br>
     <label>text:</label>
     <input ng-model="vm.messageProperties.text" />
@@ -316,6 +312,14 @@
       ng-model="vm.messageProperties.customHtml"
       style="direction: ltr;width:700px;"></textarea>
     <br>
+    <label>buttons:</label>
+    <select ng-change="vm.changeMessageButtons()"
+      ng-model="vm.selectedMessageButton">
+      <option value="true">true</option>
+      <option value="false">false</option>
+      <option value="array">array</option>
+    </select>
+    <br>
     <br>
 
     <button ng-click="vm.showMessage()">Show Message</button>
@@ -325,6 +329,6 @@
     </div>
     <textarea disabled
       class="code"
-      rows="2"><message></message></textarea>
+      rows="2">messageService.show(options);</textarea>
   </section>
 </form>
