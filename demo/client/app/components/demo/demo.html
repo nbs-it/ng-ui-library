@@ -293,4 +293,38 @@
       class="code"
       rows="2"> <exp-input month-model="vm.expInput.month" year-model="vm.expInput.year" datepicker="false"></exp-input></textarea>
   </section>
+
+  <section>
+    <label>messageIcon:</label>
+    <input ng-model="vm.messageProperties.icon" />
+    <br>
+    <label>close:</label>
+    <input type="checkbox"
+      ng-model="vm.messageProperties.close" />
+    <br>
+    <label>buttons:</label>
+    <input type="checkbox"
+      ng-model="vm.messageProperties.buttons" />
+    <br>
+    <label>text:</label>
+    <input ng-model="vm.messageProperties.text" />
+    <br>
+    <label>customHtml:</label>
+    <br>
+    <textarea rows="8"
+      col
+      ng-model="vm.messageProperties.customHtml"
+      style="direction: ltr;width:700px;"></textarea>
+    <br>
+    <br>
+
+    <button ng-click="vm.showMessage()">Show Message</button>
+
+    <h1>message</h1>
+    <div style="width:180px;margin-right:150px;margin-bottom:50px;">
+    </div>
+    <textarea disabled
+      class="code"
+      rows="2"><message></message></textarea>
+  </section>
 </form>

@@ -1,0 +1,31 @@
+<div class="message"
+  ng-if="messageService.isShown">
+  {{messageService.properties.close}}
+  <a ng-if="messageService.properties.close"
+    ng-click="messageService.hide()"
+    class="message-close">
+    <i class="ion ion-ios-close-empty"></i>
+  </a>
+  <div class="message-container">
+    <div class="message-content"
+      ng-class="messageService.properties.align">
+      <div ng-if="messageService.properties.icon"
+        class="message-icon">
+        <i class="{{messageService.properties.icon}}"
+          aria-hidden="true"></i>
+      </div>
+      <div ng-bind="messageService.properties.text">שגיאה</div>
+      <div ng-bind-html="vm.trustAsHtml(messageService.properties.customHtml)"
+        class="message-custom-html"></div>
+    </div>
+    <div ng-if="messageService.properties.buttons"
+      class="message-buttons">
+      <a ng-if="messageService.properties.buttonCancel"
+        ng-click="messageService.hide()"
+        class="message-button message-cancel">ביטול</a>
+      <a ng-if="messageService.properties.buttonConfirm"
+        ng-click="messageService.hide();messageService.properties.buttonConfirmFunction()"
+        class="message-button message-confirm">אישור</a>
+    </div>
+  </div>
+</div>
