@@ -1,30 +1,37 @@
 
 class ExpInputController {
   constructor ($scope, $element) {
-    this.$scope = $scope;
-    this.$element = $element;
+    let vm = this;
+    vm.$scope = $scope;
+    vm.$element = $element;
+
+    vm.defaultErrorMsg = {
+      required: 'שדה חובה',
+      pattern: 'תוקף לא תקין'
+    };
   }
 
   $onInit () {
-    if (this.datepicker !== false) {
-      this.datepicker = true;
+    let vm = this;
+    if (vm.datepicker !== false) {
+      vm.datepicker = true;
 
-      this.datePickerOnChoose = function () {
-        this.creditCardForm.expMonth.$setDirty();
+      vm.datePickerOnChoose = function () {
+        vm.creditCardForm.expMonth.$setDirty();
       };
     }
-    let expMonthInput = this.$element[0].querySelector('.expMonth-input');
-    let expYearInput = this.$element[0].querySelector('.expYear-input');
-    this.expMonthChange = function () { // skip to next field
+    let expMonthInput = vm.$element[0].querySelector('.expMonth-input');
+    let expYearInput = vm.$element[0].querySelector('.expYear-input');
+    vm.expMonthChange = function () { // skip to next field
       if (expMonthInput.value.length > 1) {
         expYearInput.focus();
         expYearInput.select();
       }
     };
     angular.element(expMonthInput).on('change', function (e) { // one number in expMonth
-      var val = this.value;
+      var val = vm.value;
       if (val.length === 1) {
-        this.monthModel = '0' + val;
+        vm.monthModel = '0' + val;
       }
     });
   }
