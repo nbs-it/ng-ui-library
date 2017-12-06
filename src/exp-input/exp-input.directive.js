@@ -13,8 +13,6 @@ function expInputDirective () {
       monthModel: '=',
       yearModel: '=',
       required: '@',
-      formField: '<?',
-      errorMessage: '<?',
       datepicker: '<'
     },
     template,
