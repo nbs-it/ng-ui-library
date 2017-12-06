@@ -4,11 +4,6 @@ class ExpInputController {
     let vm = this;
     vm.$scope = $scope;
     vm.$element = $element;
-
-    vm.defaultErrorMsg = {
-      required: 'שדה חובה',
-      pattern: 'תוקף לא תקין'
-    };
   }
 
   $onInit () {
@@ -29,8 +24,8 @@ class ExpInputController {
       }
     };
     angular.element(expMonthInput).on('change', function (e) { // one number in expMonth
-      var val = vm.value;
-      if (val.length === 1) {
+      var val = expMonthInput.value;
+      if (val && val.length === 1) {
         vm.monthModel = '0' + val;
       }
     });

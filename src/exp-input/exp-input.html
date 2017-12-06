@@ -38,15 +38,4 @@
         maxlength="2" />
     </div>
   </div>
-  <span ng-show="vm.formField.$dirty && vm.formField.$invalid"
-    class="validation"
-    ng-class="{{true ? 'valid' : 'invalid'}}">
-    <a class="tooltip tooltip-light tooltip-right {{ vm.formField.$error.pending ? 'fa fa-fw fa-spin ion-load-c pending' : 'ion-ios-close-outline'}}">
-      <span ng-repeat="(error, value) in vm.formField.$error"
-        ng-message="error">
-        {{vm.errorMessage[error] || vm.defaultErrorMsg[error] || 'שגיאה'}}
-        <br>
-      </span>
-    </a>
-  </span>
 </div>

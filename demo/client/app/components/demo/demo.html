@@ -247,7 +247,7 @@
   </section>
 
   <section ng-init="vm.datepickerModel = ''">
-    <h1>customInput autocomplete</h1>
+    <h1>DatePicker</h1>
     ng-model:
     <br> {{vm.datepickerModel}}
     <br>
@@ -295,6 +295,8 @@
   </section>
 
   <section>
+    <h1>message</h1>
+
     <label>close:</label>
     <input type="checkbox"
       ng-model="vm.messageProperties.close" />
@@ -324,9 +326,6 @@
 
     <button ng-click="vm.showMessage()">Show Message</button>
 
-    <h1>message</h1>
-    <div style="width:180px;margin-right:150px;margin-bottom:50px;">
-    </div>
     <textarea disabled
       class="code"
       rows="2">messageService.show(options);</textarea>

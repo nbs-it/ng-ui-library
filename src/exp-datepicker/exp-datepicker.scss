@@ -3,6 +3,13 @@
   font-family: 'Open Sans Hebrew', arial, sans-serif;
 }
 
+.exp-datepicker .fa {
+  color: #bbb;
+  font-size: 15px;
+  cursor: pointer;
+  line-height: 19px;
+}
+
 .exp-datepicker .months {
   display: flex;
   flex-direction: row-reverse;
