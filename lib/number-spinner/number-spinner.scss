@@ -1,12 +1,14 @@
-number-spinner .number-spinner {
-  display: flex;
-  border-radius: 10px;
-  border: solid 1px #f3f3f3;
-  height: 120px;
-  text-align: center;
-  align-items: center;
-  color: #7f7f7f;
-  user-select: none;
+number-spinner {
+  .number-spinner {
+    display: flex;
+    border-radius: 10px;
+    border: solid 1px #f3f3f3;
+    height: 120px;
+    text-align: center;
+    align-items: center;
+    color: #7f7f7f;
+    user-select: none;
+  }
 
   .number-spinner-number {
     display: inline-block;
