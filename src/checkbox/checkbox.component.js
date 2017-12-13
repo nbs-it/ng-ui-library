@@ -6,6 +6,7 @@ let checkboxComponent = {
   bindings: {
     model: '=?',
     bindId: '@',
+    bindChange: '<?',
     label: '@'
   },
   template,
