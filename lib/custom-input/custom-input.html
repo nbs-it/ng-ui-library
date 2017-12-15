@@ -9,14 +9,14 @@
         name="{{vm.bindName || vm.bindId}}"
         id="{{vm.bindId}}"
         ng-model="vm.model"
-        required="required"
+        ng-required="vm.required"
         placeholder="{{vm.placeholder}}" />
     </div>
     <div ng-if="vm.type == 'textarea'">
       <textarea name="{{vm.bindName || vm.bindId}}"
         id="{{vm.bindId}}"
         ng-model="vm.model"
-        required="required">{{vm.placeholder}}</textarea>
+        ng-required="vm.required">{{vm.placeholder}}</textarea>
     </div>
     <div ng-if="vm.type == 'datepicker'">
       <datepicker ng-init="vm.getCurrentDate()"
