@@ -1,4 +1,4 @@
-<div class="datepicker">
+<div class="datepicker {{vm.disabled ? 'disabled' : ''}}">
   <ng-transclude ng-click="vm.show()"></ng-transclude>
   <div class="modal-box" ng-if="vm.isShown">
     <div class="modal-box-container">

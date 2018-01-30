@@ -17,6 +17,9 @@
 .datepicker [ng-click] {
   cursor: pointer;
 }
+.datepicker.disabled [ng-click] {
+  cursor: default;
+}
 .datepicker * {
   box-sizing: border-box;
 }
