@@ -26,6 +26,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       bindName: '@',
       bindId: '@',
       label: '@',
+      disabled: '<?',
       required: '<?',
       model: '=?',
       placeholder: '@',
