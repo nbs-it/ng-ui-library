@@ -7,7 +7,7 @@
       </a>
       <div class="modal-box-content">
         <div class="datepicker-container">
-          <div class="column">
+          <div class="datepicker-column">
             <div class="month-list" ng-if="vm.mode == 'gregorian'">
               <div class="month" ng-repeat="(number, month) in vm.monthsList" ng-click="vm.changeDate('month', month.number)" ng-class="{ 'current': (vm.selectedDate | date: 'M') === number}">
                 <div class="month-name">
@@ -50,7 +50,7 @@
               <span class="mode">{{vm.mode === 'gregorian' ? 'עברי' : 'לועזי'}}</span>
             </div>
           </div>
-          <div class="column">
+          <div class="datepicker-column">
             <div class="selected-date" ng-if="vm.mode === 'gregorian'">
               <div class="date">
                 <span>{{vm.selectedDate | date: 'dd/MM/yyyy'}}</span>
@@ -106,7 +106,7 @@
               </div>
             </div>
             <div class="day-list" ng-if="vm.mode === 'gregorian'">
-              <div class="row" ng-repeat="row in vm.daysList">
+              <div class="datepicker-row" ng-repeat="row in vm.daysList">
                 <span class="day" ng-repeat="day in row" ng-click="vm.changeDate('day', day)" ng-if="$parent.$index != 4 || vm.Number(day) <= vm.moment(vm.selectedDate).daysInMonth()"
                   ng-class="{ 'current': (vm.selectedDate | date: 'dd') === day }">
                   {{day}}<span class="day-translation" ng-click="$event.stopPropagation()">
@@ -122,7 +122,7 @@
               <span ng-click="vm.selectDate()" class="today-button">היום</span>
             </div>
             <div class="day-list hebrew-day-list" ng-if="vm.mode === 'hebrew'">
-              <div class="row" ng-repeat="row in vm.hebrewDaysList">
+              <div class="datepicker-row" ng-repeat="row in vm.hebrewDaysList">
                 <span class="day" ng-repeat="(number, day) in row" ng-click="vm.changeHebrewDate('day', number)" ng-if="number < 30 || number <= vm.selectedHebrewDateObj.daysInMonth()"
                   ng-class="{ 'current': vm.Number(number) === vm.selectedHebrewDateObj.day}">
                   {{day}}<span class="day-translation" ng-click="$event.stopPropagation()">
