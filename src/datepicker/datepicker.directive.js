@@ -50,6 +50,9 @@ function datepicker ($window, $timeout, $location) {
 
         /* date functions */
         vm.selectDate = function (date) {
+          if (!vm.moment(date).isValid()) {
+            date = undefined;
+          }
           vm.selectedDate = vm.moment(date).format();
           vm.selectedHebrewDateObj = new vm.Hebcal.HDate(new Date(vm.selectedDate));
           vm.selectedHebrewDate = vm.selectedHebrewDateObj.toString('h');
