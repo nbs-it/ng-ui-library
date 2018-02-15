@@ -1,6 +1,5 @@
 <div class="message"
   ng-if="messageService.isShown">
-  {{messageService.properties.close}}
   <a ng-if="messageService.properties.close"
     ng-click="messageService.hide()"
     class="message-close">
