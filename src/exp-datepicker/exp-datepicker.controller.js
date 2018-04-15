@@ -1,46 +1,50 @@
-class ExpDatepickerController {
-  constructor ($scope, $rootScope, $element, $timeout) {
-    this.selectedMonth = null;
-    this.selectedYear = null;
-    this.$scope = $scope;
-    this.$timeout = $timeout;
-    this.list = {
-      months: [
-        '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
-      ],
-      years: [
-        '18', '19', '20', '21', '22', '23', '24', '25'
-      ]
-    };
-  }
+export default function ($scope, $rootScope, $element, $timeout) {
+  let vm;
 
-  selectMonth (event) {
-    this.month = event.target.innerText;
-    this.selectedMonth = this.month;
-    this.choose();
-  }
+  class ExpDatepickerController {
+    constructor () {
+      vm = this;
+      vm.selectedMonth = null;
+      vm.selectedYear = null;
+      vm.$scope = $scope;
+      vm.$timeout = $timeout;
+      vm.list = {
+        months: [
+          '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'
+        ],
+        years: [
+          '18', '19', '20', '21', '22', '23', '24', '25'
+        ]
+      };
+    }
 
-  selectYear () {
-    this.year = event.target.textContent;
-    this.selectedYear = this.year;
-    this.choose();
-  }
+    selectMonth (event) {
+      vm.month = event.target.innerText;
+      vm.selectedMonth = vm.month;
+      vm.choose();
+    }
 
-  close () {
-    this.$scope.$broadcast('closeDialog');
-    this.selectedMonth = null;
-    this.selectedYear = null;
-  }
+    selectYear () {
+      vm.year = event.target.textContent;
+      vm.selectedYear = vm.year;
+      vm.choose();
+    }
 
-  choose () {
-    let vm = this;
-    this.$timeout(function () {
-      vm.onChoose({});
-    });
-    if (vm.selectedMonth != null && vm.selectedYear != null) {
-      vm.close();
+    close () {
+      vm.$scope.$broadcast('closeDialog');
+      vm.selectedMonth = null;
+      vm.selectedYear = null;
+    }
+
+    choose () {
+      vm.$timeout(function () {
+        vm.onChoose({});
+      });
+      if (vm.selectedMonth != null && vm.selectedYear != null) {
+        vm.close();
+      }
     }
   }
-}
 
-export default ExpDatepickerController;
+  return new ExpDatepickerController();
+}
