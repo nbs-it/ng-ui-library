@@ -12,7 +12,8 @@ function expDatepickerDirective () {
     scope: {
       month: '=',
       year: '=',
-      onChoose: '&'
+      onChoose: '&',
+      allowInvalid: '<'
     },
     template,
     controller,
