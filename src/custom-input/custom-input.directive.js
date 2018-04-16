@@ -53,10 +53,6 @@ function customInputDirective ($interpolate, $window, $compile) {
       vm.$timeout = $timeout;
       vm.queries = 0;
 
-      vm.getCurrentDate = function () {
-        vm.model = new Date();
-      };
-
       vm.defaultErrorMsg = {
         required: 'שדה חובה',
         minlength: 'תוכן קצר מידי',
