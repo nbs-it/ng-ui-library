@@ -25,6 +25,7 @@
 
     <div ng-if="vm.type == 'datepicker'">
       <datepicker date="vm.model"
+        open="vm.open"
         disabled="vm.disabled">
         <input ng-if="!vm.$transclude.isSlotFilled('input') "
           class="datepicker-input"
