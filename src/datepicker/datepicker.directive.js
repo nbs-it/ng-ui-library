@@ -14,6 +14,7 @@ function datepicker ($window, $timeout, $location) {
     restrict: 'E',
     scope: {
       date: '=?',
+      open: '=?',
       disabled: '<?'
     },
     transclude: true,
@@ -35,6 +36,17 @@ function datepicker ($window, $timeout, $location) {
 
         $scope.$watch('vm.date', () => {
           vm.selectDate(vm.date);
+        });
+
+        $scope.$watch('vm.open', (oldVaule, newValue) => {
+          if (oldVaule === newValue) {
+            return;
+          }
+          if (vm.open) {
+            vm.show();
+          } else {
+            vm.hide();
+          }
         });
 
         vm.changeMode = function () {
@@ -204,6 +216,7 @@ function datepicker ($window, $timeout, $location) {
           }
           return list;
         };
+
         vm.monthsList = {
           1: {
             name: 'ינואר',
@@ -254,6 +267,7 @@ function datepicker ($window, $timeout, $location) {
             number: '12'
           }
         };
+
         vm.hebrewMonthsList = {
           1: {
             name: 'תשרי',
@@ -317,6 +331,7 @@ function datepicker ($window, $timeout, $location) {
           return;
         }
         vm.isShown = true;
+        vm.open = true;
         $timeout(() => {
           scope.$apply(() => { });
           angular.element(element[0].getElementsByClassName('modal-box')).on('click', (event) => {
@@ -335,9 +350,7 @@ function datepicker ($window, $timeout, $location) {
 
       vm.hide = function () {
         vm.isShown = false;
-        if (vm.open) {
-          vm.open = false;
-        }
+        vm.open = false;
         $timeout(() => {
           scope.$apply(() => { });
         });

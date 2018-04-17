@@ -29,6 +29,7 @@ function customInputDirective ($interpolate, $window, $compile) {
       disabled: '<?',
       required: '<?',
       model: '=?',
+      open: '=?',
       placeholder: '@',
       tabIndex: '@',
       icon: '@',

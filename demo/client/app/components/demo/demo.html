@@ -257,10 +257,15 @@
       icon-class=""
       model="vm.datepickerModel"
       description="טקסט עזר לתיאור השדה"
+      open="vm.datepickerIsOpen"
       type="datepicker">
       <input ng-model="vm.datepickerModel"
         input-date>
     </custom-input>
+    <br>
+    <br>
+    <button ng-click="vm.datepickerIsOpen = true">Open Datepicker</button>
+    <br>
     <textarea disabled
       class="code"
       rows="4">
@@ -270,6 +275,7 @@
           icon-class=""
           model="vm.datepickerModel"
           description="טקסט עזר לתיאור השדה"
+          open="vm.datepickerIsOpen"
           type="datepicker">
         </custom-input>
       </textarea>
