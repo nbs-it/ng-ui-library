@@ -16,6 +16,7 @@ let numberSpinnerComponent = {
   controller,
   controllerAs: 'vm'
 };
+
 controller.$inject = ['$scope', '$timeout'];
 
 export default numberSpinnerComponent;

@@ -1,3 +1,3 @@
-export default (vm) => {
+export default function (vm) {
 
-};
+}

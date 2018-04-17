@@ -9,7 +9,7 @@ describe('Checkbox', () => {
   beforeEach(window.module(CheckboxModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
-    makeController = () => {
+    makeController = function () {
       return new CheckboxController();
     };
   }));

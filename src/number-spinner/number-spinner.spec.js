@@ -9,7 +9,7 @@ describe('NumberSpinner', () => {
   beforeEach(window.module(NumberSpinnerModule));
   beforeEach(inject((_$rootScope_) => {
     $rootScope = _$rootScope_;
-    makeController = () => {
+    makeController = function () {
       return new NumberSpinnerController();
     };
   }));

@@ -1,35 +1,34 @@
 import angular from 'angular';
 
 export default function ($window, $timeout) {
-  return function (scope, element, attr, ctrl) {
-    var vm = ctrl;
+  return function (scope, element, attr, vm) {
     vm.isShown = false;
     vm.show = function () {
       vm.isShown = vm.isOpen = true;
-      $timeout(function () {
-        scope.$apply(function () { });
+      $timeout(() => {
+        scope.$apply(() => { });
       });
-      angular.element($window).on('keydown keypress', function (event) {
+      angular.element($window).on('keydown keypress', (event) => {
         if (event.which === 27) { // Escape key press.
           vm.hide();
           event.stopPropagation();
         }
       });
-      $timeout(function () {
-        angular.element($window).on('click', function (event) {
+      $timeout(() => {
+        angular.element($window).on('click', (event) => {
           if (event.target !== element && vm.closeByClickOutside !== false) { // click outside of the dialog.
             vm.hide();
           }
         });
       });
-      vm.off = scope.$on('closeDialog', function () {
+      vm.off = scope.$on('closeDialog', () => {
         vm.hide();
       });
     };
     vm.hide = function () {
       vm.isShown = vm.isOpen = false;
-      $timeout(function () {
-        scope.$apply(function () { });
+      $timeout(() => {
+        scope.$apply(() => { });
       });
       angular.element($window).off('keydown keypress');
       angular.element($window).off('click');
@@ -50,7 +49,7 @@ export default function ($window, $timeout) {
     };
     checkIfIsOpen();
 
-    scope.$watch('vm.isOpen', function (newValue, oldValue) {
+    scope.$watch('vm.isOpen', (newValue, oldValue) => {
       if (newValue !== oldValue && newValue !== vm.isShown) {
         checkIfIsOpen();
       }

@@ -23,7 +23,7 @@ class ExpInputController {
         expYearInput.select();
       }
     };
-    angular.element(expMonthInput).on('change', function (e) { // one number in expMonth
+    angular.element(expMonthInput).on('change', (e) => { // one number in expMonth
       var val = expMonthInput.value;
       if (val && val.length === 1) {
         vm.monthModel = '0' + val;

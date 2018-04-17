@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-let autocompleteCtrl = (vm, $scope, $window, $timeout) => {
+let autocompleteCtrl = function (vm, $scope, $window, $timeout) {
   $scope.$watch('vm.dialogOpens', function (newV, oldV) {
     if (newV === false) {
       vm.indexArrow = 0;
@@ -68,17 +68,19 @@ let autocompleteCtrl = (vm, $scope, $window, $timeout) => {
           if (!arrayItemsPromise.then) {
             return;
           }
-          arrayItemsPromise.then(function (res) {
-            if (!res) {
-              return null;
-            }
-            configList(res);
-          }).then(function (res) {
-            if (vm.autoCompleteRow) {
-              vm.rowsHtmlData = vm.getRowsHtmlData();
-            }
-            vm.arrayItems = holdFunction;
-          });
+          arrayItemsPromise
+            .then(function (res) {
+              if (!res) {
+                return null;
+              }
+              configList(res);
+            })
+            .then(function (res) {
+              if (vm.autoCompleteRow) {
+                vm.rowsHtmlData = vm.getRowsHtmlData();
+              }
+              vm.arrayItems = holdFunction;
+            });
         }, 400);
       } else {
         configList(vm.arrayItems);
@@ -122,19 +124,19 @@ let autocompleteCtrl = (vm, $scope, $window, $timeout) => {
     var html = '';
     if (vm.itemsFiltered && vm.itemsFiltered[0]) {
       vm.itemsFiltered.forEach(function (item, index) {
-        html += '<div\n              class="row-autocomplete"\n              ng-class="{\'selected-arrow\': vm.indexArrow == ' + index + '}"\n              ng-click="vm.indexArrow = ' + index + '; vm.selectObject()">';
+        html += `<div class="row-autocomplete"
+         ng-class="{'selected-arrow': vm.indexArrow == ${index}}"
+         ng-click="vm.indexArrow = ${index}; vm.selectObject()">`;
         var rowHtml = angular.copy(vm.autoCompleteRow);
         rowHtml = getHtmlBinding(item, rowHtml);
         html += rowHtml + '</div>';
       });
     }
-
     return html;
   };
 };
 
-let autocompleteLink = (scope, element, attr, ctrl) => {
-  var vm = ctrl;
+let autocompleteLink = function (scope, element, attr, vm) {
   element.bind('keydown keypress', function (event) {
     var autocompleteModal = vm.jQuery('.autocomplete .dialog-wrap');
     var rowAutocomplete = vm.jQuery('.row-autocomplete').first();

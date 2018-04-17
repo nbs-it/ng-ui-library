@@ -5,9 +5,9 @@ function compileTemplate ($compile, $parse, $timeout) {
     restrict: 'A',
     replace: true,
     link: function (scope, element, attr) {
-      scope.$watch(function () {
+      scope.$watch(() => {
         return attr.directive;
-      }, function (val) {
+      }, (val) => {
         if (val) {
           element.empty();
           var directive = $compile(angular.element(val))(scope);

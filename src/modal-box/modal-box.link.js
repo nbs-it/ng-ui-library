@@ -1,7 +1,5 @@
 export default function ($window, $timeout) {
-  return function (scope, element, attr, ctrl) {
-    let vm = ctrl;
-
+  return function (scope, element, attr, vm) {
     vm.close = function () {
       vm.hide();
     };
@@ -12,15 +10,15 @@ export default function ($window, $timeout) {
     }
     vm.show = function () {
       vm.isShown = vm.isOpen = true;
-      $timeout(function () {
-        scope.$apply(function () { });
-        angular.element(element[0].getElementsByClassName('modal-box')).on('click', function (event) {
+      $timeout(() => {
+        scope.$apply(() => { });
+        angular.element(element[0].getElementsByClassName('modal-box')).on('click', (event) => {
           if (event.target === event.currentTarget && vm.closeOption !== 'false') { // click outside of the modal.
             vm.hide();
           }
         });
       });
-      angular.element($window).on('keydown keypress', function (event) {
+      angular.element($window).on('keydown keypress', (event) => {
         if (event.which === 27 && vm.closeOption !== 'false') { // Escape key press.
           vm.hide();
           event.stopPropagation();
@@ -31,8 +29,8 @@ export default function ($window, $timeout) {
     /* hide */
     vm.hide = function () {
       vm.isShown = vm.isOpen = false;
-      $timeout(function () {
-        scope.$apply(function () { });
+      $timeout(() => {
+        scope.$apply(() => { });
       });
       angular.element($window).off('keydown keypress');
       angular.element(element[0].getElementsByClassName('modal-box')).off('click');
@@ -42,7 +40,7 @@ export default function ($window, $timeout) {
     vm.toggle = function () {
       vm.isShown === true ? vm.hide() : vm.show();
     };
-    scope.$on('modalBoxClose', function () {
+    scope.$on('modalBoxClose', () => {
       vm.hide();
     });
 
@@ -52,7 +50,7 @@ export default function ($window, $timeout) {
     };
     checkIfIsOpen();
 
-    scope.$watch('vm.isOpen', function (newValue, oldValue) {
+    scope.$watch('vm.isOpen', (newValue, oldValue) => {
       if (newValue !== oldValue && newValue !== vm.isShown) {
         checkIfIsOpen();
       }

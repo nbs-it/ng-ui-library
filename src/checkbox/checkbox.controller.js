@@ -1,6 +1,6 @@
 class CheckboxController {
   constructor () {
-    this.$onInit = () => {
+    this.$onInit = function () {
       this.bindId = this.bindId || this.model;
     };
   }

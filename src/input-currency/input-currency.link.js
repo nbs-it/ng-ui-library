@@ -1,18 +1,17 @@
 import angular from 'angular';
 
 export default function ($filter) {
-  return function (scope, element, attr, ctrl) {
-    var vm = ctrl;
+  return function (scope, element, attr, vm) {
     if (!vm) {
       return;
     }
 
-    scope.$watch('min', function (newVal, oldVal) {
+    scope.$watch('min', (newVal, oldVal) => {
       if (newVal !== oldVal) {
         vm.onChange();
       }
     });
-    scope.$watch('max', function (newVal, oldVal) {
+    scope.$watch('max', (newVal, oldVal) => {
       if (newVal !== oldVal) {
         vm.onChange();
       }
@@ -30,12 +29,12 @@ export default function ($filter) {
       }
     };
 
-    vm.$formatters.unshift(function (a) {
+    vm.$formatters.unshift((a) => {
       vm.onChange();
       return $filter('number')(vm.$modelValue, 2);
     });
 
-    vm.$parsers.unshift(function (viewValue) {
+    vm.$parsers.unshift((viewValue) => {
       if (viewValue[viewValue.length - 1] !== '.') {
         var plainNumber = viewValue.replace(/[^\d|.]/g, '');
         var step = plainNumber.split('.')[1];
@@ -53,7 +52,7 @@ export default function ($filter) {
       }
     });
 
-    angular.element(element).on('change', function (e) {
+    angular.element(element).on('change', (e) => {
       var val = this.value;
       if (val.split('.').length < 2) {
         this.value += '.00';

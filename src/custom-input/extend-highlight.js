@@ -29,7 +29,7 @@ jQuery.fn.unhighlight = function (options) {
   var settings = { className: 'highlight', element: 'span' };
   jQuery.extend(settings, options);
 
-  return this.find(settings.element + '.' + settings.className).each(function () {
+  return this.find(settings.element + '.' + settings.className).each(() => {
     var parent = this.parentNode;
     parent.replaceChild(this.firstChild, this);
     parent.normalize();
@@ -43,10 +43,10 @@ jQuery.fn.highlight = function (words, options) {
   if (words.constructor === String) {
     words = [words];
   }
-  words = jQuery.grep(words, function (word, i) {
+  words = jQuery.grep(words, (word, i) => {
     return word !== '';
   });
-  words = jQuery.map(words, function (word, i) {
+  words = jQuery.map(words, (word, i) => {
     return word.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
   });
   if (words.length === 0) { return this; }
@@ -58,7 +58,7 @@ jQuery.fn.highlight = function (words, options) {
   }
   var re = new RegExp(pattern, flag);
 
-  return this.each(function () {
+  return this.each(() => {
     jQuery.highlight(this, re, settings.element, settings.className);
   });
 };

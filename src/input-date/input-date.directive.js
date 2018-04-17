@@ -8,13 +8,12 @@ let inputDateModule = angular.module('inputDate', [])
 function inputDateDirective ($window) {
   return {
     require: 'ngModel',
-    link: function (scope, element, attr, ctrl) {
-      var vm = ctrl;
+    link: function (scope, element, attr, vm) {
       if (!vm) {
         return;
       }
 
-      vm.$formatters.unshift(function (a) {
+      vm.$formatters.unshift((a) => {
         if (vm.$modelValue) {
           var date = moment(vm.$modelValue);
           if (!date._isValid) {
@@ -23,7 +22,7 @@ function inputDateDirective ($window) {
           return date.format('DD/MM/YYYY');
         }
       });
-      vm.$parsers.unshift(function (viewValue) {
+      vm.$parsers.unshift((viewValue) => {
         if (viewValue && moment(viewValue, 'DD/MM/YYYY')._isValid) {
           return moment(viewValue, 'DD/MM/YYYY').format();
         }
@@ -31,5 +30,7 @@ function inputDateDirective ($window) {
     }
   };
 }
+
 inputDateDirective.$inject = ['$window'];
+
 export default inputDateModule;

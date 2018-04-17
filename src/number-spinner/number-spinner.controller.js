@@ -1,39 +1,43 @@
 import angular from 'angular';
 
-class NumberSpinnerController {
-  constructor ($scope, $timeout) {
-    let vm = this;
-    vm.input = angular.element(document.getElementById('number-spinner-number-input'));
-    $scope.$watch('vm.disabled', function () {
-      if (vm.disabled) {
+export default function ($scope, $timeout) {
+  let vm;
+
+  class NumberSpinnerController {
+    constructor () {
+      vm = this;
+      vm.input = angular.element(document.getElementById('number-spinner-number-input'));
+      $scope.$watch('vm.disabled', () => {
+        if (vm.disabled) {
+          vm.value = 1;
+        }
+      });
+    }
+
+    $onInit () {
+      vm.value = vm.value || 1;
+      vm.totalValue = vm.totalValue || 0;
+      vm.currencyIcon = vm.currencyIcon || '₪';
+    }
+
+    plus () {
+      if (!vm.disabled && vm.value < 99) {
+        vm.value++;
+      }
+    }
+
+    minus () {
+      if (!vm.disabled && vm.value > 1) {
+        vm.value--;
+      }
+    }
+
+    change () {
+      if (isNaN(vm.value) || vm.value === '') {
         vm.value = 1;
       }
-    });
-  }
-
-  $onInit () {
-    this.value = this.value || 1;
-    this.totalValue = this.totalValue || 0;
-    this.currencyIcon = this.currencyIcon || '₪';
-  }
-
-  plus () {
-    if (!this.disabled && this.value < 99) {
-      this.value++;
     }
   }
 
-  minus () {
-    if (!this.disabled && this.value > 1) {
-      this.value--;
-    }
-  }
-
-  change () {
-    if (isNaN(this.value) || this.value === '') {
-      this.value = 1;
-    }
-  }
+  return new NumberSpinnerController();
 }
-
-export default NumberSpinnerController;

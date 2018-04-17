@@ -33,7 +33,7 @@ function datepicker ($window, $timeout, $location) {
           vm.changeMode();
         };
 
-        $scope.$watch('vm.date', function () {
+        $scope.$watch('vm.date', () => {
           vm.selectDate(vm.date);
         });
 
@@ -317,15 +317,15 @@ function datepicker ($window, $timeout, $location) {
           return;
         }
         vm.isShown = true;
-        $timeout(function () {
-          scope.$apply(function () { });
-          angular.element(element[0].getElementsByClassName('modal-box')).on('click', function (event) {
+        $timeout(() => {
+          scope.$apply(() => { });
+          angular.element(element[0].getElementsByClassName('modal-box')).on('click', (event) => {
             if (event.target === event.currentTarget) { // click outside of the modal.
               vm.hide();
             }
           });
         });
-        angular.element($window).on('keydown keypress', function (event) {
+        angular.element($window).on('keydown keypress', (event) => {
           if (event.which === 27) { // Escape key press.
             vm.hide();
             event.stopPropagation();
@@ -338,8 +338,8 @@ function datepicker ($window, $timeout, $location) {
         if (vm.open) {
           vm.open = false;
         }
-        $timeout(function () {
-          scope.$apply(function () { });
+        $timeout(() => {
+          scope.$apply(() => { });
         });
         angular.element($window).off('keydown keypress');
         angular.element(element[0].getElementsByClassName('modal-box')).off('click');
@@ -349,7 +349,7 @@ function datepicker ($window, $timeout, $location) {
         vm.isShown === true ? vm.hide() : vm.show();
       };
 
-      scope.$on('datePickerClose', function () {
+      scope.$on('datePickerClose', () => {
         vm.hide();
       });
     }

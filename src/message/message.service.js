@@ -54,6 +54,7 @@ class messageService {
 }
 
 messageService.$inject = ['$rootScope', '$compile', '$window', '$timeout'];
+
 let messageModule = angular.module('messageService', [])
   .service('messageService', messageService)
   .name;

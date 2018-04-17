@@ -25,5 +25,7 @@ function tooltipDirective ($window) {
     }
   };
 }
+
 tooltipDirective.$inject = ['$window'];
+
 export default tooltipModule;
