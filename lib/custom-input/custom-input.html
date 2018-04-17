@@ -24,7 +24,7 @@
       <datepicker date="vm.model"
         disabled="vm.disabled">
         <input ng-if="!vm.$transclude.isSlotFilled('input') "
-          class='datepicker-input'
+          class="datepicker-input"
           ng-click="$event.stopPropagation();"
           ng-model="vm.model"
           ng-disabled="vm.disabled"
@@ -58,9 +58,9 @@
           ng-class="{' selected-arrow': vm.indexArrow == $index}"
           ng-click="vm.selectObject(item)">
 
-          <!-- <span ng-if="vm.autoCompleteRow" directive='{{vm.autoCompleteRow}}' compile-template >
+          <!-- <span ng-if="vm.autoCompleteRow" directive="{{vm.autoCompleteRow}}" compile-template >
           </span> -->
-          <span directive='<span>{{item}}</span>'
+          <span directive="<span>{{item}}</span>"
             compile-template>
 
           </span>

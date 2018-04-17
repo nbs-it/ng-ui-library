@@ -32,6 +32,7 @@ function datepicker ($window, $timeout, $location) {
         vm.$onInit = function () {
           vm.changeMode();
         };
+
         $scope.$watch('vm.date', function () {
           vm.selectDate(vm.date);
         });
@@ -57,7 +58,9 @@ function datepicker ($window, $timeout, $location) {
           vm.selectedHebrewDateObj = new vm.Hebcal.HDate(new Date(vm.selectedDate));
           vm.selectedHebrewDate = vm.selectedHebrewDateObj.toString('h');
         };
+
         vm.selectDate(vm.date);
+
         vm.changeDate = function (unit, number) {
           if (unit === 'day') {
             unit = 'date';
@@ -79,6 +82,7 @@ function datepicker ($window, $timeout, $location) {
           number = number || 1;
           vm.selectDate(vm.moment(vm.selectedDate).add(number, unit));
         };
+
         vm.prev = function (unit, number) {
           number = number || 1;
           vm.selectDate(vm.moment(vm.selectedDate).subtract(number, unit));
@@ -91,16 +95,19 @@ function datepicker ($window, $timeout, $location) {
           translation = translation.substring(0, translation.lastIndexOf(' '));
           return translation;
         };
+
         vm.dayWeekDayTranslation = function (day) {
           var translation = vm.moment(vm.selectedDate).set({ date: day }).format('dddd');
           return 'יום ' + translation;
         };
+
         vm.dayTranslationToGreg = function (day) {
           var sDay = vm.selectedHebrewDateObj;
           var translationDay = new vm.Hebcal.HDate(day, sDay.month, sDay.year);
           var translation = vm.moment(translationDay.greg()).format('DD/MM');
           return translation;
         };
+
         vm.dayWeekHebrewDayTranslation = function (day) {
           var sDay = vm.selectedHebrewDateObj;
           var translationDay = new vm.Hebcal.HDate(day, sDay.month, sDay.year);
@@ -298,13 +305,13 @@ function datepicker ($window, $timeout, $location) {
           }
         };
       }],
-    link: function (scope, element, attr, ctrl) {
-      var vm = ctrl;
-
+    link: function (scope, element, attr, vm) {
       vm.isShown = false;
+
       vm.close = function () {
         vm.hide();
       };
+
       vm.show = function () {
         if (vm.disabled) {
           return;
@@ -325,6 +332,7 @@ function datepicker ($window, $timeout, $location) {
           }
         });
       };
+
       vm.hide = function () {
         vm.isShown = false;
         if (vm.open) {
@@ -336,9 +344,11 @@ function datepicker ($window, $timeout, $location) {
         angular.element($window).off('keydown keypress');
         angular.element(element[0].getElementsByClassName('modal-box')).off('click');
       };
+
       vm.toggle = function () {
         vm.isShown === true ? vm.hide() : vm.show();
       };
+
       scope.$on('datePickerClose', function () {
         vm.hide();
       });
@@ -346,6 +356,7 @@ function datepicker ($window, $timeout, $location) {
 
   };
 }
+
 datepicker.$inject = ['$window', '$timeout', '$location'];
 
 export default datepickerModule;

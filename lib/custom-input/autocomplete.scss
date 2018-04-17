@@ -1,53 +1,55 @@
 /** autocomplete **/
 .custom-input {
+  [dialog] .dialog div.dialog-wrap {
+    max-height: 176px;
+    overflow-x: scroll;
+  }
+
   [dialog].autocomplete {
     position: absolute;
     top: 100%;
     right: 0;
     width: 187px;
     min-width: 100%;
-  }
 
-  [dialog].autocomplete .dialog-trigger {
-    display: none;
-  }
+    .dialog-trigger {
+      display: none;
+    }
 
-  [dialog].autocomplete .dialog {
-    position: static;
-  }
+    .dialog {
+      position: static;
+    }
 
-  [dialog].autocomplete .dialog div.dialog-wrap {
-    padding: 5px 0;
-  }
-
-  .autocomplete .row-autocomplete {
-    font-weight: 500;
-    font-size: 15px;
-    color: black;
-    text-align: right;
-    padding: 5px 10px;
-    cursor: pointer;
-    transition: background 0.2s;
+    .dialog div.dialog-wrap {
+      padding: 5px 0;
+    }
   }
 
   .selected-arrow {
     background: #eee;
   }
 
-  .autocomplete .row-autocomplete:hover {
-    background: #eee;
-  }
+  .autocomplete {
+    .row-autocomplete {
+      font-weight: 500;
+      font-size: 15px;
+      color: black;
+      text-align: right;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: background 0.2s;
 
-  .autocomplete .row-autocomplete.empty {
-    color: #888;
-  }
+      &:hover {
+        background: #eee;
+      }
 
-  .autocomplete .highlight {
-    color: mediumblue;
-  }
+      &.empty {
+        color: #888;
+      }
+    }
 
-  [dialog] .dialog div.dialog-wrap {
-    max-height: 176px;
-    overflow-x: scroll;
+    .highlight {
+      color: mediumblue;
+    }
   }
 }
