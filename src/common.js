@@ -1,5 +1,6 @@
 import angular from 'angular';
 import checkbox from './checkbox/checkbox';
+import compile from './compile/compile.directive';
 import numberSpinner from './number-spinner/number-spinner';
 import dialog from './dialog/dialog.directive';
 import modalBox from './modal-box/modal-box.directive';
@@ -15,6 +16,7 @@ import messageService from './message/message.service';
 
 let commonModule = angular.module('ng-ui-library', [
   checkbox,
+  compile,
   numberSpinner,
   dialog,
   modalBox,
