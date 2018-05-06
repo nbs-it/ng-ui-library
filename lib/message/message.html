@@ -22,10 +22,16 @@
       <a ng-if="messageService.properties.buttons === true"
         ng-click="messageService.hide()"
         class="message-button message-confirm">אישור</a>
-      <a ng-if="vm.isArray(messageService.properties.buttons)"
-        ng-repeat="button in messageService.properties.buttons"
-        ng-click="button.action()"
-        class="message-button">{{button.label}}</a>
+      <span ng-if="vm.isArray(messageService.properties.buttons)"
+        ng-repeat="button in messageService.properties.buttons">
+        <a ng-if="button.type != 'html'"
+          ng-click="button.action()"
+          class="message-button">{{button.label}}</a>
+        <span ng-if="button.type == 'html'"
+          compile="{{button.html}}"
+          ctrl="button.ctrl">
+        </span>
+      </span>
     </div>
   </div>
 </div>

@@ -12,6 +12,7 @@ class messageService {
     vm.isShownCheck = function () {
       return vm.isShown;
     };
+
     vm.show = function (properties) {
       vm.properties = {
         buttons: true,
@@ -28,12 +29,15 @@ class messageService {
       }
       vm.isShown = true;
     };
+
     vm.hide = function () {
       vm.isShown = false;
     };
+
     vm.toggle = function () {
       vm.isShown === true ? vm.hide() : vm.show();
     };
+
     vm.properties = {};
 
     vm.setup();

@@ -7,8 +7,13 @@ let compileModule = angular.module('compile', [])
 function compileDirective ($compile, $sce) {
   return {
     restrict: 'A',
+    scope: {
+      ctrl: '=?'
+    },
+    bindToController: true,
     replace: true,
     controller: function () { },
+    controllerAs: 'vm',
     link: function (scope, element, attr, vm) {
       scope.$watch(() => {
         return attr.compile;

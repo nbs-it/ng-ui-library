@@ -58,7 +58,16 @@ class DemoController {
         vm.messageProperties.buttons = false;
         break;
       case 'array':
+        vm.onMessageInputChanged = function () {
+          console.log('imput changed');
+        };
         vm.messageProperties.buttons = [
+          {
+            type: 'html',
+            ctrl: vm,
+            html: `<input ng-model="vm.ctrl.field"
+              ng-change="vm.ctrl.onMessageInputChanged()" />`
+          },
           {
             label: 'סגור',
             action: vm.messageService.hide
