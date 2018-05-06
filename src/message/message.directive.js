@@ -20,8 +20,11 @@ function messageDirective ($sce, $compile, messageService) {
       };
     },
     controllerAs: 'vm',
-    link: function (scope, element, attr, ctrl) {
+    link: function (scope, element, attr, vm) {
       scope.messageService = messageService;
+      scope.$on('closeMessage', () => {
+        messageService.hide();
+      });
     }
   };
 }
