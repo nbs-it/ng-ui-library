@@ -3,6 +3,7 @@ let vm;
 class DemoController {
   constructor ($scope, $q, messageService) {
     vm = this;
+    vm.$scope = $scope;
     vm.$q = $q;
     vm.messageService = messageService;
     vm.checkboxChecked = true;
@@ -64,9 +65,9 @@ class DemoController {
         vm.messageProperties.buttons = [
           {
             type: 'html',
-            ctrl: vm,
-            html: `<input ng-model="vm.ctrl.field"
-              ng-change="vm.ctrl.onMessageInputChanged()" />`
+            scope: vm.$scope,
+            html: `<input ng-model="vm.field"
+              ng-change="vm.onMessageInputChanged()" />`
           },
           {
             label: 'סגור',

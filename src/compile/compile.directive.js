@@ -8,18 +8,14 @@ function compileDirective ($compile, $sce) {
   return {
     restrict: 'A',
     scope: {
-      ctrl: '=?'
+      scope: '=?'
     },
-    bindToController: true,
-    replace: true,
-    controller: function () { },
-    controllerAs: 'vm',
-    link: function (scope, element, attr, vm) {
+    link: function (scope, element, attr) {
       scope.$watch(() => {
         return attr.compile;
       }, (val) => {
         if (val) {
-          var directive = $compile(angular.element(val))(scope);
+          var directive = $compile(angular.element(val))(scope.scope || scope.$parent);
           element.append(directive);
         }
       });
