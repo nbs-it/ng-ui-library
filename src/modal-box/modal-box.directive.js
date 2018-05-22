@@ -9,7 +9,7 @@ let modalBoxModule = angular.module('modalBox', [])
   .directive('modalBox', modalBoxDirective)
   .name;
 
-function modalBoxDirective ($window, $timeout) {
+function modalBoxDirective ($rootScope, $window, $timeout) {
   return {
     restrict: 'A',
     transclude: {
@@ -29,11 +29,11 @@ function modalBoxDirective ($window, $timeout) {
     controller,
     controllerAs: 'vm',
     bindToController: true,
-    link: link($window, $timeout)
+    link: link($rootScope, $window, $timeout)
   };
 }
 
-modalBoxDirective.$inject = ['$window', '$timeout'];
+modalBoxDirective.$inject = ['$rootScope', '$window', '$timeout'];
 controller.$inject = ['$transclude'];
 
 export default modalBoxModule;

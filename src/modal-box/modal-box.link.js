@@ -1,8 +1,6 @@
-export default function ($window, $timeout) {
+export default function ($rootScope, $window, $timeout) {
   return function (scope, element, attr, vm) {
-    vm.close = function () {
-      vm.hide();
-    };
+    vm.close = vm.hide;
 
     /* show */
     if (!vm.closeOption) {
@@ -34,6 +32,7 @@ export default function ($window, $timeout) {
       });
       angular.element($window).off('keydown keypress');
       angular.element(element[0].getElementsByClassName('modal-box')).off('click');
+      $rootScope.$broadcast('modalBoxClosed');
     };
 
     /* toggle */

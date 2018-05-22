@@ -37,6 +37,10 @@ class DemoController {
     };
 
     vm.selectedMessageButton = 'true';
+
+    $scope.$on('modalBoxClosed', () => {
+      console.log('modalBoxClosed');
+    });
   }
 
   showMessage () {
