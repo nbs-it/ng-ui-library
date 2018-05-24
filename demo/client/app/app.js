@@ -1,5 +1,5 @@
 import angular from 'angular';
-import uiRouter from 'angular-ui-router';
+import uiRouter from '@uirouter/angularjs';
 import angularAnimate from 'angular-animate';
 import appConfig from './app.config';
 import Components from './components/components';
