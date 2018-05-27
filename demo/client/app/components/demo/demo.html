@@ -58,7 +58,7 @@
       close="vm.closeDialog">
       שמאל למעלה
       <dialog-content>תוכן ההודעה
-        <a style="-webkit-appearance:button;-moz-appearance:button;-ms-appearance:button;"
+        <a style="-webkit-appearance:button; -moz-appearance:button; -ms-appearance:button;"
           ng-click="vm.closeDialog()">X</a>
       </dialog-content>
     </button>
@@ -86,7 +86,7 @@
       rows="4">
     <button dialog class="left top" close-by-click="false" close="vm.closeDialog">
       שמאל למעלה
-      <dialog-content>תוכן ההודעה <a style="-webkit-appearance:button;-moz-appearance:button;-ms-appearance:button;" ng-click="vm.closeDialog()">X</a></dialog-content>
+      <dialog-content>תוכן ההודעה <a style="-webkit-appearance:button; -moz-appearance:button; -ms-appearance:button;" ng-click="vm.closeDialog()">X</a></dialog-content>
     </button></textarea>
     <textarea disabled
       class="code"
@@ -128,7 +128,7 @@
       <button>Open modal-box</button>
       <modal-box-header>כותרת</modal-box-header>
       <modal-box-content>
-        <p style="padding:25px;text-align:center">תוכן</p>
+        <p style="padding:25px; text-align:center;">תוכן</p>
         <button ng-click="$root.$broadcast('modalBoxClose')">Emit סגירת מודל</button>
       </modal-box-content>
     </span>
@@ -138,7 +138,7 @@
     <button>Open modal-box</button>
     <modal-box-header>כותרת</modal-box-header>
     <modal-box-content>
-      <p style="padding:25px;text-align:center">תוכן</p>
+      <p style="padding:25px; text-align:center;">תוכן</p>
       <button ng-click="$root.$broadcast('modalBoxClose')">Emit סגירת מודל</button>
     </modal-box-content>
   </span></textarea>
@@ -184,7 +184,7 @@
       icon-class=""
       description="טקסט עזר לתיאור השדה">
       <input type=""
-        style="color:blue;background:aqua;"
+        style="color:blue; background:aqua;"
         ng-model="vm.customInputModel" />
     </custom-input>
     <br>
@@ -206,7 +206,7 @@
     <textarea disabled
       class="code"
       rows="4"><custom-input type="text" bind-id="custom-input-id" label="תווית" icon="$" icon-class="" description="טקסט עזר לתיאור השדה">
-    <input type="" style="color:blue;background:aqua;" ng-model="vm.customInputModel" />
+    <input type="" style="color:blue; background:aqua;" ng-model="vm.customInputModel" />
   </custom-input></textarea>
   </section>
 
@@ -268,9 +268,8 @@
     <br>
     <textarea disabled
       class="code"
-      rows="4">
-        <custom-input
-          bind-id="datepicker-id"
+      rows="8">
+        <custom-input bind-id="datepicker-id"
           label="דייט פיקר"
           icon-class=""
           model="vm.datepickerModel"
@@ -278,16 +277,46 @@
           open="vm.datepickerIsOpen"
           type="datepicker">
         </custom-input>
-      </textarea>
+    </textarea>
+  </section>
+
+  <section ng-init="vm.datepickerRangeModel = {'from': '', 'to': ''}">
+    <h1>DatePicker Range</h1>
+    ng-model:
+    <br> {{vm.datepickerRangeModel}}
+    <br>
+    <br>
+    <custom-input bind-id="datepicker-range-id"
+      type="datepickerRange"
+      label="דייט פיקר טווח תאריכים"
+      icon-class=""
+      model="vm.datepickerRangeModel"
+      description="טקסט עזר לתיאור השדה"
+      open="vm.datepickerRangeIsOpen">
+    </custom-input>
+    <br>
+    <br>
+    <textarea disabled
+      class="code"
+      rows="8">
+      <custom-input bind-id="datepicker-range-id"
+        type="datepickerRange"
+        label="דייט פיקר טווח תאריכים"
+        icon-class=""
+        model="vm.datepickerRangeModel"
+        description="טקסט עזר לתיאור השדה"
+        open="vm.datepickerRangeIsOpen">
+      </custom-input>
+    </textarea>
   </section>
 
   <section>
     <h1>expInput</h1>
-    <div style="width:180px;margin-right:150px;margin-bottom:50px;">
+    <div style="width:180px; margin-right:150px; margin-bottom:50px;">
       <exp-input month-model="vm.expInput.month"
         year-model="vm.expInput.year"></exp-input>
     </div>
-    <div style="width:180px;margin-right:150px;margin-bottom:50px;">
+    <div style="width:180px; margin-right:150px; margin-bottom:50px;">
       <exp-input month-model="vm.expInput.month"
         year-model="vm.expInput.year"
         datepicker="false"></exp-input>
@@ -318,7 +347,7 @@
     <textarea rows="8"
       col
       ng-model="vm.messageProperties.customHtml"
-      style="direction: ltr;width:700px;"></textarea>
+      style="direction: ltr; width:700px;"></textarea>
     <br>
     <label>buttons:</label>
     <select ng-change="vm.changeMessageButtons()"

@@ -91,3 +91,27 @@
     }
   }
 }
+
+// datepicker range
+custom-input[type="datepickerRange"] {
+  .input-container:focus {
+    outline: none;
+  }
+
+  .datepicker-range-field {
+    position: relative;
+    display: inline-block;
+
+    &:first-child {
+      margin-left: 15px;
+    }
+
+    .datepicker {
+      display: inline-block;
+
+      input {
+        width: 120px;
+      }
+    }
+  }
+}

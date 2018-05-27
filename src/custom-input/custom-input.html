@@ -5,7 +5,7 @@
     ng-click="vm.dialogOpen=true"
     tabindex="{{vm.tabIndex || -1}}">
 
-    <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type != 'datepicker' && vm.type != 'textarea'">
+    <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type != 'datepicker' && vm.type != 'datepickerRange' && vm.type != 'textarea'">
       <input type="{{vm.type}}"
         name="{{vm.bindName || vm.bindId}}"
         id="{{vm.bindId}}"
@@ -44,6 +44,35 @@
       ng-class="vm.iconClass">
       <span ng-bind="vm.icon"></span>
     </span>
+
+    <div ng-if="vm.type == 'datepickerRange'">
+      <div class="datepicker-range-field">
+        מ- <datepicker date="vm.model['from']"
+          open="vm.open"
+          disabled="vm.disabled">
+          <input class="datepicker-input"
+            ng-click="$event.stopPropagation();"
+            ng-model="vm.model['from']"
+            ng-disabled="vm.disabled"
+            ng-required="vm.required"
+            input-date />
+          <i class="fa fa-calendar-o fa-fw"></i>
+        </datepicker>
+      </div>
+      <div class="datepicker-range-field">
+        עד- <datepicker date="vm.model['to']"
+          open="vm.open2"
+          disabled="vm.disabled">
+          <input class="datepicker-input"
+            ng-click="$event.stopPropagation();"
+            ng-model="vm.model['to']"
+            ng-disabled="vm.disabled"
+            ng-required="vm.required"
+            input-date />
+          <i class="fa fa-calendar-o fa-fw"></i>
+        </datepicker>
+      </div>
+    </div>
 
     <div ng-if="vm.type == 'autoComplete'"
       dialog
