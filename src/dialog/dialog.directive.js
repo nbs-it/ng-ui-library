@@ -13,6 +13,7 @@ function dialogDirective ($window, $timeout) {
     transclude: {
       'dialogContent': '?dialogContent'
     },
+    replace: true,
     scope: {
       text: '@',
       closeByClick: '<',

@@ -52,28 +52,31 @@
       <button>שמאל למטה</button>
       <dialog-content>תוכן ההודעה</dialog-content>
     </span>
-    <button dialog
+    <span dialog
       class="left top"
       close-by-click="false"
       close="vm.closeDialog">
-      שמאל למעלה
+      <button>שמאל למעלה</button>
       <dialog-content>תוכן ההודעה
         <a style="-webkit-appearance:button; -moz-appearance:button; -ms-appearance:button;"
           ng-click="vm.closeDialog()">X</a>
       </dialog-content>
-    </button>
-    <button dialog
-      class="">ברירת מחדל
+    </span>
+    <span dialog
+      class="">
+      <button>ברירת מחדל</button>
       <dialog-content>תוכן ההודעה</dialog-content>
-    </button>
-    <button dialog
-      class="top">אמצע למעלה
+    </span>
+    <span dialog
+      class="top">
+      <button>אמצע למעלה</button>
       <dialog-content>תוכן ההודעה</dialog-content>
-    </button>
-    <button dialog
-      class="no-arrow right">ימין ללא חץ
+    </span>
+    <span dialog
+      class="no-arrow right">
+      <button>ימין ללא חץ</button>
       <dialog-content>תוכן ההודעה</dialog-content>
-    </button>
+    </span>
 
     <textarea disabled
       class="code"
@@ -83,15 +86,21 @@
     </span></textarea>
     <textarea disabled
       class="code"
-      rows="4">
-    <button dialog class="left top" close-by-click="false" close="vm.closeDialog">
-      שמאל למעלה
-      <dialog-content>תוכן ההודעה <a style="-webkit-appearance:button; -moz-appearance:button; -ms-appearance:button;" ng-click="vm.closeDialog()">X</a></dialog-content>
-    </button></textarea>
+      rows="8">
+  <span dialog class="left top" close-by-click="false" close="vm.closeDialog">
+    <button>שמאל למעלה</button>
+    <dialog-content>תוכן ההודעה
+      <a style="-webkit-appearance:button; -moz-appearance:button; -ms-appearance:button;"
+        ng-click="vm.closeDialog()">X</a>
+    </dialog-content>
+  </span></textarea>
     <textarea disabled
       class="code"
-      rows="1">
-    <button dialog class="">ברירת מחדל<dialog-content>תוכן ההודעה</dialog-content></button></textarea>
+      rows="4">
+    <span dialog class="">
+      <button>ברירת מחדל</button>
+      <dialog-content>תוכן ההודעה</dialog-content>
+    </span></textarea>
     <textarea disabled
       class="code"
       rows="1">
