@@ -7,7 +7,7 @@
     display: inline-block;
   }
 
-  .dialog {
+  .dialog-container {
     border: solid 1px #ccc;
     border-radius: 4px;
     background: #fff;
@@ -15,7 +15,7 @@
     box-shadow: 1px 1px 5px #ccc;
   }
 
-  .dialog div.dialog-wrap {
+  .dialog-container div.dialog-wrap {
     background: #fff;
     min-width: 100px;
     // min-height: 50px;
@@ -26,32 +26,32 @@
   }
 
   /* dialog align */
-  .dialog,
-  &.center .dialog {
+  .dialog-container,
+  &.center .dialog-container {
     right: 50%;
     left: auto;
     transform: translateX(50%);
   }
 
-  &.right .dialog {
+  &.right .dialog-container {
     right: auto;
     left: 0;
     transform: none;
   }
 
-  &.left .dialog {
+  &.left .dialog-container {
     right: 0;
     left: auto;
     transform: none;
   }
 
-  .dialog,
-  &.bottom .dialog {
+  .dialog-container,
+  &.bottom .dialog-container {
     top: calc(100% + 14px);
     bottom: auto;
   }
 
-  &.top .dialog {
+  &.top .dialog-container {
     top: auto;
     bottom: calc(100% + 14px);
   }
@@ -99,28 +99,28 @@
     display: none;
   }
 
-  &.no-arrow .dialog,
-  &.no-arrow.bottom .dialog {
+  &.no-arrow .dialog-container,
+  &.no-arrow.bottom .dialog-container {
     top: calc(100% + 4px);
     bottom: auto;
   }
 
-  &.no-arrow.top .dialog {
+  &.no-arrow.top .dialog-container {
     bottom: calc(100% + 4px);
     top: auto;
   }
 
   /* text align */
-  .dialog,
-  &.text-center .dialog {
+  .dialog-container,
+  &.text-center .dialog-container {
     text-align: center;
   }
 
-  &.text-right .dialog {
+  &.text-right .dialog-container {
     text-align: right;
   }
 
-  &.text-left .dialog {
+  &.text-left .dialog-container {
     text-align: left;
   }
 
@@ -129,16 +129,16 @@
     display: none;
   }
 
-  &.menu .dialog,
-  &.menu.bottom .dialog {
+  &.menu .dialog-container,
+  &.menu.bottom .dialog-container {
     top: calc(100% + 2px);
   }
 
-  &.menu.top .dialog {
+  &.menu.top .dialog-container {
     bottom: calc(100% + 2px);
   }
 
-  &.menu .dialog div.dialog-wrap {
+  &.menu .dialog-container div.dialog-wrap {
     color: #666;
     font-size: 14px;
     font-family: 'Open Sans Hebrew', arial, sans-serif;
@@ -147,18 +147,18 @@
     cursor: auto;
   }
 
-  &.menu .dialog div.dialog-wrap ul {
+  &.menu .dialog-container div.dialog-wrap ul {
     margin: 0;
     padding: 0;
     list-style: none;
   }
 
-  &.menu .dialog div.dialog-wrap ul li {
+  &.menu .dialog-container div.dialog-wrap ul li {
     padding: 15px 10px;
     cursor: pointer;
   }
 
-  &.menu .dialog div.dialog-wrap ul li:hover {
+  &.menu .dialog-container div.dialog-wrap ul li:hover {
     color: #25b5c0;
   }
 
@@ -171,7 +171,7 @@
   }
 
   /* ng-animate */
-  .dialog {
+  .dialog-container {
     transition: opacity 0.18s;
     opacity: 1;
     // ng-if

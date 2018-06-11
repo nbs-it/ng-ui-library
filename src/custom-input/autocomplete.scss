@@ -1,6 +1,6 @@
 /** autocomplete **/
 .custom-input {
-  [dialog] .dialog div.dialog-wrap {
+  [dialog] .dialog-container div.dialog-wrap {
     max-height: 176px;
     overflow-x: scroll;
   }
@@ -16,11 +16,11 @@
       display: none;
     }
 
-    .dialog {
+    .dialog-container {
       position: static;
     }
 
-    .dialog div.dialog-wrap {
+    .dialog-container div.dialog-wrap {
       padding: 5px 0;
     }
   }
