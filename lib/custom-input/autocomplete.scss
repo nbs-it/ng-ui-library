@@ -1,11 +1,11 @@
 /** autocomplete **/
 .custom-input {
-  [dialog] .dialog-container div.dialog-wrap {
+  .dialog .dialog-container div.dialog-wrap {
     max-height: 176px;
     overflow-x: scroll;
   }
 
-  [dialog].autocomplete {
+  .dialog.autocomplete {
     position: absolute;
     top: 100%;
     right: 0;

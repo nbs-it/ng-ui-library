@@ -8,188 +8,188 @@
         <i class="ion ion-ios-close-empty"></i>
       </a>
       <div class="modal-box-content">
-        <div class="datepicker-container">
-          <div class="datepicker-column">
-            <div class="month-list"
+        <div class="dp-datepicker-container">
+          <div class="dp-datepicker-column">
+            <div class="dp-month-list"
               ng-if="vm.mode == 'gregorian'">
-              <div class="month"
+              <div class="dp-month"
                 ng-repeat="(number, month) in vm.monthsList"
                 ng-click="vm.changeDate('month', month.number)"
-                ng-class="{ 'current': (vm.selectedDate | date: 'M') === number}">
-                <div class="month-name">
+                ng-class="{'dp-current': (vm.selectedDate | date: 'M') === number}">
+                <div class="dp-month-name">
                   {{month.name}}
                 </div>
-                <div class="month-number">
+                <div class="dp-month-number">
                   {{month.number}}
                 </div>
               </div>
             </div>
             <div ng-if="vm.mode == 'hebrew'"
-              class="month-list hebrew-month-list">
-              <div class="month"
+              class="dp-month-list dp-hebrew-month-list">
+              <div class="dp-month"
                 ng-repeat="(index, month) in vm.hebrewMonthsList"
                 ng-click="vm.changeHebrewDate('month', month.number)"
-                ng-class="{ 'current': vm.Number(vm.selectedHebrewDateObj.month) === month.number}">
-                <div class="month-name">
+                ng-class="{'dp-current': vm.Number(vm.selectedHebrewDateObj.month) === month.number}">
+                <div class="dp-month-name">
                   {{month.name}}
                 </div>
               </div>
             </div>
-            <div class="year-list"
+            <div class="dp-year-list"
               ng-if="vm.mode == 'gregorian'">
-              <div class="year-slider">
+              <div class="dp-year-slider">
                 <i ng-click="vm.next('year')"
                   class="fa fa-chevron-right"></i>
-                <span class="selected-year">{{vm.selectedDate | date: 'yyyy'}}</span>
+                <span class="dp-selected-year">{{vm.selectedDate | date: 'yyyy'}}</span>
                 <i ng-click="vm.prev('year')"
                   class="fa fa-chevron-left"></i>
               </div>
-              <div class="list">
+              <div class="dp-list">
                 <span ng-repeat="year in vm.yearList() track by $index"
                   ng-click="vm.changeDate('year', year)">{{year}}</span>
               </div>
             </div>
-            <div class="year-list hebrew-year-list"
+            <div class="dp-year-list dp-hebrew-year-list"
               ng-if="vm.mode == 'hebrew'">
-              <div class="year-slider">
+              <div class="dp-year-slider">
                 <i ng-click="vm.hebrewPrev('year')"
                   class="fa fa-chevron-right"></i>
-                <span class="selected-year">{{vm.Hebcal.gematriya(vm.selectedHebrewDateObj.year)}}</span>
+                <span class="dp-selected-year">{{vm.Hebcal.gematriya(vm.selectedHebrewDateObj.year)}}</span>
                 <i ng-click="vm.hebrewNext('year')"
                   class="fa fa-chevron-left"></i>
               </div>
-              <div class="list">
+              <div class="dp-list">
                 <span ng-repeat="year in vm.hebrewYearList()"
                   ng-click="vm.changeHebrewDate('year', year)">{{vm.Hebcal.gematriya(year % 100) || vm.Hebcal.gematriya(year % 1000)}}</span>
               </div>
             </div>
             <div ng-click="vm.changeMode()"
-              class="change-mode">
+              class="dp-change-mode">
               הצג תאריך
-              <span class="mode">{{vm.mode === 'gregorian' ? 'עברי' : 'לועזי'}}</span>
+              <span class="dp-mode">{{vm.mode === 'gregorian' ? 'עברי' : 'לועזי'}}</span>
             </div>
           </div>
-          <div class="datepicker-column">
-            <div class="selected-date"
+          <div class="dp-datepicker-column">
+            <div class="dp-selected-date"
               ng-if="vm.mode === 'gregorian'">
-              <div class="date">
+              <div class="dp-date">
                 <span>{{vm.selectedDate | date: 'dd/MM/yyyy'}}</span>
               </div>
-              <div class="sub-date">
+              <div class="dp-sub-date">
                 <span>{{vm.selectedHebrewDate}}</span>
               </div>
-              <div class="picker">
-                <div class="block day">
+              <div class="dp-picker">
+                <div class="dp-block dp-day">
                   <i ng-click="vm.next('day')"
-                    class="arrow ion ion-ios-arrow-up"></i>
-                  <span class="number">{{vm.selectedDate | date: 'dd'}}</span>
+                    class="dp-arrow ion ion-ios-arrow-up"></i>
+                  <span class="dp-number">{{vm.selectedDate | date: 'dd'}}</span>
                   <i ng-click="vm.prev('day')"
-                    class="arrow ion ion-ios-arrow-down"></i>
+                    class="dp-arrow ion ion-ios-arrow-down"></i>
                 </div>
                 -
-                <div class="block month">
+                <div class="dp-block dp-month">
                   <i ng-click="vm.next('month')"
-                    class="arrow ion ion-ios-arrow-up"></i>
-                  <span class="number">{{vm.selectedDate | date: 'MM'}}</span>
+                    class="dp-arrow ion ion-ios-arrow-up"></i>
+                  <span class="dp-number">{{vm.selectedDate | date: 'MM'}}</span>
                   <i ng-click="vm.prev('month')"
-                    class="arrow ion ion-ios-arrow-down"></i>
+                    class="dp-arrow ion ion-ios-arrow-down"></i>
                 </div>
                 -
-                <div class="block year">
+                <div class="dp-block year">
                   <i ng-click="vm.next('year')"
-                    class="arrow ion ion-ios-arrow-up"></i>
-                  <span class="number">{{vm.selectedDate | date: 'yy'}}</span>
+                    class="dp-arrow ion ion-ios-arrow-up"></i>
+                  <span class="dp-number">{{vm.selectedDate | date: 'yy'}}</span>
                   <i ng-click="vm.prev('year')"
-                    class="arrow ion ion-ios-arrow-down"></i>
+                    class="dp-arrow ion ion-ios-arrow-down"></i>
                 </div>
               </div>
             </div>
-            <div class="selected-date hebrew-selected-date"
+            <div class="dp-selected-date dp-hebrew-selected-date"
               ng-if="vm.mode === 'hebrew'">
-              <div class="date">
+              <div class="dp-date">
                 <span>{{vm.selectedHebrewDate}}</span>
               </div>
-              <div class="sub-date">
+              <div class="dp-sub-date">
                 <span>{{vm.selectedDate | date: 'dd/MM/yyyy'}}</span>
               </div>
-              <div class="picker">
-                <div class="block day">
+              <div class="dp-picker">
+                <div class="dp-block dp-day">
                   <i ng-click="vm.hebrewNext('day')"
-                    class="arrow ion ion-ios-arrow-up"></i>
-                  <span class="number">{{vm.Hebcal.gematriya(vm.selectedHebrewDateObj.day)}}</span>
+                    class="dp-arrow ion ion-ios-arrow-up"></i>
+                  <span class="dp-number">{{vm.Hebcal.gematriya(vm.selectedHebrewDateObj.day)}}</span>
                   <i ng-click="vm.hebrewPrev('day')"
-                    class="arrow ion ion-ios-arrow-down"></i>
+                    class="dp-arrow ion ion-ios-arrow-down"></i>
                 </div>
                 -
-                <div class="block month">
+                <div class="dp-block dp-month">
                   <i ng-click="vm.hebrewNext('month')"
-                    class="arrow ion ion-ios-arrow-up"></i>
-                  <span class="number">{{vm.selectedHebrewDateObj.getMonthName('h')}}</span>
+                    class="dp-arrow ion ion-ios-arrow-up"></i>
+                  <span class="dp-number">{{vm.selectedHebrewDateObj.getMonthName('h')}}</span>
                   <i ng-click="vm.hebrewPrev('month')"
-                    class="arrow ion ion-ios-arrow-down"></i>
+                    class="dp-arrow ion ion-ios-arrow-down"></i>
                 </div>
                 -
-                <div class="block year">
+                <div class="dp-block year">
                   <i ng-click="vm.hebrewNext('year')"
-                    class="arrow ion ion-ios-arrow-up"></i>
-                  <span class="number">{{vm.Hebcal.gematriya(vm.selectedHebrewDateObj.year % 100 || vm.selectedHebrewDateObj.year % 1000)}}</span>
+                    class="dp-arrow ion ion-ios-arrow-up"></i>
+                  <span class="dp-number">{{vm.Hebcal.gematriya(vm.selectedHebrewDateObj.year % 100 || vm.selectedHebrewDateObj.year % 1000)}}</span>
                   <i ng-click="vm.hebrewPrev('year')"
-                    class="arrow ion ion-ios-arrow-down"></i>
+                    class="dp-arrow ion ion-ios-arrow-down"></i>
                 </div>
               </div>
             </div>
-            <div class="day-list"
+            <div class="dp-day-list"
               ng-if="vm.mode === 'gregorian'">
-              <div class="datepicker-row"
+              <div class="dp-datepicker-row"
                 ng-repeat="row in vm.daysList">
-                <span class="day"
+                <span class="dp-day"
                   ng-repeat="day in row"
                   ng-click="vm.changeDate('day', day)"
                   ng-if="$parent.$index != 4 || vm.Number(day) <= vm.moment(vm.selectedDate).daysInMonth()"
-                  ng-class="{ 'current': (vm.selectedDate | date: 'dd') === day }">
+                  ng-class="{'dp-current': (vm.selectedDate | date: 'dd') === day}">
                   {{day}}
-                  <span class="day-translation"
+                  <span class="dp-day-translation"
                     ng-click="$event.stopPropagation()">
-                    <div class="day-translation-wrap">
-                      <div class="month">
+                    <div class="dp-day-translation-wrap">
+                      <div class="dp-month">
                         {{vm.dayTranslationToHebrew(day)}}
                       </div>
-                      <div class="week">{{vm.dayWeekDayTranslation(day)}}</div>
+                      <div class="dp-week">{{vm.dayWeekDayTranslation(day)}}</div>
                     </div>
                   </span>
                 </span>
               </div>
               <span ng-click="vm.selectDate()"
-                class="today-button">היום</span>
+                class="dp-today-button">היום</span>
             </div>
-            <div class="day-list hebrew-day-list"
+            <div class="dp-day-list dp-hebrew-day-list"
               ng-if="vm.mode === 'hebrew'">
-              <div class="datepicker-row"
+              <div class="dp-datepicker-row"
                 ng-repeat="row in vm.hebrewDaysList">
-                <span class="day"
+                <span class="dp-day"
                   ng-repeat="(number, day) in row"
                   ng-click="vm.changeHebrewDate('day', number)"
                   ng-if="number < 30 || number <= vm.selectedHebrewDateObj.daysInMonth()"
-                  ng-class="{ 'current': vm.Number(number) === vm.selectedHebrewDateObj.day}">
+                  ng-class="{'dp-current': vm.Number(number) === vm.selectedHebrewDateObj.day}">
                   {{day}}
-                  <span class="day-translation"
+                  <span class="dp-day-translation"
                     ng-click="$event.stopPropagation()">
-                    <div class="day-translation-wrap">
-                      <div class="month">
+                    <div class="dp-day-translation-wrap">
+                      <div class="dp-month">
                         {{vm.dayTranslationToGreg(day)}}
                       </div>
-                      <div class="week">{{vm.dayWeekHebrewDayTranslation(day)}}</div>
+                      <div class="dp-week">{{vm.dayWeekHebrewDayTranslation(day)}}</div>
                     </div>
                   </span>
                 </span>
               </div>
               <span ng-click="vm.selectDate()"
-                class="today-button">היום</span>
+                class="dp-today-button">היום</span>
             </div>
-            <div class="buttons">
-              <a class="button primary"
+            <div class="dp-buttons">
+              <a class="dp-button primary"
                 ng-click="vm.save()">בחר</a>
-              <a class="button"
+              <a class="dp-button"
                 ng-click="vm.close()">בטל</a>
             </div>
           </div>
