@@ -3,6 +3,10 @@
   display: inline-block;
   z-index: 1;
 
+  &.is-shown {
+    z-index: 2;
+  }
+
   div.dialog-trigger {
     display: inline-block;
   }
