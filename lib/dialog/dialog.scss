@@ -1,14 +1,10 @@
 .dialog {
   position: relative;
   display: inline-block;
-  z-index: 1;
-
-  &.is-shown {
-    z-index: 2;
-  }
 
   div.dialog-trigger {
     display: inline-block;
+    z-index: 1;
   }
 
   .dialog-container {
@@ -17,6 +13,7 @@
     background: #fff;
     position: absolute;
     box-shadow: 1px 1px 5px #ccc;
+    z-index: 2;
   }
 
   .dialog-container div.dialog-wrap {
