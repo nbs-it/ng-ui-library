@@ -23,6 +23,7 @@ class messageService {
 
   show (properties) {
     self.properties = {
+      className: '',
       buttons: true,
       buttonCancel: false,
       buttonConfirm: false,

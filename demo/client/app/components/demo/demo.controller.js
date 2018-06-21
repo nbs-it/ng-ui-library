@@ -45,6 +45,7 @@ class DemoController {
 
   showMessage () {
     vm.messageService.show({
+      className: 'my-message',
       close: vm.messageProperties.close,
       buttons: vm.messageProperties.buttons,
       icon: vm.messageProperties.icon,

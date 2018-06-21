@@ -1,5 +1,5 @@
-<div class="message"
-  ng-if="messageService.isShown">
+<div ng-if="messageService.isShown"
+  class="message {{messageService.properties.className || ''}}">
   <a ng-if="messageService.properties.close"
     ng-click="messageService.hide()"
     class="message-close">

@@ -1,6 +1,6 @@
 {
   "name": "ng-ui-library",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "NBS UI library for angular ng6",
   "main": "common.js",
   "repository": {
