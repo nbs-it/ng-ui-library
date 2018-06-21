@@ -1,8 +1,10 @@
 import angular from 'angular';
 
+let self;
+
 class messageService {
   constructor ($rootScope, $compile, $window, $timeout) {
-    let self = this;
+    self = this;
     self.$rootScope = $rootScope;
     self.$compile = $compile;
     self.$window = $window;
@@ -13,46 +15,48 @@ class messageService {
       return self.isShown;
     };
 
-    self.show = function (properties) {
-      self.properties = {
-        buttons: true,
-        buttonCancel: false,
-        buttonConfirm: false,
-        buttonConfirmFunction: self.hide,
-        icon: false,
-        align: 'center',
-        close: true,
-        customHtml: null
-      };
-      for (var key in properties) {
-        self.properties[key] = properties[key];
-      }
-      self.isShown = true;
-    };
-
-    self.hide = function () {
-      self.isShown = false;
-    };
-
-    self.toggle = function () {
-      self.isShown === true ? self.hide() : self.show();
-    };
-
     self.properties = {};
 
     self.setup();
     return self;
   }
 
+  show (properties) {
+    self.properties = {
+      buttons: true,
+      buttonCancel: false,
+      buttonConfirm: false,
+      buttonConfirmFunction: self.hide,
+      icon: false,
+      align: 'center',
+      close: true,
+      customHtml: null
+    };
+    for (var key in properties) {
+      self.properties[key] = properties[key];
+    }
+    self.isShown = true;
+
+    self.$timeout(() => {
+      self.$rootScope.$apply();
+    });
+  }
+
+  hide () {
+    self.isShown = false;
+  }
+
+  toggle () {
+    self.isShown === true ? self.hide() : self.show();
+  }
+
   setup () {
-    let vm = this;
-
     var msgElement = document.createElement('message');
-    vm.$window.document.body.append(msgElement);
+    self.$window.document.body.append(msgElement);
 
-    let scope = vm.$rootScope.$new();
-    vm.$timeout(function () {
-      vm.$compile(msgElement)(scope);
+    let scope = self.$rootScope.$new();
+    self.$timeout(() => {
+      self.$compile(msgElement)(scope);
     });
   }
 }
