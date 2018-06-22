@@ -9,8 +9,8 @@ import AppComponent from './app.component';
 angular.module('app', [
   uiRouter,
   angularAnimate,
-  Components,
-  Common
+  Common,
+  Components
 ])
   .config(appConfig)
   .component('app', AppComponent);
