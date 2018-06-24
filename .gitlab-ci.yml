@@ -1,26 +1,11 @@
 image: node:8
 
-stages:
-  - build
-  - deploy
-
-build-pages:
+pages:
   stage: build
   script:
     - sh ci/create_client_files.sh
   artifacts:
     paths:
-    - public
-  only:
-    - master
-
-deploy-pages:
-  image: alpine
-  stage: deploy
-  script:
-    - echo 'Nothing to do...'
-  artifacts:
-    paths:
-    - public
+      - public
   only:
     - master
