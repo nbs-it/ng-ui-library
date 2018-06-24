@@ -44,7 +44,11 @@ let autocompleteCtrl = function (vm, $scope, $window, $timeout) {
         } else {
           vm.itemsFiltered = vm.arrayItems ? vm.arrayItems : [];
           vm.itemsFiltered = vm.itemsFiltered.filter(function (item) {
-            if (item.toString().indexOf(vm.model) !== -1) {
+            let itemValue = item;
+            if (vm.propItemSelected) {
+              itemValue = itemValue[vm.propItemSelected];
+            }
+            if (itemValue.toString().indexOf(vm.model) !== -1) {
               return item;
             }
           });
