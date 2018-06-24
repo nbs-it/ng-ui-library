@@ -15,7 +15,8 @@ let autocompleteCtrl = function (vm, $scope, $window, $timeout) {
 
   if (vm.type === 'autoComplete') {
     $scope.$watch('vm.model', function (newValue, old) {
-      if (vm.autoCompleteNoQuery === true && (angular.isFunction(vm.arrayItems) || !vm.model || vm.model === '')) {
+      if ((vm.autoCompleteNoQuery === true && (angular.isFunction(vm.arrayItems) || !vm.model || vm.model === '')) ||
+      vm.isAutoCompleteModelSelected === true) {
         vm.autoCompleteNoQuery = false;
         // vm.indexArrow = 0;
         return;
@@ -109,6 +110,7 @@ let autocompleteCtrl = function (vm, $scope, $window, $timeout) {
       vm.model = item[vm.propItemSelected];
     }
     vm.autoCompleteNoQuery = true;
+    vm.isAutoCompleteModelSelected = true;
   };
 
   vm.getRowsHtmlData = function () {
