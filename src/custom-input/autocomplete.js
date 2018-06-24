@@ -18,6 +18,8 @@ let autocompleteCtrl = function (vm, $scope, $window, $timeout) {
       if ((vm.autoCompleteNoQuery === true && (angular.isFunction(vm.arrayItems) || !vm.model || vm.model === '')) ||
       vm.isAutoCompleteModelSelected === true) {
         vm.autoCompleteNoQuery = false;
+        vm.isAutoCompleteModelSelected = false;
+
         // vm.indexArrow = 0;
         return;
       }
