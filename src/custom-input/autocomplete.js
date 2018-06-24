@@ -42,6 +42,12 @@ let autocompleteCtrl = function (vm, $scope, $window, $timeout) {
           });
         } else {
           vm.itemsFiltered = vm.arrayItems ? vm.arrayItems : [];
+          vm.itemsFiltered = vm.itemsFiltered.filter(function (item) {
+            if (item.toString().indexOf(vm.model) !== -1) {
+              return item;
+            }
+          });
+
           if (vm.autoCompleteRow) {
             vm.rowsHtmlData = vm.getRowsHtmlData();
           }
