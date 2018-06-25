@@ -1,3 +1,9 @@
+# add version number to index.html
+VERSION=$(grep version package.json)
+VERSION=${VERSION##* \"}
+VERSION=${VERSION%\",}
+sed -i "s/<%app-version%>/$VERSION/" ./demo/client/index.html
+
 # move src files into client folder
 mv ./src ./demo/client
 mv ./package.json ./demo/client
