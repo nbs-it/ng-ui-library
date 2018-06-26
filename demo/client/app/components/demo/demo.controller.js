@@ -1,7 +1,7 @@
 let vm;
 
 class DemoController {
-  constructor ($scope, $q, messageService) {
+  constructor ($scope, $q, $filter, messageService) {
     vm = this;
     vm.$scope = $scope;
     vm.$q = $q;
@@ -41,6 +41,17 @@ class DemoController {
     $scope.$on('modalBoxClosed', () => {
       console.log('modalBoxClosed');
     });
+
+    vm.rangeSliderOptions = {
+      floor: 1,
+      pushRange: true,
+      hideLimitLabels: true,
+      ceil: 50000,
+      logScale: true,
+      translate: function (value) {
+        return $filter('number')(value, '') + ' ₪';
+      }
+    };
   }
 
   showMessage () {

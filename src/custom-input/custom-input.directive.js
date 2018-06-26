@@ -8,8 +8,10 @@ import { autocompleteCtrl, autocompleteLink } from './autocomplete';
 import validation from './validation';
 import compileTemplate from './compile-template';
 import inputDate from '../input-date/input-date.directive';
+import angularjsSlider from 'angularjs-slider';
+import 'angularjs-slider/dist/rzslider.min.css';
 
-let customInputModule = angular.module('customInput', [sanitize, inputDate])
+let customInputModule = angular.module('customInput', [sanitize, inputDate, angularjsSlider])
   .directive('customInput', customInputDirective)
   .directive('compileTemplate', compileTemplate)
   .name;
@@ -40,7 +42,8 @@ function customInputDirective ($interpolate, $window, $compile) {
       arrayItems: '<?',
       filter: '<?',
       autoCompleteRow: '<?',
-      propItemSelected: '<?'
+      propItemSelected: '<?',
+      options: '<?'
     },
     template,
     controllerAs: 'vm',

@@ -9,6 +9,6 @@ let demoComponent = {
   controllerAs: 'vm'
 };
 
-controller.$inject = ['$scope', '$q', 'messageService'];
+controller.$inject = ['$scope', '$q', '$filter', 'messageService'];
 
 export default demoComponent;

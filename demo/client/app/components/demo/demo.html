@@ -236,11 +236,11 @@
       prop-item-selected="'name'"
       auto-complete-row="vm.autoCompleteHtml">
     </custom-input>
-    <!--     <!-- auto-complete-row="vm.autoCompleteHtml" -->
+    <!-- auto-complete-row="vm.autoCompleteHtml" -->
 
     <textarea disabled
       class="code"
-      rows="4">
+      rows="12">
       <custom-input
         bind-id="custom-input-id"
         label="אוטו קומפליט"
@@ -307,15 +307,15 @@
     <br>
     <textarea disabled
       class="code"
-      rows="8">
-      <custom-input bind-id="datepicker-range-id"
-        type="datepickerRange"
-        label="דייט פיקר טווח תאריכים"
-        icon-class=""
-        model="vm.datepickerRangeModel"
-        description="טקסט עזר לתיאור השדה"
-        open="vm.datepickerRangeIsOpen">
-      </custom-input>
+      rows="9">
+<custom-input bind-id="datepicker-range-id"
+  type="datepickerRange"
+  label="דייט פיקר טווח תאריכים"
+  icon-class=""
+  model="vm.datepickerRangeModel"
+  description="טקסט עזר לתיאור השדה"
+  open="vm.datepickerRangeIsOpen">
+</custom-input>
     </textarea>
   </section>
 
@@ -374,4 +374,49 @@
       class="code"
       rows="2">messageService.show(options);</textarea>
   </section>
+
+  <section ng-init="vm.rangeSliderModel = {'from': 0, 'to': 10000}">
+    <h1>Range Slider</h1>
+    ng-model:
+    <br> {{vm.rangeSliderModel}}
+    <br>
+    <br>
+    <custom-input bind-id="datepicker-range-id"
+      type="rangeSlider"
+      label="טווח מספרים"
+      icon-class=""
+      model="vm.rangeSliderModel"
+      description="טקסט עזר לתיאור השדה"
+      options="vm.rangeSliderOptions">
+    </custom-input>
+    <br>
+    <br>
+    <textarea disabled
+      class="code"
+      rows="9"><custom-input bind-id="datepicker-range-id"
+    type="rangeSlider"
+    label="טווח מספרים"
+    icon-class=""
+    model="vm.rangeSliderModel"
+    description="טקסט עזר לתיאור השדה"
+    options="vm.rangeSliderOptions">
+  </custom-input></textarea>
+    <textarea disabled
+      class="code"
+      rows="10">vm.rangeSliderOptions = {
+    floor: 1,
+    pushRange: true,
+    hideLimitLabels: true,
+    ceil: 50000,
+    logScale: true,
+    translate: function (value) {
+      return $filter('number')(value, '') + ' ₪';
+    }
+  };</textarea>
+    <div> rz-slider-options Documentation:
+      <a target="_blank"
+        href="https://github.com/angular-slider/angularjs-slider#directive-attributes">Here</a>
+    </div>
+  </section>
+
 </form>

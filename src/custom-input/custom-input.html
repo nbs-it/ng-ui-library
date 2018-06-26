@@ -5,7 +5,11 @@
     ng-click="vm.dialogOpen=true"
     tabindex="{{vm.tabIndex || -1}}">
 
-    <div ng-if="!vm.$transclude.isSlotFilled('input') && vm.type != 'datepicker' && vm.type != 'datepickerRange' && vm.type != 'textarea'">
+    <div ng-if="!vm.$transclude.isSlotFilled('input')
+      && vm.type != 'datepicker'
+      && vm.type != 'datepickerRange'
+      && vm.type != 'rangeSlider'
+      && vm.type != 'textarea'">
       <input type="{{vm.type}}"
         name="{{vm.bindName || vm.bindId}}"
         id="{{vm.bindId}}"
@@ -37,6 +41,15 @@
         <i class="fa fa-calendar-o fa-fw"></i>
       </datepicker>
     </div>
+
+    <div ng-if="vm.type == 'rangeSlider'">
+      <div class="range-slider-field">
+        <rzslider rz-slider-model="vm.model['from']"
+          rz-slider-high="vm.model['to']"
+          rz-slider-options="vm.options"></rzslider>
+      </div>
+    </div>
+
     <span ng-transclude="input"
       ng-if="vm.$transclude.isSlotFilled('input')"></span>
     <span class="icon"
@@ -47,7 +60,8 @@
 
     <div ng-if="vm.type == 'datepickerRange'">
       <div class="datepicker-range-field">
-        מ- <datepicker date="vm.model['from']"
+        מ-
+        <datepicker date="vm.model['from']"
           open="vm.open"
           disabled="vm.disabled">
           <input class="datepicker-input"
@@ -60,7 +74,8 @@
         </datepicker>
       </div>
       <div class="datepicker-range-field">
-        עד- <datepicker date="vm.model['to']"
+        עד-
+        <datepicker date="vm.model['to']"
           open="vm.open2"
           disabled="vm.disabled">
           <input class="datepicker-input"
