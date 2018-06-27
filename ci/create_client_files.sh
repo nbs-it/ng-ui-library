@@ -1,3 +1,4 @@
+set -x
 # add version number to index.html
 VERSION=$(grep version package.json)
 VERSION=${VERSION##* \"}
